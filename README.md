@@ -25,7 +25,7 @@ Marking Guide (product page): (10 marks)
 
 Screenshot
 
-https://github.com/rlawrenc/cosc_304/blob/main/labs/lab8/assign/img/productPage.png![image](https://user-images.githubusercontent.com/78832175/203176521-d1a34f99-2671-419d-b1b6-558cbcadc645.png)
+![image](https://user-images.githubusercontent.com/78832175/203176521-d1a34f99-2671-419d-b1b6-558cbcadc645.png)
 
 Marking Guide (admin and login page): (5 marks)
 
@@ -36,7 +36,7 @@ Marking Guide (admin and login page): (5 marks)
 
 Screenshot
 
-https://github.com/rlawrenc/cosc_304/blob/main/labs/lab8/assign/img/adminPage.png![image](https://user-images.githubusercontent.com/78832175/203176548-e0919329-40d2-4223-ac60-f4b666da3fb4.png)
+![image](https://user-images.githubusercontent.com/78832175/203176548-e0919329-40d2-4223-ac60-f4b666da3fb4.png)
 
 Marking Guide (customer page): (5 marks)
 
@@ -45,7 +45,7 @@ Marking Guide (customer page): (5 marks)
 
 Screenshot
 
-https://github.com/rlawrenc/cosc_304/blob/main/labs/lab8/assign/img/customerPage.png![image](https://user-images.githubusercontent.com/78832175/203176563-ab7aedc9-bad8-45a5-ae6d-ea0a222a4847.png)
+![image](https://user-images.githubusercontent.com/78832175/203176563-ab7aedc9-bad8-45a5-ae6d-ea0a222a4847.png)
 
 Marking Guide (shipment page): (5 marks)
 
@@ -55,10 +55,10 @@ Test by entering URL like: http://localhost:8080/ship.jsp?orderId=1
 
 Screenshot - Successful Shipment with orderId=1
 
-https://github.com/rlawrenc/cosc_304/blob/main/labs/lab8/assign/img/shipmentPage1.png![image](https://user-images.githubusercontent.com/78832175/203176591-ce689e3c-1dc7-481a-a918-58598153642a.png)
+![image](https://user-images.githubusercontent.com/78832175/203176591-ce689e3c-1dc7-481a-a918-58598153642a.png)
 
 Screenshot - Unsuccessful Shipment with orderId=3
 
-https://github.com/rlawrenc/cosc_304/blob/main/labs/lab8/assign/img/shipmentPage2.png![image](https://user-images.githubusercontent.com/78832175/203176627-88ff87e8-f3b9-422d-a5fa-35f5874d79ae.png)
+![image](https://user-images.githubusercontent.com/78832175/203176627-88ff87e8-f3b9-422d-a5fa-35f5874d79ae.png)
 
 If you do not demonstrate live to the TA in virtual office hours, please upload a video clip demonstrating your working pages with the new features.
