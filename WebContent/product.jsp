@@ -14,12 +14,29 @@
 
 <%
 // Get product name to search for
-// TODO: Retrieve and display info for the product
-// String productId = request.getParameter("id");
+String name = request.getParameter("name");
 
-String sql = "";
+// TODO: Retrieve and display info for the product
+String productId = request.getParameter("id");
+
+//Note: Forces loading of SQL Server driver
+try
+{	
+	// Load driver class
+	Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+}
+catch (java.lang.ClassNotFoundException e)
+{
+	out.println("ClassNotFoundException: " +e);
+}
+
+
+
+
+String sql = "SELECT productImageURL FROM product P WHERE productId = ?";
 
 // TODO: If there is a productImageURL, display using IMG tag
+out.println("<h2>"+name+"</h2>");
 		
 // TODO: Retrieve any image stored directly in database. Note: Call displayImage.jsp with product id as parameter.
 		

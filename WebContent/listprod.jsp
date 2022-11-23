@@ -64,7 +64,7 @@ while(rst.next())
 	String prodname = rst.getString("productName");
 	double prodprice = rst.getDouble("productPrice");
 	out.print("<tr><td>"+"<a href=\"addcart.jsp?id=" + prodid + "&name=" + prodname + "&price=" + prodprice + "\"" + ">Add to cart</a>" + "</td>");
-	out.print("<td>"+" " + rst.getString("productName")+ "</td>");
+	out.print("<td>"+" " + "<a href=\"product.jsp?id=" + prodid + "&name=" + prodname + "\"" + "> "+prodname+" </a>"+ "</td>");
 	out.print("<td>"+" "+ currFormat.format(rst.getDouble("productPrice")) + "</td></tr>");
 }
 out.print("</table>");
