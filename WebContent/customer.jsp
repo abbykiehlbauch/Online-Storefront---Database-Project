@@ -16,7 +16,7 @@
 <%
 
 // TODO: Print Customer information
-String sql = "";
+String sql = "SELECT customerId, firstName, lastName, email, phonenum, address, city, state, postalCode, country, userId FROM customer";
 
 // Make sure to close connection
 %>
