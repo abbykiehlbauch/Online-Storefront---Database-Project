@@ -21,7 +21,16 @@
 <%
 // TODO: Display user name that is logged in (or nothing if not logged in)
 String firstName = request.getParameter("firstName");
-out.println("<h3 align='center'>" + "Signed in as: " + firstName + "</h3>");
+String username = request.getParameter("username");
+String validateLogin = request.getParameter("validateLogin");
+if(validateLogin==username)
+{
+        out.println("<h3 align='center'>" + "Signed in as: " + firstName + "</h3>");
+}
+else 
+{
+        out.println("");
+}
 
 %>
 </body>

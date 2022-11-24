@@ -37,7 +37,7 @@
 			// TODO: Check if userId and password match some customer account. If so, set retStr to be the username.
 			Statement st = con.createStatement();
 			ResultSet rs;
-			rs = st.executeQuery("SELECT * FROM customer WHERE userid='" + username + "'");
+			rs = st.executeQuery("SELECT * FROM customer WHERE userid='" + username + "' and password='" + password + "'");
 			if(rs.next()) {
 				String userMes = "Username exists";
 				request.getSession().setAttribute("userMes", userMes);
