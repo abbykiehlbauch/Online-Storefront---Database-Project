@@ -23,7 +23,6 @@
 <%!
 	String validateLogin(JspWriter out,HttpServletRequest request, HttpSession session) throws IOException
 	{
-		//session.removeAttribute("loginMessage");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String retStr = null;
@@ -36,26 +35,16 @@
 		try 
 		{
 			getConnection();
-
 			// TODO: Check if userId and password match some customer account. If so, set retStr to be the username.
 			String SQL = "SELECT * FROM customer WHERE userid= ? AND password = ?";
 			PreparedStatement st = con.prepareStatement(SQL);
 			st.setString(1, username);
 			st.setString(2, password);
-			String userid = "";
-			String pass = "";
 			ResultSet rs = st.executeQuery();
-			if(rs.next())
+			while(rs.next())
 			{
-				userid = rs.getString("userid");
-				pass = rs.getString("password");
-				if(username.equals(userid) && password.equals(pass))
-				{
-					retStr = username;
-				}
+				retStr = username;
 			}
-			else
-				retStr = "test";
 		} 
 		catch (SQLException ex) {
 			out.println(ex);
