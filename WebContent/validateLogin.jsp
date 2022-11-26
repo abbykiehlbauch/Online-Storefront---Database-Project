@@ -34,7 +34,7 @@
 		
 		try 
 		{
-			getConnection();
+			getConnectionForOrders();
 			// TODO: Check if userId and password match some customer account. If so, set retStr to be the username.
 			String SQL = "SELECT * FROM customer WHERE userid= ? AND password = ?";
 			PreparedStatement st = con.prepareStatement(SQL);

@@ -39,4 +39,17 @@ Public methods:
 			con.close();
 		con = null;
 	}
+	public void getConnectionForOrders() throws SQLException
+	{
+		try
+		{
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		}
+		catch(java.lang.ClassNotFoundException e)
+		{
+			throw new SQLException("ClassNotFoundException: " + e);
+		}
+		String urlOrders = "jdbc:sqlserver://cosc304_sqlserver:1433;DatabaseName=orders;TrustServerCertificate=True";
+		con = DriverManager.getConnection(urlOrders,uid,pw);
+	}
 %>
