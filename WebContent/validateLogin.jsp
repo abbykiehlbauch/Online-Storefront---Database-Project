@@ -14,61 +14,71 @@
 	if(authenticatedUser != null)
 		response.sendRedirect("index.jsp");		// Successful login
 	else
-		response.sendRedirect("login.jsp");		// Failed login - redirect back to login page with a message 
+	{
+		response.sendRedirect("login.jsp");	
+	}	// Failed login - redirect back to login page with a message 
 %>
 
 
 <%!
 	String validateLogin(JspWriter out,HttpServletRequest request, HttpSession session) throws IOException
 	{
-		String username = request.getParameter("userId");
+		//session.removeAttribute("loginMessage");
+		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String retStr = null;
-
+		
 		if(username == null || password == null)
 				return null;
 		if((username.length() == 0) || (password.length() == 0))
 				return null;
-
+		
 		try 
 		{
 			getConnection();
+
 			// TODO: Check if userId and password match some customer account. If so, set retStr to be the username.
-			Statement st = con.createStatement();
-			ResultSet rs;
-			String userMes = "Username exists";
-			String errMes = "Username and password are incorrect";
-			rs = st.executeQuery("SELECT * FROM customer WHERE userid='" + username + "' and password='" + password + "'");
-			while(rs.next()) {
-				request.getSession().setAttribute("userMes", userMes);
+			String SQL = "SELECT * FROM customer WHERE userid= ? AND password = ?";
+			PreparedStatement st = con.prepareStatement(SQL);
+			st.setString(1, username);
+			st.setString(2, password);
+			String userid = "";
+			String pass = "";
+			ResultSet rs = st.executeQuery();
+			if(rs.next())
+			{
+				userid = rs.getString("userid");
+				pass = rs.getString("password");
+				if(username.equals(userid) && password.equals(pass))
+				{
+					retStr = username;
+				}
 			}
-			rs.close();
-			st.close();
+			else
+				retStr = "test";
 		} 
 		catch (SQLException ex) {
 			out.println(ex);
 		}
-		finally
+		finally 
 		{
-			try{
+			try
+			{
 				closeConnection();
-			}
-			catch (SQLException e) {
+			}catch (SQLException e) {
 				out.println(e);
-
-			}
-		}	
-		
-		if(retStr != null)
-		{	session.removeAttribute("loginMessage");
-			if(username.equals(request.getParameter("userId"))&& password.equals(request.getParameter("password"))){
-			session.setAttribute("authenticatedUser", username);
-			boolean loggedIn = true;
 			}
 		}
+		
+		if(retStr != null)
+		{	
+			session.removeAttribute("loginMessage");
+			session.setAttribute("authenticatedUser", username);
+		}
 		else
+		{
 			session.setAttribute("loginMessage","Could not connect to the system using that username/password.");
-			boolean loggedIn = false;
+		}
 		return retStr;
 	}
 %>
