@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>Customer Page</title>
+<h1>Customer Profile</h1>
 </head>
 <body>
 
