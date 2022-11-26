@@ -21,7 +21,7 @@
 <%!
 	String validateLogin(JspWriter out,HttpServletRequest request, HttpSession session) throws IOException
 	{
-		String username = request.getParameter("username");
+		String username = request.getParameter("userId");
 		String password = request.getParameter("password");
 		String retStr = null;
 
@@ -33,15 +33,17 @@
 		try 
 		{
 			getConnection();
-			
 			// TODO: Check if userId and password match some customer account. If so, set retStr to be the username.
 			Statement st = con.createStatement();
 			ResultSet rs;
+			String userMes = "Username exists";
+			String errMes = "Username and password are incorrect";
 			rs = st.executeQuery("SELECT * FROM customer WHERE userid='" + username + "' and password='" + password + "'");
-			if(rs.next()) {
-				String userMes = "Username exists";
+			while(rs.next()) {
 				request.getSession().setAttribute("userMes", userMes);
 			}
+			rs.close();
+			st.close();
 		} 
 		catch (SQLException ex) {
 			out.println(ex);
@@ -53,16 +55,20 @@
 			}
 			catch (SQLException e) {
 				out.println(e);
+
 			}
 		}	
 		
 		if(retStr != null)
 		{	session.removeAttribute("loginMessage");
-			session.setAttribute("authenticatedUser",username);
+			if(username.equals(request.getParameter("userId"))&& password.equals(request.getParameter("password"))){
+			session.setAttribute("authenticatedUser", username);
+			boolean loggedIn = true;
+			}
 		}
 		else
 			session.setAttribute("loginMessage","Could not connect to the system using that username/password.");
-
+			boolean loggedIn = false;
 		return retStr;
 	}
 %>
