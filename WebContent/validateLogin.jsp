@@ -3,6 +3,7 @@
 <%
 	String authenticatedUser = null;
 	session = request.getSession(true);
+	boolean authenticated;
 
 	try
 	{
@@ -21,7 +22,7 @@
 <%!
 	String validateLogin(JspWriter out,HttpServletRequest request, HttpSession session) throws IOException
 	{
-		String username = request.getParameter("userId");
+		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String retStr = null;
 
@@ -34,16 +35,15 @@
 		{
 			getConnection();
 			// TODO: Check if userId and password match some customer account. If so, set retStr to be the username.
-			Statement st = con.createStatement();
-			ResultSet rs;
-			String userMes = "Username exists";
-			String errMes = "Username and password are incorrect";
-			rs = st.executeQuery("SELECT * FROM customer WHERE userid='" + username + "' and password='" + password + "'");
-			while(rs.next()) {
-				request.getSession().setAttribute("userMes", userMes);
+			String sql = "SELECT userid, password FROM customer WHERE userid = ? AND password = ?";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, username);
+			pstmt.setString(2, password);
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				retStr = rs.getString(1);
 			}
-			rs.close();
-			st.close();
 		} 
 		catch (SQLException ex) {
 			out.println(ex);
@@ -61,14 +61,12 @@
 		
 		if(retStr != null)
 		{	session.removeAttribute("loginMessage");
-			if(username.equals(request.getParameter("userId"))&& password.equals(request.getParameter("password"))){
 			session.setAttribute("authenticatedUser", username);
-			boolean loggedIn = true;
-			}
+			session.setAttribute("authenticated", true);
 		}
 		else
-			session.setAttribute("loginMessage","Could not connect to the system using that username/password.");
-			boolean loggedIn = false;
+			session.setAttribute("loginMessage", "Could not connect to the system using that username/password.");
+			session.setAttribute("authenticated", false);
 		return retStr;
 	}
 %>
