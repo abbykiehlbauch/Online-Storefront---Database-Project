@@ -17,6 +17,7 @@
 <%
 
 // TODO: Print Customer information
+if(authenticatedUser==username){
 try 
 {
 	String sql = "SELECT customerId, firstName, lastName, email, phonenum, address, city, state, postalCode, country, userId FROM customer";
@@ -25,7 +26,7 @@ try
 	out.println("<table border='2px' border-style='ridge'><tr><td class='tableheader'><b>Id</b></td></tr><tr>><td class='tableheader'><b>FirstName</b></td></tr><tr><td class='tableheader'><b>Last Name</b></td></tr><tr><td class='tableheader'><b>Email</b></td></tr><tr><td class='tableheader'><b>Phone</b></td></tr><tr><td class='tableheader'><b>Address</b></td></tr><tr><td class='tableheader'><b>City</b></td></tr><tr><td class='tableheader'><b>State</b></td></tr><tr><td class='tableheader'><b>Postal Code</b></td></tr><tr><td class='tableheader'><b>Country</b></td></tr><tr><td class='tableheader'><b>User id</b></td></tr>");
 	while(rst1.next())
 	{
-		String custId = rst1.getString("customerId");
+		String customId = rst1.getString("customerId");
 		String first = rst1.getString("firstName");
 		String last = rst1.getString("lastName");
 		String email = rst1.getString("email");
@@ -37,17 +38,8 @@ try
 		String country = rst1.getString("country");
 		String userid = rst1.getString("userid");
 
-		out.println("<tr><td>" + custId + "</td></tr><tr><td>" + custID + "</td></tr><tr><td>" + firstName + "</td></tr><tr><td>" + lastName + "</td></tr><tr><td>" + email + </td></tr><tr><td>" + phone + "</td></tr><tr><td>" + address + "</td></tr><tr><td>" + );
-		sql2 = "SELECT productId, quantity, price FROM orderproduct WHERE orderId = " + ordID;
-		PreparedStatement pstmt2 = con.prepareStatement(sql2);
-		ResultSet rst2 = pstmt2.executeQuery();
-		while(rst2.next())
-		{
-			String productID = rst2.getString("productId");
-			String quant = rst2.getString("quantity");
-			double price_ = rst2.getDouble("price");
-			out.println("<tr><td align='center'>" + productID + "</td><td align='center'>" + quant + "</td><td align='center'>" + currFormat.format(price_) + "</td></tr>");
-		}
+		out.println("<tr><td>" + customId + "</td><td>" + first + "</td><td>" + last + "</td><td>" + email + "</td><td>" + phone + "</td><td>" + address + "</td><td>" + city + "</td><td>" + state + "</td><td>" + postal + "</td><td>" + country + "</td><td>" + userid + "</td></tr>");
+	
 		out.println("</table></td></tr>");
 	}
 	out.print("</table>");
@@ -56,7 +48,7 @@ catch (Exception e)
 {
 	out.print("SQLException: " + e);
 }
-
+}
 
 // Make sure to close connection
 %>

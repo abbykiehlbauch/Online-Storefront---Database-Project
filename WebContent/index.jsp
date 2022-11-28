@@ -23,7 +23,8 @@
 String firstName = request.getParameter("firstName");
 String username = request.getParameter("username");
 String validateLogin = request.getParameter("validateLogin");
-if(validateLogin==username)
+String loggedIn = (String)session.getAttribute("loggedIn");
+if(loggedIn == "true")
 {
         out.println("<h3 align='center'>" + "Signed in as: " + firstName + "</h3>");
 }

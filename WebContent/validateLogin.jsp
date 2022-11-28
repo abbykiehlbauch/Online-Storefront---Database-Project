@@ -61,14 +61,12 @@
 		
 		if(retStr != null)
 		{	session.removeAttribute("loginMessage");
-			if(username.equals(request.getParameter("userId"))&& password.equals(request.getParameter("password"))){
 			session.setAttribute("authenticatedUser", username);
-			boolean loggedIn = true;
-			}
+			session.setAttribute("loggedIn", true);
 		}
 		else
 			session.setAttribute("loginMessage","Could not connect to the system using that username/password.");
-			boolean loggedIn = false;
+			session.setAttribute("loggedIn", false);
 		return retStr;
 	}
 %>
