@@ -3,6 +3,7 @@
 <%
 	String authenticatedUser = null;
 	session = request.getSession(true);
+	boolean authenticated;
 
 	try
 	{
@@ -63,10 +64,12 @@
 		{	
 			session.removeAttribute("loginMessage");
 			session.setAttribute("authenticatedUser", username);
+      session.setAttribute("authenticated", true);
 		}
 		else
 		{
 			session.setAttribute("loginMessage","Could not connect to the system using that username/password.");
+      session.setAttribute("authenticated", false);
 		}
 		return retStr;
 	}
