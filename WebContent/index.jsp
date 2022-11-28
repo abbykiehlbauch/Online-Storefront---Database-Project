@@ -20,13 +20,10 @@
 
 <%
 // TODO: Display user name that is logged in (or nothing if not logged in)
-String firstName = request.getParameter("firstName");
-String username = request.getParameter("username");
-String validateLogin = request.getParameter("validateLogin");
-String loggedIn = (String)session.getAttribute("loggedIn");
-if(loggedIn == "true")
+String userName = (String) session.getAttribute("authenticatedUser");
+if(userName != null)
 {
-        out.println("<h3 align='center'>" + "Signed in as: " + firstName + "</h3>");
+        out.println("<h3 align='center'>" + "Signed in as: " + userName + "</h3>");
 }
 else 
 {
