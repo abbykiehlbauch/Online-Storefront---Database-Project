@@ -41,7 +41,7 @@ String pw = "304#sa#pw";
 Connection con = DriverManager.getConnection(url, uid, pw);
 
 String sql;
-sql = "SELECT productImageURL, productImage FROM Product P  WHERE productId = ?";
+sql = "SELECT productImageURL, productImage, productPrice FROM Product P  WHERE productId = ?";
 PreparedStatement pstmt = con.prepareStatement(sql);
 pstmt.setInt(1, Integer.parseInt(id));
 ResultSet rst = pstmt.executeQuery();
@@ -64,13 +64,14 @@ if(imageBin != null)
 	out.println("<img src=\"displayImage.jsp?id=" + id + "\">");
 
 
-// TODO: Add links to Add to Cart and Continue Shopping
-%>
+// out.println("<h4>ID: + "id" + <h4>");
+out.println("<h4><b>ID:</b> "+id+"</h4>");
+out.println("<h4><b>Price:</b> $"+rst.getString("productPrice")+"</h4>");
 
-<!-- <form action = "displayImage.jsp>
-    <input name="id" type="text" value="1">
-</form> -->
-<!-- <a href=\"displayImage.jsp?id=" + id + "\"" + "></a> -->
+// TODO: Add links to Add to Cart and Continue Shopping
+
+out.println("<h3></h3>")
+%>
 
 <h3><a href="listprod.jsp">Continue Shopping</a></h3>
 </body>
