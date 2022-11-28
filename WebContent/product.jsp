@@ -14,10 +14,12 @@
 
 <%
 // Get product name to search for
-// String name = request.getParameter("name");
+String name = request.getParameter("name");
+out.println("<h2>"+name+"</h2>");
 
 // TODO: Retrieve and display info for the product
 String id = request.getParameter("id");
+out.println(id);
 
 //Note: Forces loading of SQL Server driver
 try
@@ -41,19 +43,19 @@ Connection con = DriverManager.getConnection(url, uid, pw);
 
 String sql;
 sql = "SELECT productImageURL FROM Product P  WHERE productId = ?";
-
 PreparedStatement pstmt = con.prepareStatement(sql);
+pstmt.setInt(1, Integer.parseInt(id));
 ResultSet rst = pstmt.executeQuery();
+String imageUrl;
+if(rst.next())
+{
+	// TODO: If there is a productImageURL, display using IMG tag
+	imageUrl = rst.getString("productImageURL");
+	out.println("<img src=\"" + imageUrl + "\" width=\"500\" height=\"600\">");
+}
 
-String imageUrl = rst.getString("productImageURL");
-
-out.println("<h2>"+imageUrl+"</h2>");
 
 
-// TODO: If there is a productImageURL, display using IMG tag
-
-// out.println("<h2>"+name+"</h2>");
-	
 // TODO: Retrieve any image stored directly in database. Note: Call displayImage.jsp with product id as parameter.
 
 
