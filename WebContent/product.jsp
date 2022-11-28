@@ -19,7 +19,6 @@ out.println("<h2>"+name+"</h2>");
 
 // TODO: Retrieve and display info for the product
 String id = request.getParameter("id");
-out.println(id);
 
 //Note: Forces loading of SQL Server driver
 try
@@ -47,11 +46,12 @@ PreparedStatement pstmt = con.prepareStatement(sql);
 pstmt.setInt(1, Integer.parseInt(id));
 ResultSet rst = pstmt.executeQuery();
 String imageUrl;
-if(rst.next())
+if(rst.next() == true)
 {
 	// TODO: If there is a productImageURL, display using IMG tag
 	imageUrl = rst.getString("productImageURL");
-	out.println("<img src=\"" + imageUrl + "\" width=\"500\" height=\"600\">");
+	if(imageUrl != null)
+		out.println("<img src=\"" + imageUrl + "\" width=\"500\" height=\"600\">");
 }
 
 
