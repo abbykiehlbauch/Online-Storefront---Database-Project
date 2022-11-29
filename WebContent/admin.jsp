@@ -23,7 +23,6 @@ ResultSet rstt = stmt2.executeQuery(sql2);
 while(rstt.next()){
     total = total + rstt.getDouble(1);
 }
-
 Statement stmt = con.createStatement();
 ResultSet rst = stmt.executeQuery("SELECT orderDate, SUM(totalAmount) FROM ordersummary GROUP BY orderDate");		
 out.println("<table border=\"1\"><tr><th>Order Date</th><th>Total Order Amount</th></tr>");
