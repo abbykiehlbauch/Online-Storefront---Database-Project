@@ -24,25 +24,14 @@ while(rstt.next()){
     total = total + rstt.getDouble(1);
 }
 
-out.print("<h4 align=\"center\">Total sales: "+ total +"</h4>");
+out.print("<h4 align=\"center\">Total sales all time: "+ total +"</h4>");
 
 
 Statement stmt = con.createStatement();
-ResultSet rst = stmt.executeQuery("SELECT orderDate, SUM(totalAmount) FROM ordersummary GROUP BY orderDate");		
-String sql = "SELECT productId, quantity, price FROM orderproduct JOIN ordersummary ON orderproduct.orderId = ordersummary.orderId WHERE ordersummary.orderId = ?";
-PreparedStatement pstmt = con.prepareStatement(sql);
+ResultSet rst = stmt.executeQuery("SELECT year(orderDate), month(orderDate), day(orderDate), SUM(totalAmount) FROM ordersummary GROUP BY year(orderDate), month(orderDate), day(orderDate)");		
 out.println("<table border=\"1\" align=\"center\"><tr><th>Order Date</th><th>Total Amount</th></tr>");
 while (rst.next()){
-        out.println("<tr><td>"+rst.getDate("orderDate")+"</td>"+"<td>"+rst.getDouble(2)+"</td>"+"</td><tr>");
-        /*
-        pstmt.setInt(1, rst.getInt(1));
-        ResultSet rst2 = pstmt.executeQuery();
-        out.println("<tr align=\"right\"><td colspan=\"5\"><table border=\"1\">");
-        out.println("<tr><th>Product Id</th><th>Quantity</th><th>Price</th></tr>");
-        while(rst2.next()){
-            out.println("<tr><td>"+rst2.getInt(1)+"</td>"+"<td>"+rst2.getInt(2)+"</td>"+"<td>"+rst2.getDouble(3)+"</td></tr>");
-        }
-        */
+    out.println("<tr><td>"+rst.getInt(1) +"-"+ rst.getInt(2) +"-"+ rst.getInt(3)+"</td>"+"<td>"+rst.getDouble(4)+"</td><tr>");
         
 }
 out.println("</tr></td></table>");
