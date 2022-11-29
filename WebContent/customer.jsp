@@ -46,7 +46,7 @@ try
 		out.println("<tr><th><b>State</b></th><td>" + state + "</td></tr>");
 		out.println("<tr><th><b>Postal Code</b></th><td>" + postal + "</td></tr>");
 		out.println("<tr><th><b>Country</b></th><td>" + country + "</td></tr>");
-		out.println("<tr><th><b>User id</b></th><td>" + email + "</td></tr>");
+		out.println("<tr><th><b>User id</b></th><td>" + userid + "</td></tr>");
 		out.println("</table>");
 		closeConnection();
 
