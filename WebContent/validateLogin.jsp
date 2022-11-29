@@ -37,14 +37,15 @@
 		{
 			getConnectionForOrders();
 			// TODO: Check if userId and password match some customer account. If so, set retStr to be the username.
-			String SQL = "SELECT * FROM customer WHERE userid= ? AND password = ?";
-			PreparedStatement st = con.prepareStatement(SQL);
-			st.setString(1, username);
-			st.setString(2, password);
-			ResultSet rs = st.executeQuery();
-			while(rs.next())
-			{
-				retStr = username;
+			String SQL = "SELECT userid, password FROM customer WHERE userid=? AND password=?";
+			PreparedStatement pstmt = con.prepareStatement(SQL);
+			pstmt.setString(1, username);
+			pstmt.setString(2, password);
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+			String userId = rs.getString(1);
+			if(!userId.equals(null)){
+				retStr = userId;
 			}
 		} 
 		catch (SQLException ex) {
@@ -64,14 +65,12 @@
 		{	
 			session.removeAttribute("loginMessage");
 			session.setAttribute("authenticatedUser", username);
-      session.setAttribute("authenticated", true);
 		}
 		else
 		{
 			session.setAttribute("loginMessage","Could not connect to the system using that username/password.");
-      session.setAttribute("authenticated", false);
+			
 		}
 		return retStr;
 	}
 %>
-
