@@ -18,15 +18,13 @@
 
 <%
 	int orderID = Integer.parseInt(request.getParameter("orderId"));
-	
-
-	try(Connection con = DriverManager.getConnection(url,uid,pw);)
+	try
 	{
+		getConnectionForOrders();
 		String sql1 = "SELECT orderId FROM orderproduct";
 		boolean isValid= false;
 		Statement stmt = con.createStatement();
 		ResultSet rst = stmt.executeQuery(sql1);
-
 		while(rst.next()){
 			if(orderID == rst.getInt(1)){
 				isValid = true;
@@ -34,49 +32,36 @@
 
 		}
 		if(!isValid){
-			out.println("The Order ID DOES NOT EXIST.");
+			out.println("<h2>The Order ID DOES NOT EXIST.</h2>");
 
 		}
-
-
-		
 		con.setAutoCommit(false);
-	
 
-		
 		String sql = "SELECT orderId, O.productId, O.quantity, P.quantity FROM orderproduct O JOIN productinventory P ON O.productId = P.productId WHERE warehouseID = 1 AND orderID = ?";
 		
 		PreparedStatement psmt = con.prepareStatement(sql);
 		
 		psmt.setInt(1,orderID);
 		
-		
-		
 		ResultSet rst2 = psmt.executeQuery();
-
-		
 
 		boolean isSufficient = true;
 		int insufficient;
 		while(rst2.next()){
 			int newInv = rst2.getInt(4)-rst2.getInt(3);
 			if (newInv >= 0) {
-				out.print("Ordered Product : " + rst2.getInt(2));
-				out.print(" Previous Inventory : " + rst2.getInt(4));
-				out.print(" New Inventory : " + newInv+"\n");
+				out.print("<h2>Ordered Product : " + rst2.getInt(2) + "</h2>");
+				out.print("<h2>Previous Inventory : " + rst2.getInt(4) + "</h2>");
+				out.print(" <h2>New Inventory : " + newInv+"\n" + "</h2>");
 
 			} else {
 				isSufficient = false;
 				insufficient  = rst2.getInt(2);
-				out.println("Shipment not done. Insufficient inventory for product id:" + insufficient);
+				out.println("<h2>Shipment not done. Insufficient inventory for product id:" + insufficient + "</h2>");
 				out.println("\n");
 				con.rollback();
 			}
 
-	
-			
-			
-		
 		}
 
 		
@@ -119,7 +104,7 @@
 	
 %>                    				
 
-<h2><a href="shop.html">Back to Main Page</a></h2>
+<h2><a href="index.jsp">Back to Main Page</a></h2>
 
 </body>
 </html>
