@@ -10,6 +10,7 @@
 <%@ include file="auth.jsp"%>
 <%@ include file="jdbc.jsp" %>
 <%@ page import="java.util.*,java.sql.*,java.io.*,java.nio.*"%>
+
 <%
 try{
     getConnection();
