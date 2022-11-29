@@ -64,13 +64,14 @@ if(imageBin != null)
 	out.println("<img src=\"displayImage.jsp?id=" + id + "\">");
 
 
-// out.println("<h4>ID: + "id" + <h4>");
+
+// imagePrice = rst.getString("productPrice");
 out.println("<h4><b>ID:</b> "+id+"</h4>");
 out.println("<h4><b>Price:</b> $"+rst.getString("productPrice")+"</h4>");
 
 // TODO: Add links to Add to Cart and Continue Shopping
 
-out.println("<h3></h3>");
+out.println("<h3><a href=\"addcart.jsp?id=" + id + "&name=" + name + "&price=" + rst.getString("productPrice") + "\"" + ">Add to cart</a></h3>");
 %>
 
 <h3><a href="listprod.jsp">Continue Shopping</a></h3>

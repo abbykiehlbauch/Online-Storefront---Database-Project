@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Administrator Page</title>
-<h1>Administrator Sales Report by Day</h1>
+<h3>Administrator Sales Report by Day</h3>
 </head>
 <body>
 
@@ -34,8 +34,7 @@ while (rst.next()){
     out.println("<tr><td>"+rst.getInt(1) +"-"+ rst.getInt(2) +"-"+ rst.getInt(3)+"</td>"+"<td>"+rst.getDouble(4)+"</td><tr>");
         
 }
-out.println("</tr></td></table>");
-out.println("</table></div>");
+out.println("</table>");
 
 }
 catch (SQLException ex) { // Close connection with try catch
