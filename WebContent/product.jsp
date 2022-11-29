@@ -70,7 +70,7 @@ out.println("<h4><b>Price:</b> $"+rst.getString("productPrice")+"</h4>");
 
 // TODO: Add links to Add to Cart and Continue Shopping
 
-out.println("<h3></h3>")
+out.println("<h3></h3>");
 %>
 
 <h3><a href="listprod.jsp">Continue Shopping</a></h3>
