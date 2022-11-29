@@ -14,20 +14,21 @@
 
 <%
 // Get product name to search for
-// String name = request.getParameter("name");
+String name = request.getParameter("name");
+out.println("<h2>"+name+"</h2>");
 
 // TODO: Retrieve and display info for the product
 String id = request.getParameter("id");
 
 //Note: Forces loading of SQL Server driver
 try
-{	
-	// Load driver class
-	Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+{   
+    // Load driver class
+    Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 }
 catch (java.lang.ClassNotFoundException e)
 {
-	out.println("ClassNotFoundException: " +e);
+    out.println("ClassNotFoundException: " +e);
 }
 
 // Variable name now contains the search string the user entered
@@ -40,32 +41,40 @@ String pw = "304#sa#pw";
 Connection con = DriverManager.getConnection(url, uid, pw);
 
 String sql;
-sql = "SELECT productImageURL FROM Product P  WHERE productId = ?";
-
+sql = "SELECT productImageURL, productImage, productPrice FROM Product P  WHERE productId = ?";
 PreparedStatement pstmt = con.prepareStatement(sql);
+pstmt.setInt(1, Integer.parseInt(id));
 ResultSet rst = pstmt.executeQuery();
+String imageUrl;
+if(rst.next() == true)
+{
+    // TODO: If there is a productImageURL, display using IMG tag
+    imageUrl = rst.getString("productImageURL");
+    if(imageUrl != null)
+        out.println("<img src=\"" + imageUrl + "\">");
+}
 
-String imageUrl = rst.getString("productImageURL");
 
-out.println("<h2>"+imageUrl+"</h2>");
-
-
-// TODO: If there is a productImageURL, display using IMG tag
-
-// out.println("<h2>"+name+"</h2>");
-	
 // TODO: Retrieve any image stored directly in database. Note: Call displayImage.jsp with product id as parameter.
+String imageBin;
 
+// TODO: If there is a productBin, display using IMG tag
+imageBin = rst.getString("productImage");
+if(imageBin != null)
+	out.println("<img src=\"displayImage.jsp?id=" + id + "\">");
+
+
+// out.println("<h4>ID: + "id" + <h4>");
+out.println("<h4><b>ID:</b> "+id+"</h4>");
+out.println("<h4><b>Price:</b> $"+rst.getString("productPrice")+"</h4>");
 
 // TODO: Add links to Add to Cart and Continue Shopping
-%>
 
-<!-- <form action = "displayImage.jsp>
-    <input name="id" type="text" value="1">
-</form> -->
-<!-- <a href=\"displayImage.jsp?id=" + id + "\"" + "></a> -->
+out.println("<h3></h3>")
+%>
 
 <h3><a href="listprod.jsp">Continue Shopping</a></h3>
 </body>
 </html>
+
 
