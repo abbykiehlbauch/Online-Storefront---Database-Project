@@ -13,12 +13,11 @@
 String username = (String) session.getAttribute("authenticatedUser");
 NumberFormat currFormat = NumberFormat.getCurrencyInstance();
 %>
-// TODO: Print Customer information
 <h3 align="center">Customer Profile</h3>
 <%
 try 
 {
-	getConnection();
+	getConnectionForOrders();
 	String sql1 = "SELECT * FROM customer WHERE userid='" + username + "'";
 	PreparedStatement pstmt1 = con.prepareStatement(sql1);
 	ResultSet rst1 = pstmt1.executeQuery();
