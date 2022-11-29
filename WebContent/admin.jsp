@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Administrator Page</title>
-<h1>Administrator Sales Report by Dat</h1>
+<h1>Administrator Sales Report by Day</h1>
 </head>
 <body>
 
@@ -12,53 +12,71 @@
 <%@ page import="java.util.*,java.sql.*,java.io.*,java.nio.*"%>
 
 <%
-try{
-    getConnection();
+String username = request.getParameter("username");
+String str = null;
+if(username!=null){
+    try{
+        getConnection();		
+        String sql = "SELECT admin FROM customer where userid = ?";
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        pstmt.setString(1,username);		
+        ResultSet rst = pstmt.executeQuery();
+    
+        while(rst.next()){
+            if(rst.getInt(1) == 1){  
+                str = username;
+            }
+        }
+                 
+} 
+catch (SQLException ex) {// throws exception here
+    out.println(ex);
+}finally{
+    try{closeConnection();}catch(SQLException ex){}
+}	    
+}
+%>
 
-    if(!authenticated) {
-        String error = "You need to login before accessing this page."
-        session.setAttribute("errorMessage", error);
-        out.println(errorMessage);
-        response.sendRedirect("login.jsp");
-    }
-    out.println("<h1>Administrator</h1>");
-if(validateLogin == username)
-// TODO: Write SQL query that prints out total order amount by day
-String sql = "SELECT DISTINCT orderDate, SUM(totalAmount) FROM ordersummary GROUP BY orderDate";
-PreparedStatement ordPstmt = con.prepareStatement(sql);
-ResultSet ordRs = ordPstmt.executeQuery();
-out.println("<h2>Sales Report by Day</h2>");
-out.println("table class=table border=2><tr><th>Date</th><th>Total Order Amount</th></tr>");
-while(ordRs.next()){
-    String date = ordRs.getDate(1);
-    String amount = ordRs.getString(2);
-    out.println("<tr><td>" + date + "</td><td>$" + amount + "</td></tr>");
-}
-out.println("</table>");
+<%
+try{		
+getConnection();
 
-String sql2 = "SELECT * FROM customer";
-PreparedStatement pstmt = con.prepareStatement(sql2, Statement.RETURN_GENERATED_KEYS);
-ResultSet rst = pstmt.executeQuery();
-out.println("<h2>Customer List</h2>");
-out.println("<table class='table' border='2'>");
-out.println("<tr><th>Id</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Phone Number</th><th>Address</th><th>City</th><th>City</th><th>State</th><th>Postal Code</th><th>Country</th>");
-while(rst.next()){
-    String id = rst.getString(1);
-    String first = rst.getString(2);
-    String last = rst.getString(3);
-    String email = rst.getString(4);
-    String phone = rst.getString(5);
-    String city = rst.getString(6);
-    String state = rst.getString(7);
-    String postal = rst.getString(8);
-    String country = rst.getString(9);
-    String user = rst.getString(10);
-    out.println("<tr><td>" + id + "</td><td>" + first + "</td><td>" + last + </td><td>" + email + "</td><td>" + phone + "</td><td>" + address + "</td><td>" + city + "</td><td>" + state + "</td><td>" + postal + "</td><td>" + country + "</td><td>" + user + "</td></tr>")
+double total=0;
+String sql2 = "SELECT totalAmount FROM ordersummary";
+Statement stmt2 = con.createStatement();
+ResultSet rstt = stmt2.executeQuery(sql2);
+while(rstt.next()){
+    total = total + rstt.getDouble(1);
 }
-out.println("</tr></table>");
-} catch (Exception e) {
-    out.println(e);
+
+out.print("<h4 align=\"center\">Total sales: "+ total +"</h4>");
+
+
+Statement stmt = con.createStatement();
+ResultSet rst = stmt.executeQuery("SELECT orderId, orderDate, customer.customerId, firstName, lastName, totalAmount FROM ordersummary JOIN customer ON ordersummary.customerId = customer.customerId");		
+String sql = "SELECT productId, quantity, price FROM orderproduct JOIN ordersummary ON orderproduct.orderId = ordersummary.orderId WHERE ordersummary.orderId = ?";
+PreparedStatement pstmt = con.prepareStatement(sql);
+out.println("<table border=\"1\" align=\"center\"><tr><th>Order Id</th><th>Order Date</th><th>Customer Id</th><th>Customer Name</th><th>Total Amount</th></tr>");
+while (rst.next()){
+        out.println("<tr><td>"+rst.getInt(1)+"</td>"+"<td>"+rst.getString(2)+"</td>"+"<td>"+rst.getString(3)+"</td>"+"<td>"+rst.getString(4)+ " " + rst.getString(5)+"</td>"+"<td>"+rst.getDouble(6)+"</td></tr>");
+        pstmt.setInt(1, rst.getInt(1));
+        ResultSet rst2 = pstmt.executeQuery();
+        out.println("<tr align=\"right\"><td colspan=\"5\"><table border=\"1\">");
+        out.println("<tr><th>Product Id</th><th>Quantity</th><th>Price</th></tr>");
+        while(rst2.next()){
+            out.println("<tr><td>"+rst2.getInt(1)+"</td>"+"<td>"+rst2.getInt(2)+"</td>"+"<td>"+rst2.getDouble(3)+"</td></tr>");
+        }
+        out.println("</tr></td></table>");
 }
+out.println("</table></div>");
+
+}
+catch (SQLException ex) { // Close connection with try catch
+out.println(ex); 
+}finally{
+closeConnection();
+}
+
 %>
 
 </body>
