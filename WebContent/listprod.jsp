@@ -54,22 +54,29 @@ while(categories.next())
 	out.println("<option value=\"" + categories.getInt("categoryId") + "\">" + categories.getString("CategoryName") + "</option>");
 }
 out.println("</select>");
-//out.println("<input type=\"submit\" value=\"Submit\">");
 out.println("</form>");
 String catId = request.getParameter("categoriesDropDown");
 
 String sql;
-if(name != null)
+if(name != null && catId !=null)
 {
 	sql = "SELECT productId, productName, productPrice, product.categoryId, categoryName FROM product JOIN category ON product.categoryId = category.categoryId WHERE productName LIKE '%" + name + "%'" + "AND product.categoryId ="+ catId;
 	out.println("<h2>Products containing '" + name + "'</h2>");
 }
+
+else if(catId == null)
+{
+	if(name == null)
+		sql = "SELECT productId, productName, productPrice, product.categoryId, categoryName FROM product JOIN category ON product.categoryId = category.categoryId";
+	else
+		sql = "SELECT productId, productName, productPrice, product.categoryId, categoryName FROM product JOIN category ON product.categoryId = category.categoryId WHERE productName LIKE '%" + name + "%'";
+}
+
 else
 {
 	sql = "SELECT productId, productName, productPrice, product.categoryId, categoryName FROM product JOIN category ON product.categoryId = category.categoryId";
 	out.println("<h2>All products</h2>");
 }
-
 PreparedStatement pstmt = con.prepareStatement(sql);
 ResultSet rst = pstmt.executeQuery();
 // Print out the ResultSet

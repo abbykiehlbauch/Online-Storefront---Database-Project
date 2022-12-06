@@ -10,6 +10,12 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
   integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 <title>Your Shopping Cart</title>
+<script>
+	function update(newid, newqty)
+	{
+		window.location="showcart.jsp?update="+newid+"&newqty="+newqty;
+	}
+</script>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg bg-light">
@@ -39,13 +45,10 @@
 		  </div>
 		</div>
 </nav>
-<script>
-	function update(newid, newqty)
-	{
-		window.location="showcart.jsp?update="+newid+"&newqty="+newqty;
-	}
-</script>
+
+
 <%
+
 // Get the current list of products
 @SuppressWarnings({"unchecked"})
 HashMap<String, ArrayList<Object>> productList = (HashMap<String, ArrayList<Object>>) session.getAttribute("productList");
@@ -57,7 +60,6 @@ if (productList == null)
 else
 {
 	NumberFormat currFormat = NumberFormat.getCurrencyInstance();
-	out.println("<form method=\"get\" action=\"showcart.jsp\">");
 
 	out.println("<h1>Your Shopping Cart</h1>");
 	out.print("<table><tr><th>Product Id</th><th>Product Name</th><th>Quantity</th>");
@@ -76,7 +78,8 @@ else
 		
 		out.print("<tr><td>"+product.get(0)+"</td>");
 		out.print("<td>"+product.get(1)+"</td>");
-		out.println("<td><input type=\"text\" name =\"newqty1\" size = \"3\" value =\"" + product.get(3) + "\"</td>");
+		out.println("<form method=\"get\" action=\"showcart.jsp\">");
+		out.println("<td><input type=\"text\" name =\"newqty1\" size = \"3\" value =\"" + product.get(3) + "\"></td>");
 		Object price = product.get(2);
 		Object itemqty = product.get(3);
 		double pr = 0;
@@ -102,8 +105,7 @@ else
 		out.print("<td align=\"right\">"+currFormat.format(pr)+"</td>");
 		out.print("<td align=\"right\">"+currFormat.format(pr*qty)+"</td>");
 		out.print("<td>"+"<a href=\"removecart.jsp?id=" + product.get(0)  + "\">Remove from cart</a>" + "</td>");
-		out.print(request.getParameter("newqty1"));
-		out.print("<input type=\"button\" onclick=\"update(1," + request.getParameter("newqty1") + ")\" value=\"Update Quantity\"></tr>");
+		out.print("<td><input type=\"button\" onclick= \"update(" + product.get(0) + "," + request.getParameter("newqty1") + ")\" value=\"Update Quantity\"></tr></td>");
 		out.println("</tr>");
 		total = total +pr*qty;
 	}
