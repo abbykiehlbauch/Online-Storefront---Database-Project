@@ -39,7 +39,12 @@
 		  </div>
 		</div>
 </nav>
-
+<script>
+	function update(newid, newqty)
+	{
+		window.location="showcart.jsp?update="+newid+"&newqty="+newqty;
+	}
+</script>
 <%
 // Get the current list of products
 @SuppressWarnings({"unchecked"})
@@ -52,12 +57,13 @@ if (productList == null)
 else
 {
 	NumberFormat currFormat = NumberFormat.getCurrencyInstance();
+	out.println("<form method=\"get\" action=\"showcart.jsp\">");
 
 	out.println("<h1>Your Shopping Cart</h1>");
 	out.print("<table><tr><th>Product Id</th><th>Product Name</th><th>Quantity</th>");
 	out.println("<th>Price</th><th>Subtotal</th></tr>");
 
-	double total =0;
+	double total = 0;
 	Iterator<Map.Entry<String, ArrayList<Object>>> iterator = productList.entrySet().iterator();
 	while (iterator.hasNext()) 
 	{	Map.Entry<String, ArrayList<Object>> entry = iterator.next();
@@ -70,8 +76,7 @@ else
 		
 		out.print("<tr><td>"+product.get(0)+"</td>");
 		out.print("<td>"+product.get(1)+"</td>");
-
-		out.print("<td align=\"center\">"+product.get(3)+"</td>");
+		out.println("<td><input type=\"text\" name =\"newqty1\" size = \"3\" value =\"" + product.get(3) + "\"</td>");
 		Object price = product.get(2);
 		Object itemqty = product.get(3);
 		double pr = 0;
@@ -87,7 +92,7 @@ else
 		}
 		try
 		{
-			qty = Integer.parseInt(itemqty.toString());
+			qty = Integer.parseInt(itemqty.toString());			
 		}
 		catch (Exception e)
 		{
@@ -97,14 +102,15 @@ else
 		out.print("<td align=\"right\">"+currFormat.format(pr)+"</td>");
 		out.print("<td align=\"right\">"+currFormat.format(pr*qty)+"</td>");
 		out.print("<td>"+"<a href=\"removecart.jsp?id=" + product.get(0)  + "\">Remove from cart</a>" + "</td>");
-
+		out.print(request.getParameter("newqty1"));
+		out.print("<input type=\"button\" onclick=\"update(1," + request.getParameter("newqty1") + ")\" value=\"Update Quantity\"></tr>");
 		out.println("</tr>");
 		total = total +pr*qty;
 	}
 	out.println("<tr><td colspan=\"4\" align=\"right\"><b>Order Total</b></td>"
 			+"<td align=\"right\">"+currFormat.format(total)+"</td></tr>");
 	out.println("</table>");
-
+	out.println("</form>");
 	out.println("<h2><a href=\"checkout.jsp\">Check Out</a></h2>");
 }
 %>
