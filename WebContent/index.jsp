@@ -26,7 +26,7 @@
                 display: inline;
         }
         header li {
-                margin: 18.5px;
+                margin: 29px;
         }
         header li a{
                 color: white;
@@ -53,37 +53,23 @@
                                 <li>
                                         <a href="register.jsp">Register</a>
                                 </li>
-                                <li>
-                                        <a href="login.jsp">Sign In</a>
-                                </li>
-                                <li>
-                                        <a href="logout.jsp">Sign Out</a>
-                                </li>
-                                <li>
-                                        <a href="customer.jsp">Account</a>
-                                </li>
+                                <%
+                                String userName = (String) session.getAttribute("authenticatedUser");
+                                if(userName != null){
+                                        out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
+                                        out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
+                                } else {
+                                        out.println("<li><a href='login.jsp'>Sign In</a></li>");
+
+                                }
+                                %>
                         </ul>
                 </nav>
         </header>
 <img align='center' src=\'304logo.png\' alt='Company Logo'/>
-<h1 align="center">Welcome to Our Grocery</h1>
-<!-- 
-<h2 align="center"><a href="customer.jsp">Customer Info</a></h2>
-
-<h2 align="center"><a href="admin.jsp">Administrators</a></h2> -->
-<%
-// TODO: Display user name that is logged in (or nothing if not logged in)
-String userName = (String) session.getAttribute("authenticatedUser");
-if(userName != null)
-{
-        out.println("<h1 align='center'>" + userName + "</h1>");
-}
-else 
-{
-        out.println("");
-}
-
-%>
+<h1 align="center">Welcome to Our Personality Store</h1>
+<h2  align='center'>Shopping? Browsing? Looking to change your everything about yourself?</h2>
+<h3  align='center'>Look no further! We have every type of personality from narcissism to empathy</h3>
 </body>
 </head>
 

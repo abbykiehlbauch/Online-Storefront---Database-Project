@@ -29,7 +29,7 @@
 			display: inline;
 	}
 	header li {
-			margin: 18.5px;
+			margin: 29px;
 	}
 	header li a{
 			color: white;
@@ -56,20 +56,21 @@
 							<li>
 									<a href="register.jsp">Register</a>
 							</li>
-							<li>
-									<a href="login.jsp">Sign In</a>
-							</li>
-							<li>
-									<a href="logout.jsp">Sign Out</a>
-							</li>
-							<li>
-									<a href="customer.jsp">Account</a>
-							</li>
+							<%
+                                String userName = (String) session.getAttribute("authenticatedUser");
+                                if(userName != null){
+                                        out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
+                                        out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
+                                } else {
+                                        out.println("<li><a href='login.jsp'>Sign In</a></li>");
+
+                                }
+                                %>
 					</ul>
 			</nav>
 	</header>
 
-<h1>Order List</h1>
+<h1 align='center'>Order List</h1>
 
 <%
 //Note: Forces loading of SQL Server driver
@@ -101,7 +102,7 @@ try
 	sql1 = "SELECT orderId, customer.customerId, firstName, lastName, totalAmount" + " FROM ordersummary JOIN customer ON ordersummary.customerId=customer.customerId";
 	PreparedStatement pstmt1 = con.prepareStatement(sql1);
 	ResultSet rst1 = pstmt1.executeQuery();
-	out.println("<table border='2px' border-style='ridge'><tr><td class='tableheader'><b>Order ID</b></td><td class='tableheader'><b>Customer ID</b></td><td class='tableheader'><b>Customer Name</b></td><td class='tableheader'><b>Total Amount</b></td></tr>");
+	out.println("<table align='center' border='2px' border-style='ridge'><tr><td class='tableheader'><b>Order ID</b></td><td class='tableheader'><b>Customer ID</b></td><td class='tableheader'><b>Customer Name</b></td><td class='tableheader'><b>Total Amount</b></td></tr>");
 	while(rst1.next())
 	{
 		int ordID = rst1.getInt("orderId");

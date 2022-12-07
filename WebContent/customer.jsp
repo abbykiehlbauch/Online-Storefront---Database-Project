@@ -26,7 +26,7 @@
 			display: inline;
 	}
 	header li {
-			margin: 18.5px;
+			margin: 29px;
 	}
 	header li a{
 			color: white;
@@ -53,15 +53,16 @@
 							<li>
 									<a href="register.jsp">Register</a>
 							</li>
-							<li>
-									<a href="login.jsp">Sign In</a>
-							</li>
-							<li>
-									<a href="logout.jsp">Sign Out</a>
-							</li>
-							<li>
-									<a href="customer.jsp">Account</a>
-							</li>
+							<%
+                                String userName = (String) session.getAttribute("authenticatedUser");
+                                if(userName != null){
+                                        out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
+                                        out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
+                                } else {
+                                        out.println("<li><a href='login.jsp'>Sign In</a></li>");
+
+                                }
+                                %>
 					</ul>
 			</nav>
 	</header>
