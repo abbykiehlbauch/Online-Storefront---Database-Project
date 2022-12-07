@@ -41,7 +41,7 @@ String pw = "304#sa#pw";
 Connection con = DriverManager.getConnection(url, uid, pw);
 
 String sql;
-sql = "SELECT productImageURL, productImage, productPrice FROM Product P  WHERE productId = ?";
+sql = "SELECT productImageURL, productImage, productPrice, productDesc FROM Product P  WHERE productId = ?";
 PreparedStatement pstmt = con.prepareStatement(sql);
 pstmt.setInt(1, Integer.parseInt(id));
 ResultSet rst = pstmt.executeQuery();
@@ -68,6 +68,7 @@ if(imageBin != null)
 // imagePrice = rst.getString("productPrice");
 out.println("<h4><b>ID:</b> "+id+"</h4>");
 out.println("<h4><b>Price:</b> $"+rst.getString("productPrice")+"</h4>");
+out.println("<h4><b>Description: </b>" + rst.getString("productDesc") + "</h4>");
 
 // TODO: Add links to Add to Cart and Continue Shopping
 
