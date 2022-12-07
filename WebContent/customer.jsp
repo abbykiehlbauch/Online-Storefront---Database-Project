@@ -47,19 +47,15 @@
 							<li>
 									<a href="checkout.jsp">View Cart</a>
 							</li>
-							<li>
-									<a href="listorder.jsp">Past Orders</a>
-							</li>
-							<li>
-									<a href="register.jsp">Register</a>
-							</li>
 							<%
                                 String userName = (String) session.getAttribute("authenticatedUser");
                                 if(userName != null){
+                                        out.println("<li><a href='listorder.jsp'>Past Orders</a></li>");
                                         out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
                                         out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
                                 } else {
                                         out.println("<li><a href='login.jsp'>Sign In</a></li>");
+                                        out.println("<li><a href='register.jsp'>Register</a></li>");
 
                                 }
                                 %>

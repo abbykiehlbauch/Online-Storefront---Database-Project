@@ -1,7 +1,7 @@
 <html>
-<head>
-<title>Checkout</title>
-<style type="text/css">
+        <head>
+                <title>Checkout</title>
+                <style type="text/css">
     body 
     {
             height: 125vh;
@@ -31,52 +31,58 @@
             color: white;
             text-decoration: none;
     }
-</style>
-</head>
-<body>
-    <header>
-            <nav>
-                    <ul>
-                            <li>
-                                    <a href="index.jsp">Home</a>
-                            </li>
-                            <li>
-                                    <a href="listprod.jsp">Products</a>
-                            </li>
-                            <li>
-                                    <a href="checkout.jsp">View Cart</a>
-                            </li>
-                            <li>
-                                    <a href="listorder.jsp">Past Orders</a>
-                            </li>
-                            <li>
-                                    <a href="register.jsp">Register</a>
-                            </li>
-                            <%
-                                String userName = (String) session.getAttribute("authenticatedUser");
-                                if(userName != null){
-                                        out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
-                                        out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
-                                } else {
-                                        out.println("<li><a href='login.jsp'>Sign In</a></li>");
+    input {
+        padding:10px;
+        border:0;
+        box-shadow: 4px 4px 10px rgba(0,0,0,0.06);
+        border-radius: 10px;
+        align-items: center;
+    }
 
-                                }
-                                %>
-                    </ul>
-            </nav>
-    </header>
-<body>
 
-<h1 align='center'>Enter your customer id and password to complete the transaction:</h1>
+                </style>
+        </head>
+        <body>
+                <header>
+                        <nav>
+                                <ul>
+                                        <li>
+                                                <a href="index.jsp">Home</a>
+                                        </li>
+                                        <li>
+                                                <a href="listprod.jsp">Products</a>
+                                        </li>
+                                        <li>
+                                                <a href="checkout.jsp">View Cart</a>
+                                        </li>
+                                        <%
+                                        String userName = (String) session.getAttribute("authenticatedUser");
+                                        if(userName != null){
+                                                out.println("<li><a href='listorder.jsp'>Past Orders</a></li>");
+                                                out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
+                                                out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
+                                        } else {
+                                                out.println("<li><a href='login.jsp'>Sign In</a></li>");
+                                                out.println("<li><a href='register.jsp'>Register</a></li>");
 
-<form method="get" action="order.jsp">
-<table align='center'>
-<tr><td>Customer ID:</td><td><input type="text" name="customerId" size="20"></td></tr>
-<tr><td>Password:</td><td><input type="password" name="password" size="20"></td></tr>
-<tr><td><input type="submit" value="Submit"></td><td><input type="reset" value="Reset"></td></tr>
-</table>
-</form>
-
-</body>
+                                        }
+                                        %>
+                                </ul>
+                        </nav>
+                </header>
+                <h1 align='center'>Enter your customer id and password to complete the transaction:</h1>
+                <form method="get" action="order.jsp">
+                        <table align='center'>
+                                <tr><td>Customer ID:</td><td><input type="text" name="customerId" size="20"></td></tr>
+                                <tr><td>Password:</td><td><input type="password" name="password" size="20"></td></tr>
+                                <tr align='right'><td><input type="submit" value="Submit"></td></tr>
+                        </table>
+                </form>
+                <form method="get" action="reset.jsp">
+                        <table align="center">
+                                <tr><td><input type="reset" value="Reset"></td></tr>
+                        </table>
+                </form>
+        </body>
 </html>
 

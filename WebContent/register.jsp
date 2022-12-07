@@ -32,6 +32,12 @@
                     color: white;
                     text-decoration: none;
             }
+            input {
+		            padding:10px;
+		            border:0;
+		            box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+		            border-radius: 10px;
+	        }
     </style>
     </head>
     <body>
@@ -50,16 +56,16 @@
                                     <li>
                                             <a href="listorder.jsp">Past Orders</a>
                                     </li>
-                                    <li>
-                                            <a href="register.jsp">Register</a>
-                                    </li>
+                                
                                     <%
                                 String userName = (String) session.getAttribute("authenticatedUser");
                                 if(userName != null){
+                                        out.println("<li><a href='listorder.jsp'>Past Orders</a></li>");
                                         out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
                                         out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
                                 } else {
                                         out.println("<li><a href='login.jsp'>Sign In</a></li>");
+                                        out.println("<li><a href='register.jsp'>Register</a></li>");
 
                                 }
                                 %>
@@ -72,47 +78,47 @@
                     <table style="overflow:auto" align="center">
                         <tr>
                             <td><div align="left"><font face="serif" size="3.5">First Name:</font></div></td>
-                            <td><input type="text" name="First Name"  size=10 maxlength=10></td>
+                            <td><input placeholder="First Name" type="text" name="First Name"  size=15 maxlength=15></td>
                         </tr>
                         <tr>
                             <td><div align="left"><font face="serif" size="3.5">Last Name:</font></div></td>
-                            <td><input type="text" name="Last Name" size=10 maxlength="10"></td>
+                            <td><input placeholder="Last Name" type="text" name="Last Name" size=15 maxlength="15"></td>
                         </tr>
                         <tr>
                             <td><div align="left"><font face="serif" size="3.5">Email:</font></div></td>
-                            <td><input type="email" name="Email" size=10 maxlength="10"></td>
+                            <td><input placeholder="Email" type="email" name="Email" size=15 maxlength="15"></td>
                         </tr>
                         <tr>
                             <td><div align="left"><font face="serif" size="3.5">Phone Number:</font></div></td>
-                            <td><input type="text" name="Phone Number" size=10 maxlength="10"></td>
+                            <td><input placeholder="Phone Number" type="text" name="Phone Number" size=15 maxlength="15"></td>
                         </tr>
                         <tr>
                             <td><div align="left"><font face="serif" size="3.5">Address:</font></div></td>
-                            <td><input type="text" name="Address" size=10 maxlength="10"></td>
+                            <td><input placeholder="Address" type="text" name="Address" size=15 maxlength="15"></td>
                         </tr>
                         <tr>
                             <td><div align="left"><font face="serif" size="3.5">City:</font></div></td>
-                            <td><input type="text" name="City" size=10 maxlength="10"></td>
+                            <td><input placeholder="City" type="text" name="City" size=15 maxlength="15"></td>
                         </tr>
                         <tr>
-                            <td><div align="left"><font face="serif" size="3.5">State:</font></div></td>
-                            <td><input type="text" name="State" size=10 maxlength="10"></td>
+                            <td><div align="left"><font face="serif" size="3.5">Province:</font></div></td>
+                            <td><input placeholder="Province" type="text" name="Province" size=15 maxlength="15"></td>
                         </tr>
                         <tr>
                             <td><div align="left"><font face="serif" size="3.5">Postal Code:</font></div></td>
-                            <td><input type="text" name="Postal Code" size=10 maxlength="10"></td>
+                            <td><input placeholder="Postal Code" type="text" name="Postal Code" size=15 maxlength="15"></td>
                         </tr>
                         <tr>
                             <td><div align="left"><font face="serif" size="3.5">Country:</font></div></td>
-                            <td><input type="text" name="Country" size=10 maxlength="10"></td>
+                            <td><input placeholder="Country" type="text" name="Country" size=15 maxlength="15"></td>
                         </tr>
                         <tr>
                             <td><div align="left"><font face="serif" size="3.5">User Id:</font></div></td>
-                            <td><input type="text" name="User Id" size=10 maxlength="10"></td>
+                            <td><input placeholder="User Id" type="text" name="User Id" size=15 maxlength="15"></td>
                         </tr>
                         <tr>
                             <td><div align="left"><font face="serif" size="3.5">Password:</font></div></td>
-                            <td><input type="password" name="password" size=10 maxlength="10"></td>
+                            <td><input placeholder="Password" type="password" name="password" size=15 maxlength="15"></td>
                         </tr>
                     </table>
                 </br>
