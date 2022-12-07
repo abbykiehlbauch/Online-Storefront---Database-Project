@@ -136,7 +136,7 @@ else
 PreparedStatement pstmt = con.prepareStatement(sql);
 ResultSet rst = pstmt.executeQuery();
 // Print out the ResultSet
-out.print("<table align='center' border='2px' border-style='ridge'>");
+out.print("<table align='center' border='2px' border-style='none'>");
 out.print("<tr><th></th><th>Product Name</th><th>Category</th><th>Price</th></tr>" + "<br>");
 while(rst.next())
 {
