@@ -12,7 +12,7 @@
 			margin-top: 80px;
 			padding: 20px;
 			background-size: cover;
-			font-family: sans-serif;
+			font-family: serif;
 	}
 	header {
 			background-color:dodgerblue;

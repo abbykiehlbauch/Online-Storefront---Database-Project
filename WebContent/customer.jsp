@@ -9,7 +9,7 @@
 			margin-top: 80px;
 			padding: 20px;
 			background-size: cover;
-			font-family: sans-serif;
+			font-family: serif;
 	}
 	header {
 			background-color:dodgerblue;
@@ -96,18 +96,18 @@ try
 		String country = rst1.getString(10);
 		String userid = rst1.getString(11);
 
-		out.println("<table class='table' border='2'>");
-		out.println("<tr><th><b>Id</b></th><td>" + customId + "</td></tr>");
-		out.println("<tr><th><b>First Name</b></th><td>" + first + "</td></tr>");
-		out.println("<tr><th><b>Last Name</b></th><td>" + last + "</td></tr>");
-		out.println("<tr><th><b>Email</b></th><td>" + email + "</td></tr>");
-		out.println("<tr><th><b>Phone Number</b></th><td>" + phone + "</td></tr>");
-		out.println("<tr><th><b>Address</b></th><td>" + address + "</td></tr>");
-		out.println("<tr><th><b>City</b></th><td>" + city + "</td></tr>");
-		out.println("<tr><th><b>State</b></th><td>" + state + "</td></tr>");
-		out.println("<tr><th><b>Postal Code</b></th><td>" + postal + "</td></tr>");
-		out.println("<tr><th><b>Country</b></th><td>" + country + "</td></tr>");
-		out.println("<tr><th><b>User id</b></th><td>" + userid + "</td></tr>");
+		out.println("<table align='center' class='table' border='2px'>");
+		out.println("<tr><th><b>Id</b></th><td align='center'>" + customId + "</td></tr>");
+		out.println("<tr><th><b>First Name</b></th><td align='center'>" + first + "</td></tr>");
+		out.println("<tr><th><b>Last Name</b></th><td align='center'>" + last + "</td></tr>");
+		out.println("<tr><th><b>Email</b></th><td align='center'>" + email + "</td></tr>");
+		out.println("<tr><th><b>Phone Number</b></th><td align='center'>" + phone + "</td></tr>");
+		out.println("<tr><th><b>Address</b></th><td align='center'>" + address + "</td></tr>");
+		out.println("<tr><th><b>City</b></th><td align='center'>" + city + "</td></tr>");
+		out.println("<tr><th><b>State</b></th><td align='center'>" + state + "</td></tr>");
+		out.println("<tr><th><b>Postal Code</b></th><td align='center'>" + postal + "</td></tr>");
+		out.println("<tr><th><b>Country</b></th><td align='center'>" + country + "</td></tr>");
+		out.println("<tr><th><b>User id</b></th><td align='center'>" + userid + "</td></tr>");
 		out.println("</table>");
 		closeConnection();
 
@@ -123,6 +123,9 @@ catch (Exception e)
 
 // Make sure to close connection
 %>
+<form align='center'>
+	<input class="edit" type="button" name="edit" value="Edit Account" onclick="editAccount">
+</form>
 </body>
 </html>
 
