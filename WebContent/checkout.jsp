@@ -25,7 +25,7 @@
             display: inline;
     }
     header li {
-            margin: 18.5px;
+            margin: 29px;
     }
     header li a{
             color: white;
@@ -52,24 +52,25 @@
                             <li>
                                     <a href="register.jsp">Register</a>
                             </li>
-                            <li>
-                                    <a href="login.jsp">Sign In</a>
-                            </li>
-                            <li>
-                                    <a href="logout.jsp">Sign Out</a>
-                            </li>
-                            <li>
-                                    <a href="customer.jsp">Account</a>
-                            </li>
+                            <%
+                                String userName = (String) session.getAttribute("authenticatedUser");
+                                if(userName != null){
+                                        out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
+                                        out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
+                                } else {
+                                        out.println("<li><a href='login.jsp'>Sign In</a></li>");
+
+                                }
+                                %>
                     </ul>
             </nav>
     </header>
 <body>
 
-<h1>Enter your customer id and password to complete the transaction:</h1>
+<h1 align='center'>Enter your customer id and password to complete the transaction:</h1>
 
 <form method="get" action="order.jsp">
-<table>
+<table align='center'>
 <tr><td>Customer ID:</td><td><input type="text" name="customerId" size="20"></td></tr>
 <tr><td>Password:</td><td><input type="password" name="password" size="20"></td></tr>
 <tr><td><input type="submit" value="Submit"></td><td><input type="reset" value="Reset"></td></tr>
