@@ -12,7 +12,7 @@
                 {
                     document.getElementById("res").innerHTML= xmlhttp.responseText;
                 }
-                xmlhttp.open("POST", "testdisplay.jsp", true);
+                xmlhttp.open("POST", "testdisplay.jsp?q="+a, true);
                 xmlhttp.send();
             }
 
