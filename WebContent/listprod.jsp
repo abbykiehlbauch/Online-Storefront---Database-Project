@@ -12,7 +12,7 @@
 			margin-top: 80px;
 			padding: 20px;
 			background-size: cover;
-			font-family: sans-serif;
+			font-family: serif;
 	}
 	header {
 			background-color:dodgerblue;
@@ -69,9 +69,9 @@
 			</nav>
 	</header>
 <body>
-<h1>Search for the products you want to buy:</h1>
+<h1 align='center'>Search for the products you want to buy:</h1>
 
-<form method="get" action="listprod.jsp">
+<form align='center' method="get" action="listprod.jsp">
 <input type="text" name="productName" size="50">
 <input type="submit" value="Submit"><input type="reset" value="Reset"> (Leave blank for all products)
 
@@ -139,7 +139,7 @@ else
 PreparedStatement pstmt = con.prepareStatement(sql);
 ResultSet rst = pstmt.executeQuery();
 // Print out the ResultSet
-out.print("<table border='2px' border-style='ridge'>");
+out.print("<table align='center' border='2px' border-style='ridge'>");
 out.print("<tr><th></th><th>Product Name</th><th>Category</th><th>Price</th></tr>" + "<br>");
 while(rst.next())
 {
