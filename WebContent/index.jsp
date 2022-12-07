@@ -32,6 +32,10 @@
                 color: white;
                 text-decoration: none;
         }
+        span{
+                background-color: white;
+                text-decoration: underline;
+        }
 </style>
 </head>
 <body>
@@ -47,19 +51,15 @@
                                 <li>
                                         <a href="checkout.jsp">View Cart</a>
                                 </li>
-                                <li>
-                                        <a href="listorder.jsp">Past Orders</a>
-                                </li>
-                                <li>
-                                        <a href="register.jsp">Register</a>
-                                </li>
                                 <%
                                 String userName = (String) session.getAttribute("authenticatedUser");
                                 if(userName != null){
+                                        out.println("<li><a href='listorder.jsp'>Past Orders</a></li>");
                                         out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
                                         out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
                                 } else {
                                         out.println("<li><a href='login.jsp'>Sign In</a></li>");
+                                        out.println("<li><a href='register.jsp'>Register</a></li>");
 
                                 }
                                 %>
@@ -67,9 +67,9 @@
                 </nav>
         </header>
 <img align='center' src=\'304logo.png\' alt='Company Logo'/>
-<h1 align="center">Welcome to Our Personality Store</h1>
+<h1 align="center"><font color='black'><span>Welcome to Our Personality Store</span></h1>
 <h2  align='center'>Shopping? Browsing? Looking to change your everything about yourself?</h2>
-<h3  align='center'>Look no further! We have every type of personality from narcissism to empathy</h3>
+<h3  align='center'>Look no further! We have every type of personality from narcissism to empathy.</font></h3>
 </body>
 </head>
 
