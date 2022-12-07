@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
-<head>
-        <title>Our Grocery Main Page</title>
-<style type="text/css">
+    <head>
+        <title>Your Account</title>
+    <style type="text/css">
         body 
         {
                 height: 125vh;
@@ -26,7 +26,7 @@
                 display: inline;
         }
         header li {
-                margin: 18.5px;
+                margin: 10px;
         }
         header li a{
                 color: white;
@@ -45,7 +45,7 @@
                                         <a href="listprod.jsp">Products</a>
                                 </li>
                                 <li>
-                                        <a href="checkout.jsp">View Cart</a>
+                                        <a href="showcart.jsp">View Cart</a>
                                 </li>
                                 <li>
                                         <a href="listorder.jsp">Past Orders</a>
@@ -60,31 +60,9 @@
                                         <a href="logout.jsp">Sign Out</a>
                                 </li>
                                 <li>
-                                        <a href="customer.jsp">Account</a>
+                                        <a href="customer.jsp"></a>
                                 </li>
                         </ul>
                 </nav>
-        </header>
-<img align='center' src=\'304logo.png\' alt='Company Logo'/>
-<h1 align="center">Welcome to Our Grocery</h1>
-<!-- 
-<h2 align="center"><a href="customer.jsp">Customer Info</a></h2>
-
-<h2 align="center"><a href="admin.jsp">Administrators</a></h2> -->
-<%
-// TODO: Display user name that is logged in (or nothing if not logged in)
-String userName = (String) session.getAttribute("authenticatedUser");
-if(userName != null)
-{
-        out.println("<h1 align='center'>" + userName + "</h1>");
-}
-else 
-{
-        out.println("");
-}
-
-%>
-</body>
-</head>
-
-
+            </header>
+</html>
