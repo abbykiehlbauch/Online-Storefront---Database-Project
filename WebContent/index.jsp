@@ -45,7 +45,7 @@
                                         <a href="listprod.jsp">Products</a>
                                 </li>
                                 <li>
-                                        <a href="showcart.jsp">View Cart</a>
+                                        <a href="checkout.jsp">View Cart</a>
                                 </li>
                                 <li>
                                         <a href="listorder.jsp">Past Orders</a>

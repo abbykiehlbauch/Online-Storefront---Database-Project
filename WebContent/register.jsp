@@ -26,7 +26,7 @@
                     display: inline;
             }
             header li {
-                    margin: 10px;
+                    margin: 18.5px;
             }
             header li a{
                     color: white;
@@ -45,7 +45,7 @@
                                             <a href="listprod.jsp">Products</a>
                                     </li>
                                     <li>
-                                            <a href="showcart.jsp">View Cart</a>
+                                            <a href="checkout.jsp">View Cart</a>
                                     </li>
                                     <li>
                                             <a href="listorder.jsp">Past Orders</a>
@@ -60,11 +60,11 @@
                                             <a href="logout.jsp">Sign Out</a>
                                     </li>
                                     <li>
-                                            <a href="customer.jsp"></a>
+                                            <a href="customer.jsp">Account</a>
                                     </li>
                             </ul>
                     </nav>
-                </header>
+            </header>
                 <h3 align='center'>Register for an account</h3>
                 <br>
                 <form align="center" name="AccountCreation" method=post action="createAccount.jsp">
