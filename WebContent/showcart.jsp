@@ -16,43 +16,87 @@
 		window.location="showcart.jsp?update="+newid+"&newqty="+newqty;
 	}
 </script>
+<style type="text/css">
+	body 
+	{
+			height: 125vh;
+			margin-top: 25px;
+			padding: 20px;
+			background-size: cover;
+			font-family: serif;
+	}
+	header {
+			background-color:dodgerblue;
+			position: fixed;
+			left: 0;
+			right: 0;
+			top: 10px;
+			height: 40px;
+			display: flex;
+			align-items: center;
+			box-shadow: 0 0 25px 0 black;
+	}
+	header * {
+			display: inline;
+	}
+	header li {
+			margin: 29px;
+	}
+	header li a{
+			color: white;
+			text-decoration: none;
+	}
+	input {
+			padding:10px;
+			border:0;
+			box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+			border-radius: 10px;
+	}
+	body h1 {
+		margin-top: 50px;
+	}
+</style>
 </head>
 <body background="img/blue-abstract-gradient-wave-vector-background_53876-111548.jpg.webp">
-	<nav class="navbar navbar-expand-lg bg-light">
-		<div class="container-fluid">
-		  <a class="navbar-brand" href="index.jsp">WELCOME</a>
-		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		  </button>
-		  <div class="collapse navbar-collapse" id="navbarText">
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-			  <li class="nav-item">
-				<a class="nav-link" aria-current="page" href="index.jsp">Home</a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" href="listprod.jsp">Products</a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" href="listorder.jsp">List Order</a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" href="showcart.jsp">My Cart</a>
-			  </li>
-			</ul>
-			<span class="navbar-text">
-			  Your first choice for digital groceries!
-			</span>
-		  </div>
-		</div>
-</nav>
+<header>
+	<nav>
+		<ul>
+			<li>
+				<a href="index.jsp">Home</a>
+			</li>
+			<li>
+				<a href="listprod.jsp">Products</a>
+			</li>
+			<li>
+				<a href="showcart.jsp">View Cart</a>
+			</li>
+			<li>
+				<a href="listorder.jsp">Past Orders</a>
+			</li>                                
+			<%
+			String userName = (String) session.getAttribute("authenticatedUser");
+			if(userName != null){
+				out.println("<li><a href='listorder.jsp'>Past Orders</a></li>");
+				out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
+				out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
+			} else {
+				out.println("<li><a href='login.jsp'>Sign In</a></li>");
+				out.println("<li><a href='register.jsp'>Register</a></li>");
 
-
+			}
+			%>
+		</ul>
+	</nav>
+</header>
+<form align="center">
+	<img height=150px width=150px src="img/304logo-nobg.png" alt="logo">
+</form>
 <%
 // Get the current list of products
 @SuppressWarnings({"unchecked"})
 HashMap<String, ArrayList<Object>> productList = (HashMap<String, ArrayList<Object>>) session.getAttribute("productList");
 if (productList == null)
-{	out.println("<H1>Your shopping cart is empty!</H1>");
+{	out.println("<H1 align='center'>Your shopping cart is empty!</H1>");
 	productList = new HashMap<String, ArrayList<Object>>();
 }
 else
@@ -111,6 +155,6 @@ else
 	out.println("<h2><a href=\"checkout.jsp\">Check Out</a></h2>");
 }
 %>
-<h2><a href="listprod.jsp">Continue Shopping</a></h2>
+<h2 align="center"><a href="listprod.jsp">Continue Shopping</a></h2>
 </body>
 </html> 

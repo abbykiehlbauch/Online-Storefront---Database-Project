@@ -51,7 +51,7 @@
 									<a href="index.jsp">Home</a>
 							</li>
 							<li>
-									<a href="listprod.jsp">Products</a>
+									<a href="showcart.jsp">Products</a>
 							</li>
 							<li>
 									<a href="checkout.jsp">View Cart</a>
