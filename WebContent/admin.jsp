@@ -4,7 +4,7 @@
 <title>Administrator Page</title>
 <h3>Administrator Sales Report by Day</h3>
 </head>
-<body>
+<body background="img/blue-abstract-gradient-wave-vector-background_53876-111548.jpg.webp">
 
 <%@ include file="auth.jsp"%>
 <%@ include file="jdbc.jsp" %>

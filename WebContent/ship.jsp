@@ -12,7 +12,7 @@
 <head>
 <title>YOUR NAME Grocery Shipment Processing</title>
 </head>
-<body>
+<body background="img/blue-abstract-gradient-wave-vector-background_53876-111548.jpg.webp">
         
 <%@ include file="header.jsp" %>
 

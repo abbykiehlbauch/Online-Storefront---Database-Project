@@ -10,7 +10,7 @@
             body 
             {
                     height: 125vh;
-                    margin-top: 80px;
+                    margin-top: 25px;
                     padding: 20px;
                     background-size: cover;
                     font-family: serif;
@@ -20,8 +20,8 @@
                     position: fixed;
                     left: 0;
                     right: 0;
-                    top: 5px;
-                    height: 30px;
+                    top: 10px;
+                    height: 40px;
                     display: flex;
                     align-items: center;
                     box-shadow: 0 0 25px 0 black;
@@ -42,9 +42,12 @@
 		            box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
 		            border-radius: 10px;
 	        }
+            body h1 {
+                margin-top: -20px;
+            }
         </style>
     </head>
-    <body>
+    <body background="img/blue-abstract-gradient-wave-vector-background_53876-111548.jpg.webp">
         <header>
             <nav>
                 <ul>
@@ -55,7 +58,7 @@
                         <a href="listprod.jsp">Products</a>
                     </li>
                     <li>
-                        <a href="checkout.jsp">View Cart</a>
+                        <a href="showcart.jsp">View Cart</a>
                     </li>
                     <li>
                         <a href="listorder.jsp">Past Orders</a>
@@ -75,9 +78,12 @@
                 </ul>
             </nav>
         </header>
+        <form align="center">
+            <img height=150px width=150px src="img/304logo-nobg.png" alt="logo">
+    </form>
         <h3 align='center'>Register for an account</h3>
         <br>
-            <form align="center" name="AccountCreation" method=post action="createAccount.jsp">
+            <form align="center" name="AccountCreation" method=post action="validateRegister.jsp">
                 <table style="overflow:auto" align="center">
                     <tr>
                         <td><div align="left"><font face="serif" size="3.5">First Name:</font></div></td>
@@ -146,7 +152,7 @@
         {
             getConnection();
             String SQL = "INSERT INTO customer(firstName, lastName, email, phonenum, address, city, state, postalCode, country, userid, password VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-            PreparedStatement pstmt = connection.prepareStatement(SQL);
+            PreparedStatement pstmt = con.prepareStatement(SQL);
             if(first != null && last != null && email != null && phone != null && addy != null && city != null && state != null && postal != null && country != null && userid != null && password != null){
                 pstmt.setString(1, first);
                 pstmt.setString(2, last);
@@ -160,8 +166,6 @@
                 pstmt.setString(10, userid);
                 pstmt.setString(11, password);
                 pstmt.executeUpdate();
-                out.println("<h2 align='center'>Account created!</h2>");
-                out.println("<a href='index.jsp'>Home</a>");
                 response.sendRedirect("login.jsp");
             }
         } catch (SQLException ex){
@@ -171,7 +175,7 @@
 			try
 		    {
 		        closeConnection();
-	        }catch (SQLException e) {
+	        } catch (SQLException e) {
                 out.println(e);
 		    }
         }

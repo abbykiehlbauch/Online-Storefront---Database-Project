@@ -6,7 +6,7 @@
         body 
         {
                 height: 125vh;
-                margin-top: 80px;
+                margin-top: 25px;
                 padding: 20px;
                 background-size: cover;
                 font-family: serif;
@@ -16,8 +16,8 @@
                 position: fixed;
                 left: 0;
                 right: 0;
-                top: 5px;
-                height: 30px;
+                top: 10px;
+                height: 40px;
                 display: flex;
                 align-items: center;
                 box-shadow: 0 0 25px 0 black;
@@ -32,13 +32,18 @@
                 color: white;
                 text-decoration: none;
         }
+        body h1 {
+                margin-top: -20px;
+
+        }
         span{
                 background-color: white;
                 text-decoration: underline;
         }
+
 </style>
 </head>
-<body>
+<body background="img/blue-abstract-gradient-wave-vector-background_53876-111548.jpg.webp">
         <header>
                 <nav>
                         <ul>
@@ -49,7 +54,7 @@
                                         <a href="listprod.jsp">Products</a>
                                 </li>
                                 <li>
-                                        <a href="checkout.jsp">View Cart</a>
+                                        <a href="showcart.jsp">View Cart</a>
                                 </li>
                                 <%
                                 String userName = (String) session.getAttribute("authenticatedUser");
@@ -66,10 +71,12 @@
                         </ul>
                 </nav>
         </header>
-<img align='center' src=\'304logo.png\' alt='Company Logo'/>
-<h1 align="center"><font color='black'><span>Welcome to Our Personality Store</span></h1>
-<h2  align='center'>Shopping? Browsing? Looking to change your everything about yourself?</h2>
-<h3  align='center'>Look no further! We have every type of personality from narcissism to empathy.</font></h3>
+        <form align="center">
+                <img height=150px width=150px src="img/304logo-nobg.png" alt="logo">
+        </form>
+        <h1  align="center"><font color='black'><span>Welcome to Our Personality Store</span></h1>
+        <h4  align='center'><em>Shopping? Browsing? Looking to change your everything about yourself?</h4>
+        <h4  align='center'>Look no further! We have every type of personality from narcissism to empathy.</em></font></h4>
 </body>
 </head>
 

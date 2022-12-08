@@ -9,7 +9,7 @@
 	body 
 	{
 			height: 125vh;
-			margin-top: 80px;
+			margin-top: 25px;
 			padding: 20px;
 			background-size: cover;
 			font-family: serif;
@@ -19,8 +19,8 @@
 			position: fixed;
 			left: 0;
 			right: 0;
-			top: 5px;
-			height: 30px;
+			top: 10px;
+			height: 40px;
 			display: flex;
 			align-items: center;
 			box-shadow: 0 0 25px 0 black;
@@ -35,9 +35,19 @@
 			color: white;
 			text-decoration: none;
 	}
+	table {
+		border: 4px;
+		color: black;
+		border-style: inset;
+		border-radius: 20px;
+	}
+	body h1 {
+        margin-top: -20px;
+
+    }
 </style>
 </head>
-<body>
+<body background="img/blue-abstract-gradient-wave-vector-background_53876-111548.jpg.webp">
 	<header>
 			<nav>
 					<ul>
@@ -45,7 +55,7 @@
 									<a href="index.jsp">Home</a>
 							</li>
 							<li>
-									<a href="listprod.jsp">Products</a>
+									<a href="showcart.jsp">Products</a>
 							</li>
 							<li>
 									<a href="checkout.jsp">View Cart</a>
@@ -65,7 +75,9 @@
 					</ul>
 			</nav>
 	</header>
-<body>
+	<form align="center">
+		<img height=150px width=150px src="img/304logo-nobg.png" alt="logo">
+</form>
 <h1 align='center'>Search for the products you want to buy:</h1>
 
 <form align='center' method="get" action="listprod.jsp">
@@ -136,7 +148,7 @@ else
 PreparedStatement pstmt = con.prepareStatement(sql);
 ResultSet rst = pstmt.executeQuery();
 // Print out the ResultSet
-out.print("<table align='center' border='2px' border-style='none'>");
+out.print("<table align='center'>");
 out.print("<tr><th></th><th>Product Name</th><th>Category</th><th>Price</th></tr>" + "<br>");
 while(rst.next())
 {
