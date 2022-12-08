@@ -33,7 +33,7 @@
                 text-decoration: none;
         }
         body h1 {
-                margin-top: -40px;
+                margin-top: -20px;
 
         }
         span{
