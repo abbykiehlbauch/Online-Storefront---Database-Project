@@ -33,13 +33,14 @@
                 text-decoration: none;
         }
         body h1 {
-                margin-top: -20px;
+                margin-top: -40px;
 
         }
         span{
                 background-color: white;
                 text-decoration: underline;
         }
+
 </style>
 </head>
 <body background="img/blue-abstract-gradient-wave-vector-background_53876-111548.jpg.webp">
@@ -71,7 +72,7 @@
                 </nav>
         </header>
         <form align="center">
-                <img height=150px width=150px src="img/304logo.png" alt="logo">
+                <img height=150px width=150px src="img/304logo-nobg.png" alt="logo">
         </form>
         <h1  align="center"><font color='black'><span>Welcome to Our Personality Store</span></h1>
         <h4  align='center'><em>Shopping? Browsing? Looking to change your everything about yourself?</h4>

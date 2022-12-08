@@ -9,7 +9,7 @@
 	body 
 	{
 			height: 125vh;
-			margin-top: 80px;
+			margin-top: 25px;
 			padding: 20px;
 			background-size: cover;
 			font-family: serif;
@@ -19,8 +19,8 @@
 			position: fixed;
 			left: 0;
 			right: 0;
-			top: 5px;
-			height: 30px;
+			top: 10px;
+			height: 40px;
 			display: flex;
 			align-items: center;
 			box-shadow: 0 0 25px 0 black;
@@ -34,6 +34,9 @@
 	header li a{
 			color: white;
 			text-decoration: none;
+	}
+	body h1 {
+		margin-top: -20px;
 	}
 </style>
 </head>
@@ -65,6 +68,9 @@
 					</ul>
 			</nav>
 	</header>
+	<form align="center">
+		<img height=150px width=150px src="img/304logo-nobg.png" alt="logo">
+</form>
 
 <h1 align='center'>Order List</h1>
 

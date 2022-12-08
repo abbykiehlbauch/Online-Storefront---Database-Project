@@ -6,7 +6,7 @@
 	body 
 	{
 			height: 125vh;
-			margin-top: 80px;
+			margin-top: 25px;
 			padding: 20px;
 			background-size: cover;
 			font-family: serif;
@@ -16,8 +16,8 @@
 			position: fixed;
 			left: 0;
 			right: 0;
-			top: 5px;
-			height: 30px;
+			top: 10px;
+			height: 40px;
 			display: flex;
 			align-items: center;
 			box-shadow: 0 0 25px 0 black;
@@ -37,6 +37,9 @@
 		border:0;
 		box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
 		border-radius: 10px;
+	}
+	body h1 {
+		margin-top: -20px;
 	}
 </style>
 </head>
@@ -68,6 +71,9 @@
 					</ul>
 			</nav>
 	</header>
+	<form align="center">
+		<img height=150px width=150px src="img/304logo-nobg.png" alt="logo">
+</form>
 
 <div style="margin:0 auto;text-align:center;display:inline">
 
