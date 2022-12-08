@@ -143,44 +143,53 @@ CREATE TABLE review (
         ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-INSERT INTO category(categoryName) VALUES ('Beverages');
-INSERT INTO category(categoryName) VALUES ('Condiments');
-INSERT INTO category(categoryName) VALUES ('Dairy Products');
-INSERT INTO category(categoryName) VALUES ('Produce');
-INSERT INTO category(categoryName) VALUES ('Meat/Poultry');
-INSERT INTO category(categoryName) VALUES ('Seafood');
-INSERT INTO category(categoryName) VALUES ('Confections');
-INSERT INTO category(categoryName) VALUES ('Grains/Cereals');
+INSERT INTO category(categoryName) VALUES ('Extraversion');
+INSERT INTO category(categoryName) VALUES ('Agreeableness');
+INSERT INTO category(categoryName) VALUES ('Openness');
+INSERT INTO category(categoryName) VALUES ('Conscientiousness');
+INSERT INTO category(categoryName) VALUES ('Neuroticism');
 
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Chai', 1, '10 boxes x 20 bags',18.00);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Chang',1,'24 - 12 oz bottles',19.00);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Aniseed Syrup',2,'12 - 550 ml bottles',10.00);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Chef Anton''s Cajun Seasoning',2,'48 - 6 oz jars',22.00);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Chef Anton''s Gumbo Mix',2,'36 boxes',21.35);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Grandma''s Boysenberry Spread',2,'12 - 8 oz jars',25.00);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Uncle Bob''s Organic Dried Pears',4,'12 - 1 lb pkgs.',30.00);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Northwoods Cranberry Sauce',2,'12 - 12 oz jars',40.00);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Mishi Kobe Niku',5,'18 - 500 g pkgs.',97.00);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Ikura',6,'12 - 200 ml jars',31.00);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Queso Cabrales',3,'1 kg pkg.',21.00);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Queso Manchego La Pastora',3,'10 - 500 g pkgs.',38.00);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Tofu',4,'40 - 100 g pkgs.',23.25);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Genen Shouyu',2,'24 - 250 ml bottles',15.50);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Pavlova',7,'32 - 500 g boxes',17.45);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Alice Mutton',5,'20 - 1 kg tins',39.00);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Carnarvon Tigers',6,'16 kg pkg.',62.50);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Teatime Chocolate Biscuits',7,'10 boxes x 12 pieces',9.20);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Sir Rodney''s Marmalade',7,'30 gift boxes',81.00);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Sir Rodney''s Scones',7,'24 pkgs. x 4 pieces',10.00);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Gustaf''s Knackebread',8,'24 - 500 g pkgs.',21.00);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Sasquatch Ale',1,'24 - 12 oz bottles',14.00);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Steeleye Stout',1,'24 - 12 oz bottles',18.00);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Inlagd Sill',6,'24 - 250 g  jars',19.00);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Boston Crab Meat',6,'24 - 4 oz tins',18.40);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Jack''s New England Clam Chowder',6,'12 - 12 oz cans',9.65);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Singaporean Hokkien Fried Mee',8,'32 - 1 kg pkgs.',14.00);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Louisiana Fiery Hot Pepper Sauce',2,'32 - 8 oz bottles',21.05);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Laughing Lumberjack Lager',1,'24 - 12 oz bottles',14.00);
+-- category 1 : Extraversion
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Talkativeness', 1, '10 boxes x 20 bags',18.00);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Energy',1,'24 - 12 oz bottles',19.00);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Assertiveness',1,'12 - 550 ml bottles',10.00);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Enthusiasm',1,'48 - 6 oz jars',22.00);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Cheerfulness',1,'36 boxes',21.35);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Leadership Skills',1,'12 - 8 oz jars',25.00);
+
+-- category 2 : Agreeableness
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Trust',2,'12 - 1 lb pkgs.',30.00);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Altruism',2,'12 - 12 oz jars',40.00);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Kindness',2,'18 - 500 g pkgs.',97.00);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Affection',2,'12 - 200 ml jars',31.00);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Empathy',2,'1 kg pkg.',21.00);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Sympathy',2,'10 - 500 g pkgs.',38.00);
+
+-- category 3 : Openness
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Imagination',3,'40 - 100 g pkgs.',23.25);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Insight',3,'24 - 250 ml bottles',15.50);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Creativity',3,'32 - 500 g boxes',17.45);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Lateral thinking Skills',3,'20 - 1 kg tins',39.00);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Curiosity',3,'16 kg pkg.',62.50);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Inventive',3,'10 boxes x 12 pieces',9.20);
+
+-- category 4 : Conscientiousness
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Organization/planning',4,'30 gift boxes',81.00);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Thoughtfulness',4,'24 pkgs. x 4 pieces',10.00);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Self-control',4,'24 - 500 g pkgs.',21.00);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Diligence',4,'24 - 12 oz bottles',14.00);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Reliability',4,'24 - 12 oz bottles',18.00);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Punctuality',4,'24 - 250 g  jars',19.00);
+
+-- category 5 : Neuroticism
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Anxiety',5,'24 - 4 oz tins',18.40);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Irritability',5,'12 - 12 oz cans',9.65);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Sadness',5,'32 - 1 kg pkgs.',14.00);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Pessimism',5,'32 - 8 oz bottles',21.05);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Volatility',5,'24 - 12 oz bottles',14.00);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Guilt',5,'24 - 12 oz bottles',14.00);
+
+
 
 INSERT INTO warehouse(warehouseName) VALUES ('Main warehouse');
 INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (1, 1, 5, 18);
