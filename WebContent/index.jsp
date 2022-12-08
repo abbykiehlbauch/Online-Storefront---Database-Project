@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <title>Our Grocery Main Page</title>
+        <title>Main Page</title>
 <style type="text/css">
         body 
         {
@@ -36,10 +36,6 @@
                 margin-top: -20px;
 
         }
-        span{
-                background-color: white;
-                text-decoration: underline;
-        }
 
 </style>
 </head>
@@ -60,12 +56,23 @@
                                 String userName = (String) session.getAttribute("authenticatedUser");
                                 if(userName != null){
                                         out.println("<li><a href='listorder.jsp'>Past Orders</a></li>");
+                                        %>
+                                        <div style="padding-left: 325px;">
+                                                <%
                                         out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
                                         out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
+                                        %>
+                                        </div>
+                                        <%
                                 } else {
-                                        out.println("<li><a href='login.jsp'>Sign In</a></li>");
+                                        %>
+                                        <div style="padding-left: 450px;">
+                                                <%
                                         out.println("<li><a href='register.jsp'>Register</a></li>");
-
+                                        out.println("<li><a href='login.jsp'>Sign In</a></li>");
+                                        %>
+                                </div>
+                                <%
                                 }
                                 %>
                         </ul>
@@ -74,9 +81,14 @@
         <form align="center">
                 <img height=150px width=150px src="img/304logo-nobg.png" alt="logo">
         </form>
-        <h1  align="center"><font color='black'><span>Welcome to Our Personality Store</span></h1>
+        <h1  align="center"><font color='black'>Welcome to Our Personality Store</h1>
         <h4  align='center'><em>Shopping? Browsing? Looking to change your everything about yourself?</h4>
         <h4  align='center'>Look no further! We have every type of personality from narcissism to empathy.</em></font></h4>
+        <form align="center">
+                <img height=350px width=325px src="img/personalitytraits1.png" alt="pt1">
+                <img height=350px width=325px src="img/personalitytraits2.png" alt="pt2">
+                <img height=350px width=325px src="img/personalitytraits3.png" alt="pt3">
+        </form>
 </body>
 </head>
 

@@ -32,8 +32,22 @@
 			color: white;
 			text-decoration: none;
 	}
-	body h1 {
+	body h2 {
 		margin-top: -20px;
+	}
+	table {
+		align-items:center;
+		font-family: serif;
+		border-color: dodgerblue;
+		padding-top: 5px;
+		background-color: white;
+		border-radius: 5px;
+		width: 500px;
+		box-shadow: 0 0 10px 0 dodgerblue;
+	}
+	.edit {
+		padding-top: 20px;
+		font-size: 20px;
 	}
 </style>
 </head>
@@ -54,12 +68,23 @@
                                 String userName = (String) session.getAttribute("authenticatedUser");
                                 if(userName != null){
                                         out.println("<li><a href='listorder.jsp'>Past Orders</a></li>");
+                                        %>
+                                        <div style="padding-left: 325px;">
+                                                <%
                                         out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
                                         out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
+                                        %>
+                                        </div>
+                                        <%
                                 } else {
-                                        out.println("<li><a href='login.jsp'>Sign In</a></li>");
+                                        %>
+                                        <div style="padding-left: 450px;">
+                                                <%
                                         out.println("<li><a href='register.jsp'>Register</a></li>");
-
+                                        out.println("<li><a href='login.jsp'>Sign In</a></li>");
+                                        %>
+                                </div>
+                                <%
                                 }
                                 %>
 					</ul>
@@ -77,7 +102,7 @@
 String username = (String) session.getAttribute("authenticatedUser");
 NumberFormat currFormat = NumberFormat.getCurrencyInstance();
 %>
-<h3 align="center">Customer Profile</h3>
+<h2 align="center">Customer Profile</h2>
 <%
 try 
 {
@@ -126,7 +151,7 @@ catch (Exception e)
 
 // Make sure to close connection
 %>
-<form align="center">
+<form align="center" class="edit">
 <a href="editAccount.jsp">Edit Account</a>
 </form>
 </body>

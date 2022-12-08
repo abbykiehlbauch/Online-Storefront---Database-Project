@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>YOUR NAME Grocery</title>
+<title>Products</title>
 <style type="text/css">
 	body 
 	{
@@ -41,7 +41,7 @@
 		border-style: inset;
 		border-radius: 20px;
 	}
-	body h1 {
+	body h2 {
         margin-top: -20px;
 
     }
@@ -64,12 +64,23 @@
                                 String userName = (String) session.getAttribute("authenticatedUser");
                                 if(userName != null){
                                         out.println("<li><a href='listorder.jsp'>Past Orders</a></li>");
+                                        %>
+                                        <div style="padding-left: 325px;">
+                                                <%
                                         out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
                                         out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
+                                        %>
+                                        </div>
+                                        <%
                                 } else {
-                                        out.println("<li><a href='login.jsp'>Sign In</a></li>");
+                                        %>
+                                        <div style="padding-left: 450px;">
+                                                <%
                                         out.println("<li><a href='register.jsp'>Register</a></li>");
-
+                                        out.println("<li><a href='login.jsp'>Sign In</a></li>");
+                                        %>
+                                </div>
+                                <%
                                 }
                                 %>
 					</ul>
@@ -78,7 +89,7 @@
 	<form align="center">
 		<img height=150px width=150px src="img/304logo-nobg.png" alt="logo">
 </form>
-<h1 align='center'>Search for the products you want to buy:</h1>
+<h2 align='center'>Search for the products you want to buy:</h2>
 
 <form align='center' method="get" action="listprod.jsp">
 <input type="text" name="productName" size="50">
