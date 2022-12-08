@@ -125,6 +125,27 @@ out.println("</select>");
 out.println("</form>");
 String catId = request.getParameter("categoriesDropDown");
 
+// get userid for product page (review)
+String sqll2;
+if(userName != null)
+{
+	sqll2 = "SELECT customerId FROM customer WHERE userid = '"+ userName + "'"; 
+}
+else 
+{
+	sqll2 = "SELECT customerId FROM customer WHERE userid = 'arnold'";
+}
+PreparedStatement pstmt2 = con.prepareStatement(sqll2);
+ResultSet rst2 = pstmt2.executeQuery();
+int custidd;
+if(rst2.next() == true)
+{
+	custidd = rst2.getInt("customerId");
+	// out.println("<h2>'"+custidd+"'</h2>");
+}
+custidd = rst2.getInt("customerId");
+
+
 String sql;
 if(name != null && catId !=null)
 {
@@ -157,9 +178,10 @@ while(rst.next())
 	String prodname = rst.getString("productName");
 	double prodprice = rst.getDouble("productPrice");
 	int categoryId = rst.getInt("categoryId");
+	custidd = rst2.getInt("customerId");
 	String categoryName = rst.getString("categoryName");
 	out.print("<tr><td>"+"<a href=\"addcart.jsp?id=" + prodid + "&name=" + prodname + "&price=" + prodprice + "\"" + ">Add to cart</a>" + "</td>");
-	out.print("<td>"+" " + "<a href=\"product.jsp?id=" + prodid + "&name=" + prodname + "\"" + "> "+prodname+" </a>"+ "</td>");
+	out.print("<td>"+" " + "<a href=\"product.jsp?id=" + prodid + "&name=" + prodname + "&userid=" + custidd + "\"" + "> "+prodname+" </a>" + "</td>");
 	out.print("<td>" + categoryName + "</td>");
 	out.print("<td>"+" "+ currFormat.format(rst.getDouble("productPrice")) + "</td></tr>");
 }
