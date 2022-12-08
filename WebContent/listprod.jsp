@@ -4,48 +4,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Products</title>
-<style type="text/css">
-	body 
-	{
-			height: 125vh;
-			margin-top: 25px;
-			padding: 20px;
-			background-size: cover;
-			font-family: serif;
-	}
-	header {
-			background-color:dodgerblue;
-			position: fixed;
-			left: 0;
-			right: 0;
-			top: 10px;
-			height: 40px;
-			display: flex;
-			align-items: center;
-			box-shadow: 0 0 25px 0 black;
-	}
-	header * {
-			display: inline;
-	}
-	header li {
-			margin: 29px;
-	}
-	header li a{
-			color: white;
-			text-decoration: none;
-	}
-	table {
-		border: 4px;
-		color: black;
-		border-style: inset;
-		border-radius: 20px;
-	}
-	body h2 {
-        margin-top: -20px;
+	<title>Products</title>
+	<style type="text/css">
+		body 
+		{
+				height: 125vh;
+				margin-top: 25px;
+				padding: 20px;
+				background-size: cover;
+				font-family: serif;
+		}
+		header {
+				background-color:dodgerblue;
+				position: fixed;
+				left: 0;
+				right: 0;
+				top: 10px;
+				height: 40px;
+				display: flex;
+				align-items: center;
+				box-shadow: 0 0 25px 0 black;
+		}
+		header * {
+				display: inline;
+		}
+		header li {
+				margin: 29px;
+		}
+		header li a{
+				color: white;
+				text-decoration: none;
+		}
+		table {
+			border: 4px;
+			color: black;
+			border-style: inset;
+			border-radius: 20px;
+		}
+		body h2 {
+			margin-top: -20px;
 
-    }
-</style>
+		}
+	</style>
+	<script>
+		function searchdata(a)
+		{
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange=function()
+			{
+				document.getElementById("res").innerHTML= xmlhttp.responseText;
+			}
+			xmlhttp.open("POST", "testdisplay.jsp?q="+a, true);
+			xmlhttp.send();
+		}
+
+	</script>
 </head>
 <body background="img/blue-abstract-gradient-wave-vector-background_53876-111548.jpg.webp">
 	<header>
@@ -88,14 +101,30 @@
 	</header>
 	<form align="center">
 		<img height=150px width=150px src="img/304logo-nobg.png" alt="logo">
-</form>
-<h2 align='center'>Search for the products you want to buy:</h2>
+	</form>
+	<h2 align='center'>Search for the products you want to buy:</h2>
 
-<form align='center' method="get" action="listprod.jsp">
-<input type="text" name="productName" size="50">
-<input type="submit" value="Submit"><input type="reset" value="Reset"> (Leave blank for all products)
+	<form align='center' method="get" action="testdisplay.jsp">
+		<input type="text" name="q" size="50" onkeyup="searchdata(this.value)"/>
+		<input type="submit" value="Submit"><input type="reset" value="Reset">
+	
+		<br>
+		<label for="categories">Choose a category:</label>
+		<select name="categoriesDropUp" id="category-spinner">
+		<option value="none" selected disabled hidden>Select an Option</option>
+		<option value="1">Extraversion</option>
+		<option value="2">Agreeableness</option>
+		<option value="3">Openness</option>
+		<option value="4">Conscientiousness</option>
+		<option value="5">Neuroticism</option>
+		</select>
+	
+		<br>
+		<div id="res"></div>
+	</form>
+</body>
 
-
+<!-- 
 <% // Get product name to search for
 
 String name = request.getParameter("productName");
@@ -124,14 +153,14 @@ Connection con = DriverManager.getConnection(url, uid, pw);
 String SQL = "SELECT categoryId, categoryName FROM category";
 PreparedStatement pstmtC = con.prepareStatement(SQL);
 ResultSet categories = pstmtC.executeQuery();
-out.println("<br><label for=\"categories\">Choose a category:</label>");
-out.println("<select name=\"categoriesDropDown\" id=\"category-spinner\">");
-out.println("<option value=\"none\" selected disabled hidden>Select an Option</option>");
+// out.println("<br><label for=\"categories\">Choose a category:</label>");
+// out.println("<select name=\"categoriesDropDown\" id=\"category-spinner\">");
+// out.println("<option value=\"none\" selected disabled hidden>Select an Option</option>");
 
-while(categories.next())
-{
-	out.println("<option value=\"" + categories.getInt("categoryId") + "\">" + categories.getString("CategoryName") + "</option>");
-}
+// while(categories.next())
+// {
+// 	out.println("<option value=\"" + categories.getInt("categoryId") + "\">" + categories.getString("CategoryName") + "</option>");
+// }
 out.println("</select>");
 out.println("</form>");
 String catId = request.getParameter("categoriesDropDown");
@@ -199,6 +228,6 @@ while(rst.next())
 out.print("</table>");
 // Close connection
 con.close();
-%>
+%> -->
 </body>
 </html>
