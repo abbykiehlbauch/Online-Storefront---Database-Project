@@ -169,7 +169,7 @@
         <table style="overflow:auto" align="center">
             <tr>
                 <td><div align="left"><font face="serif" size="3.5">Rate (1-5):</font></div></td>
-                <td><input placeholder="(5 is Best)" type="text" name="rating"  size="5" maxlength="1"></td>
+                <td><input placeholder="(5 is Best)" type="text" name="rating"  size="7" maxlength="1"></td>
             </tr>
             <tr>
                 <td><div align="left"><font face="serif" size="3.5">Comment:</font></div></td>

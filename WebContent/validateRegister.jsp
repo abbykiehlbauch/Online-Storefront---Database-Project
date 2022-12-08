@@ -1,6 +1,22 @@
 <%@ page language="java" import="java.io.*,java.sql.*"%>
 <%@ include file="jdbc.jsp" %>
+
 <%
+	try
+	{   
+		// Load driver class
+		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+	}
+	catch (java.lang.ClassNotFoundException e)
+	{
+		out.println("ClassNotFoundException: " +e);
+	}
+
+	// Make the connection
+	String url = "jdbc:sqlserver://cosc304_sqlserver:1433;DatabaseName=orders;TrustServerCertificate=True;";
+	String uid = "sa";
+	String pw = "304#sa#pw"; 
+	Connection con = DriverManager.getConnection(url, uid, pw);
 
 	String authenticatedUser = null;
 	session = request.getSession(true);
@@ -12,16 +28,16 @@
 	{
 		response.sendRedirect("login.jsp");	
 	}
-		String first = request.getParameter("firstName");
-        String last = request.getParameter("lastName");
-        String email = request.getParameter("email");
-        String phone = request.getParameter("phonenum");
-        String addy = request.getParameter("address");
-        String city = request.getParameter("city");
-        String state = request.getParameter("state");
-        String postal = request.getParameter("postalCode");
-        String country = request.getParameter("country");
-        String userid = request.getParameter("userid");
+		String first = request.getParameter("First Name");
+        String last = request.getParameter("Last Name");
+        String email = request.getParameter("Email");
+        String phone = request.getParameter("Phone Number");
+        String addy = request.getParameter("Address");
+        String city = request.getParameter("City");
+        String state = request.getParameter("Province");
+        String postal = request.getParameter("Postal Code");
+        String country = request.getParameter("Country");
+        String userid = request.getParameter("User Id");
         String password = request.getParameter("password");
 		String retStr = null;
 		
@@ -44,7 +60,7 @@
 			pstmt.setString(10, userid);
 			pstmt.setString(11, password);
 			pstmt.executeUpdate();
-			response.sendRedirect("login.jsp");
+			// response.sendRedirect("login.jsp");
 			retStr = userid;
 			}
 		}
@@ -60,7 +76,7 @@
 				out.println(e);
 			}
 		}
-		if(retStr != null)
+		if(first != null)
 		{	
 			session.setAttribute("registerMessage", "Account created successfully!");
 			session.setAttribute("authenticatedUser", userid);
