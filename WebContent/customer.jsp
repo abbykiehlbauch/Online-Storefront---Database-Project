@@ -120,8 +120,8 @@ catch (Exception e)
 
 // Make sure to close connection
 %>
-<form align='center'>
-	<input class="edit" type="button" name="edit" value="Edit Account" onclick="editAccount">
+<form align="center">
+<a href="editAccount.jsp">Edit Account</a>
 </form>
 </body>
 </html>
