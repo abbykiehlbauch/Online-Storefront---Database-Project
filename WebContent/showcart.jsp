@@ -17,7 +17,7 @@
 	}
 </script>
 </head>
-<body>
+<body background="img/blue-abstract-gradient-wave-vector-background_53876-111548.jpg.webp">
 	<nav class="navbar navbar-expand-lg bg-light">
 		<div class="container-fluid">
 		  <a class="navbar-brand" href="index.jsp">WELCOME</a>

@@ -7,7 +7,7 @@
     <head>
         <title>nulllllll</title>
     </head>
-    <body>
+    <body background="img/blue-abstract-gradient-wave-vector-background_53876-111548.jpg.webp">
         <% 
         String name = request.getParameter("q");
         try

@@ -35,9 +35,15 @@
 			color: white;
 			text-decoration: none;
 	}
+	table {
+		border: 4px;
+		color: black;
+		border-style: inset;
+		border-radius: 20px;
+	}
 </style>
 </head>
-<body>
+<body background="img/blue-abstract-gradient-wave-vector-background_53876-111548.jpg.webp">
 	<header>
 			<nav>
 					<ul>
@@ -136,7 +142,7 @@ else
 PreparedStatement pstmt = con.prepareStatement(sql);
 ResultSet rst = pstmt.executeQuery();
 // Print out the ResultSet
-out.print("<table align='center' border='2px' border-style='none'>");
+out.print("<table align='center'>");
 out.print("<tr><th></th><th>Product Name</th><th>Category</th><th>Price</th></tr>" + "<br>");
 while(rst.next())
 {

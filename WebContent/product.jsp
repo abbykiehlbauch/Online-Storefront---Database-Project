@@ -8,7 +8,7 @@
 <title>Ray's Grocery - Product Information</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body background="img/blue-abstract-gradient-wave-vector-background_53876-111548.jpg.webp">
 
 <%@ include file="header.jsp" %>
 

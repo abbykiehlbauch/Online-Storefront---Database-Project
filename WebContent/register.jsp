@@ -44,7 +44,7 @@
 	        }
         </style>
     </head>
-    <body>
+    <body background="img/blue-abstract-gradient-wave-vector-background_53876-111548.jpg.webp">
         <header>
             <nav>
                 <ul>
@@ -77,7 +77,7 @@
         </header>
         <h3 align='center'>Register for an account</h3>
         <br>
-            <form align="center" name="AccountCreation" method=post action="createAccount.jsp">
+            <form align="center" name="AccountCreation" method=post action="validateRegister.jsp">
                 <table style="overflow:auto" align="center">
                     <tr>
                         <td><div align="left"><font face="serif" size="3.5">First Name:</font></div></td>
@@ -146,7 +146,7 @@
         {
             getConnection();
             String SQL = "INSERT INTO customer(firstName, lastName, email, phonenum, address, city, state, postalCode, country, userid, password VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-            PreparedStatement pstmt = connection.prepareStatement(SQL);
+            PreparedStatement pstmt = con.prepareStatement(SQL);
             if(first != null && last != null && email != null && phone != null && addy != null && city != null && state != null && postal != null && country != null && userid != null && password != null){
                 pstmt.setString(1, first);
                 pstmt.setString(2, last);
@@ -160,8 +160,6 @@
                 pstmt.setString(10, userid);
                 pstmt.setString(11, password);
                 pstmt.executeUpdate();
-                out.println("<h2 align='center'>Account created!</h2>");
-                out.println("<a href='index.jsp'>Home</a>");
                 response.sendRedirect("login.jsp");
             }
         } catch (SQLException ex){
@@ -171,7 +169,7 @@
 			try
 		    {
 		        closeConnection();
-	        }catch (SQLException e) {
+	        } catch (SQLException e) {
                 out.println(e);
 		    }
         }
