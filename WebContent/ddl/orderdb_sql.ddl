@@ -177,7 +177,7 @@ INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Inve
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Organization/planning',4,'Trying to get more organised in your life? This is the perfect solution for you.',81.00);
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Thoughtfulness',4,'This is for you, if you are trying to be more considerate.',10.00);
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Self-control',4,'Perfect if you are planning a technology detox, or trying to eat more healthy.',21.00);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Diligence',4,'Want to make sustained efforts o reach a particular end goal? One of our diligence pills will help you be more consistent for upto a year.',14.00);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Diligence',4,'Want to make sustained efforts to reach a particular end goal? One of our diligence pills will help you be more consistent for upto a year.',14.00);
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Reliability',4,'If you're looking to be more consistent and trustwothy, try our reliability juice.',18.00);
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Punctuality',4,'Especially useful if you just started in a new workplace.',19.00);
 
@@ -187,7 +187,7 @@ INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Irri
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Sadness',5,'Sometimes you just need some of this, not going to judge your purchase.',14.00);
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Pessimism',5,'Sometimes you just need some of this, not going to judge your purchase.',21.05);
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Volatility',5,'Sometimes you just need some of this, not going to judge your purchase.',14.00);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Guilt',5,'Sometimes you just need some of this, not going to judge your purchase.'',14.00);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Guilt',5,'Sometimes you just need some of this, not going to judge your purchase.',14.00);
 
 
 
