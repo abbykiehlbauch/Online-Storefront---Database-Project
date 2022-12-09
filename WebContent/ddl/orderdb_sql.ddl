@@ -169,15 +169,15 @@ INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Symp
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Imagination',3,'Make that project extra amazing with a box of our imagination.',23.25);
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Insight',3,'Daily staple to improve the quality of life.',15.50);
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Creativity',3,'Going through a creative block of any kind? Use some of our creativity gel to get past the block.',17.45);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Lateral thinking Skills',3,'Perfect if you are looking for new ways to solve a problem.',39.00);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Lateral Thinking Skills',3,'Perfect if you are looking for new ways to solve a problem.',39.00);
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Curiosity',3,'For those who want to take an extra interest in anything.',62.50);
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Inventive',3,'Be the next Nicola Tesla/Steve Jobs/Bill Gates using our inventive pills.',9.20);
 
 -- category 4 : Conscientiousness
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Organization/planning',4,'Trying to get more organised in your life? This is the perfect solution for you.',81.00);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Organization/Planning',4,'Trying to get more organised in your life? This is the perfect solution for you.',81.00);
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Thoughtfulness',4,'This is for you, if you are trying to be more considerate.',10.00);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Self-control',4,'Perfect if you are planning a technology detox, or trying to eat more healthy.',21.00);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Diligence',4,'Want to make sustained efforts to reach a particular end goal? One of our diligence pills will help you be more consistent for upto a year.',14.00);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Self-Control',4,'Perfect if you are planning a technology detox, or trying to eat more healthy.',21.00);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Diligence',4,'Want to make sustained efforts o reach a particular end goal? One of our diligence pills will help you be more consistent for upto a year.',14.00);
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Reliability',4,'If you're looking to be more consistent and trustwothy, try our reliability juice.',18.00);
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Punctuality',4,'Especially useful if you just started in a new workplace.',19.00);
 
@@ -266,36 +266,36 @@ INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId,
 INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 2, 3, 10);
 
 -- New SQL DDL for lab 8
-UPDATE Product SET productImageURL = 'img/talkativeness.png' WHERE ProductId = 1;
-UPDATE Product SET productImageURL = 'img/energy.png' WHERE ProductId = 2;
-UPDATE Product SET productImageURL = 'img/assertiveness.png' WHERE ProductId = 3;
-UPDATE Product SET productImageURL = 'img/enthusiasm.png' WHERE ProductId = 4;
-UPDATE Product SET productImageURL = 'img/cheerfulness.png' WHERE ProductId = 5;
-UPDATE Product SET productImageURL = 'img/leadership.png' WHERE ProductId = 6;
-UPDATE Product SET productImageURL = 'img/trust.png' WHERE ProductId = 7;
-UPDATE Product SET productImageURL = 'img/altruism.png' WHERE ProductId = 8;
-UPDATE Product SET productImageURL = 'img/kindness.png' WHERE ProductId = 9;
-UPDATE Product SET productImageURL = 'img/affection.png' WHERE ProductId = 10;
-UPDATE Product SET productImageURL = 'img/empathy.png' WHERE ProductId = 11;
-UPDATE Product SET productImageURL = 'img/sympathy.png' WHERE ProductId = 12;
-UPDATE Product SET productImageURL = 'img/imagination.png' WHERE ProductId = 13;
-UPDATE Product SET productImageURL = 'img/insight.png' WHERE ProductId = 14;
-UPDATE Product SET productImageURL = 'img/creativity.png' WHERE ProductId = 15;
-UPDATE Product SET productImageURL = 'img/lateral thinking.png' WHERE ProductId = 16;
-UPDATE Product SET productImageURL = 'img/curiosity.png' WHERE ProductId = 17;
-UPDATE Product SET productImageURL = 'img/inventive.png' WHERE ProductId = 18;
-UPDATE Product SET productImageURL = 'img/planning.png' WHERE ProductId = 19;
-UPDATE Product SET productImageURL = 'img/thoughtfulness.png' WHERE ProductId = 20;
-UPDATE Product SET productImageURL = 'img/selfcontrol.png' WHERE ProductId = 21;
-UPDATE Product SET productImageURL = 'img/diligence.png' WHERE ProductId = 22;
-UPDATE Product SET productImageURL = 'img/reliability.png' WHERE ProductId = 23;
-UPDATE Product SET productImageURL = 'img/punctuality.png' WHERE ProductId = 24;
-UPDATE Product SET productImageURL = 'img/anxiety.png' WHERE ProductId = 25;
-UPDATE Product SET productImageURL = 'img/irritability.png' WHERE ProductId = 26;
-UPDATE Product SET productImageURL = 'img/sadness.png' WHERE ProductId = 27;
-UPDATE Product SET productImageURL = 'img/pessimism.png' WHERE ProductId = 28;
-UPDATE Product SET productImageURL = 'img/volatility.png' WHERE ProductId = 29;
-UPDATE Product SET productImageURL = 'img/guilt.png' WHERE ProductId = 30;
+UPDATE Product SET productImageURL = 'talkativeness.png' WHERE productName = 'Talkativeness';
+UPDATE Product SET productImageURL = 'energy.png' WHERE productName = 'Energy';
+UPDATE Product SET productImageURL = 'assertiveness.png' WHERE productName = 'Assertiveness';
+UPDATE Product SET productImageURL = 'enthusiasm.png' WHERE productName = 'Enthusiasm';
+UPDATE Product SET productImageURL = 'cheerfulness.png' WHERE productName = 'Cheerfulness';
+UPDATE Product SET productImageURL = 'leadership.png' WHERE productName = 'Leadership Skills';
+UPDATE Product SET productImageURL = 'trust.png' WHERE productName = 'Trustworthiness';
+UPDATE Product SET productImageURL = 'altruism.png' WHERE productName = 'Altruism';
+UPDATE Product SET productImageURL = 'kindness.png' WHERE productName = 'Kindness';
+UPDATE Product SET productImageURL = 'affection.png' WHERE productName = 'Affection'; 
+UPDATE Product SET productImageURL = 'empathy.png' WHERE productName = 'Empathy';
+UPDATE Product SET productImageURL = 'sympathy.png' WHERE productName = 'Sympathy';
+UPDATE Product SET productImageURL = 'imagination.png' WHERE productName = 'Imagination';
+UPDATE Product SET productImageURL = 'insight.png' WHERE productName = 'Insight';
+UPDATE Product SET productImageURL = 'creativity.png' WHERE productName = 'Creativity';
+UPDATE Product SET productImageURL = 'lateral thinking.png' WHERE productName = 'Lateral Thinking Skills';
+UPDATE Product SET productImageURL = 'curiosity.png' WHERE productName = '  Curiosity';
+UPDATE Product SET productImageURL = 'inventive.png' WHERE productName = '  Inventive';
+UPDATE Product SET productImageURL = 'planning.png' WHERE productName = 'Organization/Planning';
+UPDATE Product SET productImageURL = 'thoughtfulness.png' WHERE productName = 'Thoughtfulness';
+UPDATE Product SET productImageURL = 'self control.png' WHERE productName = 'Self-Control';
+UPDATE Product SET productImageURL = 'diligence.png' WHERE productName = 'Diligence';
+UPDATE Product SET productImageURL = 'reliability.png' WHERE productName = 'Reliability';
+UPDATE Product SET productImageURL = 'punctuality.png' WHERE productName = 'Punctuality';
+UPDATE Product SET productImageURL = 'anxiety.png' WHERE productName = 'Anxiety';
+UPDATE Product SET productImageURL = 'irritability.png' WHERE productName = 'Irritability';
+UPDATE Product SET productImageURL = 'sadness.png' WHERE productName = 'Sadness';
+UPDATE Product SET productImageURL = 'pessimism.png' WHERE productName = 'Pessimism';
+UPDATE Product SET productImageURL = 'volatility.png' WHERE productName = 'Volatility';
+UPDATE Product SET productImageURL = 'guilt.png' WHERE productName = 'Guilt';
 
 
 -- Loads image data for product 1
