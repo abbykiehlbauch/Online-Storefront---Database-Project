@@ -112,7 +112,9 @@ if (session.getAttribute("loginMessage") != null)
 <br/>
 <input class="submit" type="submit" name="Submit2" value="Log In">
 </form>
-
+<form method=post action="reset.jsp">
+	<input class="submit" type="submit" name="submit3" value="Forgot Password">
+</form>
 </div>
 
 </body>

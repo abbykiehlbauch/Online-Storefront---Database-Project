@@ -88,47 +88,47 @@
             <form align="center" name="EditAccount" method=post action="edit.jsp">
                 <table style="overflow:auto" align="center">
                     <tr>
-                        <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="3.5">First Name:</font></div></td>
+                        <td><div align="left"><font face="serif" size="3.5">First Name:</font></div></td>
                         <td><input type="text" name="First Name"  size=10 maxlength=10></td>
                     </tr>
                     <tr>
-                        <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="3.5">Last Name:</font></div></td>
+                        <td><div align="left"><font face="serif" size="3.5">Last Name:</font></div></td>
                         <td><input type="text" name="Last Name" size=10 maxlength="10"></td>
                     </tr>
                     <tr>
-                        <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="3.5">Email:</font></div></td>
+                        <td><div align="left"><font face="serif" size="3.5">Email:</font></div></td>
                         <td><input type="email" name="Email" size=10 maxlength="100"></td>
                     </tr>
                     <tr>
-                        <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="3.5">Phone Number:</font></div></td>
+                        <td><div align="left"><font face="serif" size="3.5">Phone Number:</font></div></td>
                         <td><input type="text" name="Phone Number" size=10 maxlength="10"></td>
                     </tr>
                     <tr>
-                        <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="3.5">Address:</font></div></td>
+                        <td><div align="left"><font face="serif" size="3.5">Address:</font></div></td>
                         <td><input type="text" name="Address" size=10 maxlength="50"></td>
                     </tr>
                     <tr>
-                        <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="3.5">City:</font></div></td>
+                        <td><div align="left"><font face="serif" size="3.5">City:</font></div></td>
                         <td><input type="text" name="City" size=10 maxlength="20"></td>
                     </tr>
                     <tr>
-                        <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="3.5">State:</font></div></td>
+                        <td><div align="left"><font face="serif" size="3.5">State:</font></div></td>
                         <td><input type="text" name="State" size=10 maxlength="20"></td>
                     </tr>
                     <tr>
-                        <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="3.5">Postal Code:</font></div></td>
+                        <td><div align="left"><font face="serif" size="3.5">Postal Code:</font></div></td>
                         <td><input type="text" name="Postal Code" size=10 maxlength="7"></td>
                     </tr>
                     <tr>
-                        <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="3.5">Country:</font></div></td>
+                        <td><div align="left"><font face="serif" size="3.5">Country:</font></div></td>
                         <td><input type="text" name="Country" size=10 maxlength="20"></td>
                     </tr>
                     <tr>
-                        <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="3.5">User Id:</font></div></td>
+                        <td><div align="left"><font face="serif" size="3.5">User Id:</font></div></td>
                         <td><input type="text" name="User Id" size=10 maxlength="10"></td>
                     </tr>
                     <tr>
-                        <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="3.5">Password:</font></div></td>
+                        <td><div align="left"><font face="serif" size="3.5">Password:</font></div></td>
                         <td><input type="password" name="password" size=10 maxlength="10"></td>
                     </tr>
                 </table>
