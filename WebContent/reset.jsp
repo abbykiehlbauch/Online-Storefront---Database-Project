@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head>Reset your password</head>
+    <title>Reset password</title>
     <style type="text/css">
         body 
         {
@@ -59,22 +59,45 @@
                                                     <a href="checkout.jsp">View Cart</a>
                                             </li>
                                             <%
-                                            String userName = (String) session.getAttribute("authenticatedUser");
-                                            if(userName != null){
-                                                    out.println("<li><a href='listorder.jsp'>Past Orders</a></li>");
-                                                    out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
-                                                    out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
-                                            } else {
-                                                    out.println("<li><a href='login.jsp'>Sign In</a></li>");
-                                                    out.println("<li><a href='register.jsp'>Register</a></li>");
-    
-                                            }
-                                            %>
+                                String userName = (String) session.getAttribute("authenticatedUser");
+                                if(userName != null){
+                                        out.println("<li><a href='listorder.jsp'>Past Orders</a></li>");
+                                        %>
+                                        <div style="padding-left: 325px;">
+                                                <%
+                                        out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
+                                        out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
+                                        %>
+                                        </div>
+                                        <%
+                                } else {
+                                        %>
+                                        <div style="padding-left: 450px;">
+                                                <%
+                                        out.println("<li><a href='register.jsp'>Register</a></li>");
+                                        out.println("<li><a href='login.jsp'>Sign In</a></li>");
+                                        %>
+                                </div>
+                                <%
+                                }
+                                %>
                                     </ul>
                             </nav>
                     </header>
                     <form align="center">
                         <img height=150px width=150px src="img/304logo-nobg.png" alt="logo">
+        </form>
+        <h2 align="center">Reset your password</h2>
+        <form align="center" name="AccountCreation" method=post action="login.jsp">
+                <br>
+                <table style="overflow:auto" align="center">
+                    <tr>
+                        <td><div align="left"><font face="serif" size="3.5">Email:</font></div></td>
+                        <td><input placeholder="Email" type="email" name="Email" size=15 maxlength="100"></td>
+                    </tr>
+                </table>
+            </br>
+            <input class="submit" type="submit" name="Submit2" value="Send reset email">
         </form>
                 </body>
 </html>

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Sierra's Grocery Order List</title>
+<title>Order List</title>
 <style type="text/css">
 	body 
 	{
@@ -35,8 +35,28 @@
 			color: white;
 			text-decoration: none;
 	}
-	body h1 {
+	body h2 {
 		margin-top: -20px;
+	}
+	.big{
+		align-items:center;
+		font-family: serif;
+		border-color: dodgerblue;
+		padding-top: 5px;
+		background-color: white;
+		border-radius: 5px;
+		width: 500px;
+		box-shadow: 0 0 10px 0 dodgerblue;
+	}
+	.small{
+		font-family: serif;
+		border-color: dodgerblue;
+		padding-bottom: 10px;
+		padding-top: 5px;
+		background-color: white;
+		border-radius: 5px;
+		width: 500px;
+		box-shadow: 0 0 5px 0 dodgerblue;
 	}
 </style>
 </head>
@@ -57,12 +77,23 @@
                                 String userName = (String) session.getAttribute("authenticatedUser");
                                 if(userName != null){
                                         out.println("<li><a href='listorder.jsp'>Past Orders</a></li>");
+                                        %>
+                                        <div style="padding-left: 325px;">
+                                                <%
                                         out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
                                         out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
+                                        %>
+                                        </div>
+                                        <%
                                 } else {
-                                        out.println("<li><a href='login.jsp'>Sign In</a></li>");
+                                        %>
+                                        <div style="padding-left: 450px;">
+                                                <%
                                         out.println("<li><a href='register.jsp'>Register</a></li>");
-
+                                        out.println("<li><a href='login.jsp'>Sign In</a></li>");
+                                        %>
+                                </div>
+                                <%
                                 }
                                 %>
 					</ul>
@@ -72,7 +103,7 @@
 		<img height=150px width=150px src="img/304logo-nobg.png" alt="logo">
 </form>
 
-<h1 align='center'>Order List</h1>
+<h2 align='center'>Order List</h2>
 
 <%
 //Note: Forces loading of SQL Server driver
@@ -104,7 +135,7 @@ try
 	sql1 = "SELECT orderId, customer.customerId, firstName, lastName, totalAmount" + " FROM ordersummary JOIN customer ON ordersummary.customerId=customer.customerId";
 	PreparedStatement pstmt1 = con.prepareStatement(sql1);
 	ResultSet rst1 = pstmt1.executeQuery();
-	out.println("<table align='center' border='2px' border-style='ridge'><tr><td class='tableheader'><b>Order ID</b></td><td class='tableheader'><b>Customer ID</b></td><td class='tableheader'><b>Customer Name</b></td><td class='tableheader'><b>Total Amount</b></td></tr>");
+	out.println("<table class='big' align='center'><tr align='center'><td class='tableheader'><b>Order ID</b></td><td class='tableheader'><b>Customer ID</b></td><td class='tableheader'><b>Customer Name</b></td><td class='tableheader'><b>Total Amount</b></td></tr>");
 	while(rst1.next())
 	{
 		int ordID = rst1.getInt("orderId");
@@ -115,9 +146,9 @@ try
 		double total = rst1.getDouble("totalAmount");
 
 
-		out.println("<tr><td>" + ordID + "</td><td>" + custID + "</td><td>" + custName + "</td><td>" + currFormat.format(total) + "</td></tr>");
-		out.println("<tr><td colspan=5 align='right'><table border='2px' border-style='ridge'>");
-		out.println("<tr><td class='tableheader'><b>Product Id</b></td><td class='tableheader'><b>Quantity</b></td><td class='tableheader'><b>Price</b></td></tr>");
+		out.println("<tr align='center'><td>" + ordID + "</td><td>" + custID + "</td><td>" + custName + "</td><td>" + currFormat.format(total) + "</td></tr>");
+		out.println("<tr align='center'><td colspan=5 align='right'><table align='left' class='small'>");
+		out.println("<tr align='center'><td class='tableheader'><b>Product Id</b></td><td class='tableheader'><b>Quantity</b></td><td class='tableheader'><b>Price</b></td></tr>");
 		sql2 = "SELECT productId, quantity, price FROM orderproduct WHERE orderId = " + ordID;
 		PreparedStatement pstmt2 = con.prepareStatement(sql2);
 		ResultSet rst2 = pstmt2.executeQuery();

@@ -70,12 +70,23 @@
                                 String userName = (String) session.getAttribute("authenticatedUser");
                                 if(userName != null){
                                         out.println("<li><a href='listorder.jsp'>Past Orders</a></li>");
+                                        %>
+                                        <div style="padding-left: 325px;">
+                                                <%
                                         out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
                                         out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
+                                        %>
+                                        </div>
+                                        <%
                                 } else {
-                                        out.println("<li><a href='login.jsp'>Sign In</a></li>");
+                                        %>
+                                        <div style="padding-left: 450px;">
+                                                <%
                                         out.println("<li><a href='register.jsp'>Register</a></li>");
-
+                                        out.println("<li><a href='login.jsp'>Sign In</a></li>");
+                                        %>
+                                </div>
+                                <%
                                 }
                                 %>
                     </ul>
@@ -96,9 +107,9 @@ HashMap<String, ArrayList<Object>> productList = (HashMap<String, ArrayList<Obje
 
 // Determine if valid customer id was entered
 if(custId == null || custId.equals(""))
-	out.println("<h1>Invalid customer id, try again.</h1>");
+	out.println("<h2 align='center'>Invalid customer id, try again.</h2>");
 else if (productList == null)
-	out.println("<h1>There is nothing in your cart.</h1>");
+	out.println("<h2 align='center'>There is nothing in your cart.</h2>");
 else
 {
 	int num;
@@ -108,7 +119,7 @@ else
 	}
 	catch(Exception e)
 	{
-		out.println("<h1>Invalid customer id</h1>");
+		out.println("<h2 align='center'>Invalid customer id</h2>");
 		return;
 	}
 	// Make connection
@@ -128,7 +139,7 @@ else
 		String name = "";
 		if(!validId.next())
 		{
-			out.println("<h1>Invalid customer id</h1>");
+			out.println("<h2 align='center'>Invalid customer id</h2>");
 		}
 		else
 		{
@@ -145,7 +156,7 @@ else
 			keys.next();
 			orderId = keys.getInt(1);
 
-			out.println("<h2>Your order</h2>");
+			out.println("<h2 align='center'>Your order</h2>");
 			out.println("<table><tr><th>Product Id</th><th>Product Name</th><th>Quantity</th><th>Price</th><th>Subtotal</th></tr>");
 			double total = 0;
 			Iterator<Map.Entry<String, ArrayList<Object>>> iterator = productList.entrySet().iterator();

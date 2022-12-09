@@ -55,6 +55,9 @@
 	body h1 {
 		margin-top: 50px;
 	}
+	table {
+		width: 1000px;
+	}
 </style>
 </head>
 <body background="img/blue-abstract-gradient-wave-vector-background_53876-111548.jpg.webp">
@@ -69,22 +72,30 @@
 			</li>
 			<li>
 				<a href="showcart.jsp">View Cart</a>
-			</li>
-			<li>
-				<a href="listorder.jsp">Past Orders</a>
-			</li>                                
+			</li>                               
 			<%
-			String userName = (String) session.getAttribute("authenticatedUser");
-			if(userName != null){
-				out.println("<li><a href='listorder.jsp'>Past Orders</a></li>");
-				out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
-				out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
-			} else {
-				out.println("<li><a href='login.jsp'>Sign In</a></li>");
-				out.println("<li><a href='register.jsp'>Register</a></li>");
-
-			}
-			%>
+                                String userName = (String) session.getAttribute("authenticatedUser");
+                                if(userName != null){
+                                        out.println("<li><a href='listorder.jsp'>Past Orders</a></li>");
+                                        %>
+                                        <div style="padding-left: 325px;">
+                                                <%
+                                        out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
+                                        out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
+                                        %>
+                                        </div>
+                                        <%
+                                } else {
+                                        %>
+                                        <div style="padding-left: 450px;">
+                                                <%
+                                        out.println("<li><a href='register.jsp'>Register</a></li>");
+                                        out.println("<li><a href='login.jsp'>Sign In</a></li>");
+                                        %>
+                                </div>
+                                <%
+                                }
+                                %>
 		</ul>
 	</nav>
 </header>
@@ -96,14 +107,14 @@
 @SuppressWarnings({"unchecked"})
 HashMap<String, ArrayList<Object>> productList = (HashMap<String, ArrayList<Object>>) session.getAttribute("productList");
 if (productList == null)
-{	out.println("<H1 align='center'>Your shopping cart is empty!</H1>");
+{	out.println("<h2 align='center'>Your shopping cart is empty!</h2>");
 	productList = new HashMap<String, ArrayList<Object>>();
 }
 else
 {
 	NumberFormat currFormat = NumberFormat.getCurrencyInstance();
-	out.println("<h1>Your Shopping Cart</h1>");
-	out.print("<table><tr><th>Product Id</th><th>Product Name</th><th>Quantity</th>");
+	out.println("<h2>Your Shopping Cart</h2>");
+	out.print("<table class='big'><tr><th>Product Id</th><th>Product Name</th><th>Quantity</th>");
 	out.println("<th>Price</th><th>Subtotal</th></tr>");
 	double total = 0;
 	Iterator<Map.Entry<String, ArrayList<Object>>> iterator = productList.entrySet().iterator();
@@ -151,10 +162,9 @@ else
 			+"<td align=\"right\">"+currFormat.format(total)+"</td></tr>");
 	out.println("</table>");
 	out.println("</form>");
-	out.println(request.getParameter("newqtytext"));
 	out.println("<h2><a href=\"checkout.jsp\">Check Out</a></h2>");
+	out.println("<h2 align='center'><a href=\"checkout.jsp\">Check Out</a></h2><h2 align=\"center\"><a href=\"listprod.jsp\">Continue Shopping</a></h2>");
 }
 %>
-<h2 align="center"><a href="listprod.jsp">Continue Shopping</a></h2>
 </body>
 </html> 

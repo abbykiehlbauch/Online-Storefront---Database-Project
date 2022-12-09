@@ -4,48 +4,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>YOUR NAME Grocery</title>
-<style type="text/css">
-	body 
-	{
-			height: 125vh;
-			margin-top: 25px;
-			padding: 20px;
-			background-size: cover;
-			font-family: serif;
-	}
-	header {
-			background-color:dodgerblue;
-			position: fixed;
-			left: 0;
-			right: 0;
-			top: 10px;
-			height: 40px;
-			display: flex;
-			align-items: center;
-			box-shadow: 0 0 25px 0 black;
-	}
-	header * {
-			display: inline;
-	}
-	header li {
-			margin: 29px;
-	}
-	header li a{
-			color: white;
-			text-decoration: none;
-	}
-	table {
-		border: 4px;
-		color: black;
-		border-style: inset;
-		border-radius: 20px;
-	}
-	body h1 {
-        margin-top: -20px;
+	<title>Products</title>
+	<style type="text/css">
+		body 
+		{
+				height: 125vh;
+				margin-top: 25px;
+				padding: 20px;
+				background-size: cover;
+				font-family: serif;
+		}
+		header {
+				background-color:dodgerblue;
+				position: fixed;
+				left: 0;
+				right: 0;
+				top: 10px;
+				height: 40px;
+				display: flex;
+				align-items: center;
+				box-shadow: 0 0 25px 0 black;
+		}
+		header * {
+				display: inline;
+		}
+		header li {
+				margin: 29px;
+		}
+		header li a{
+				color: white;
+				text-decoration: none;
+		}
+		table {
+			border: 4px;
+			color: black;
+			border-style: inset;
+			border-radius: 20px;
+		}
+		body h2 {
+			margin-top: -20px;
 
-    }
-</style>
+		}
+	</style>
+	<script>
+		function searchdata(a)
+		{
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange=function()
+			{
+				document.getElementById("res").innerHTML= xmlhttp.responseText;
+			}
+			xmlhttp.open("POST", "testdisplay.jsp?q="+a, true);
+			xmlhttp.send();
+		}
+
+	</script>
 </head>
 <body background="img/blue-abstract-gradient-wave-vector-background_53876-111548.jpg.webp">
 	<header>
@@ -64,12 +77,23 @@
                                 String userName = (String) session.getAttribute("authenticatedUser");
                                 if(userName != null){
                                         out.println("<li><a href='listorder.jsp'>Past Orders</a></li>");
+                                        %>
+                                        <div style="padding-left: 325px;">
+                                                <%
                                         out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
                                         out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
+                                        %>
+                                        </div>
+                                        <%
                                 } else {
-                                        out.println("<li><a href='login.jsp'>Sign In</a></li>");
+                                        %>
+                                        <div style="padding-left: 450px;">
+                                                <%
                                         out.println("<li><a href='register.jsp'>Register</a></li>");
-
+                                        out.println("<li><a href='login.jsp'>Sign In</a></li>");
+                                        %>
+                                </div>
+                                <%
                                 }
                                 %>
 					</ul>
@@ -77,15 +101,32 @@
 	</header>
 	<form align="center">
 		<img height=150px width=150px src="img/304logo-nobg.png" alt="logo">
-</form>
-<h1 align='center'>Search for the products you want to buy:</h1>
+	</form>
+	<h2 align='center'>Search for the products you want to buy:</h2>
 
-<form align='center' method="get" action="listprod.jsp">
-<input type="text" name="productName" size="50">
-<input type="submit" value="Submit"><input type="reset" value="Reset"> (Leave blank for all products)
 
+	<form align='center' method="get" action="testdisplay.jsp">
+		<input type="text" name="q" size="50" onkeyup="searchdata(this.value)"/>
+		<input type="submit" value="Submit"><input type="reset" value="Reset">
+	
+		<br>
+		<label for="categories">Choose a category:</label>
+		<select name="categoriesDropUp" id="category-spinner">
+		<option value="none" selected disabled hidden>Select an Option</option>
+		<option value="1">Extraversion</option>
+		<option value="2">Agreeableness</option>
+		<option value="3">Openness</option>
+		<option value="4">Conscientiousness</option>
+		<option value="5">Neuroticism</option>
+		</select>
+	
+		<br>
+		<div id="res"></div>
+	</form>
+</body>
 <h3>Need some inspiration? Check out your recommended products <a href = "prodRecs.jsp">here</a></h3>
 
+<!-- 
 <% // Get product name to search for
 
 String name = request.getParameter("productName");
@@ -114,17 +155,38 @@ Connection con = DriverManager.getConnection(url, uid, pw);
 String SQL = "SELECT categoryId, categoryName FROM category";
 PreparedStatement pstmtC = con.prepareStatement(SQL);
 ResultSet categories = pstmtC.executeQuery();
-out.println("<br><label for=\"categories\">Choose a category:</label>");
-out.println("<select name=\"categoriesDropDown\" id=\"category-spinner\">");
-out.println("<option value=\"none\" selected disabled hidden>Select an Option</option>");
+// out.println("<br><label for=\"categories\">Choose a category:</label>");
+// out.println("<select name=\"categoriesDropDown\" id=\"category-spinner\">");
+// out.println("<option value=\"none\" selected disabled hidden>Select an Option</option>");
 
-while(categories.next())
-{
-	out.println("<option value=\"" + categories.getInt("categoryId") + "\">" + categories.getString("CategoryName") + "</option>");
-}
+// while(categories.next())
+// {
+// 	out.println("<option value=\"" + categories.getInt("categoryId") + "\">" + categories.getString("CategoryName") + "</option>");
+// }
 out.println("</select>");
 out.println("</form>");
 String catId = request.getParameter("categoriesDropDown");
+
+// get userid for product page (review)
+String sqll2;
+if(userName != null)
+{
+	sqll2 = "SELECT customerId FROM customer WHERE userid = '"+ userName + "'"; 
+}
+else 
+{
+	sqll2 = "SELECT customerId FROM customer WHERE userid = 'arnold'";
+}
+PreparedStatement pstmt2 = con.prepareStatement(sqll2);
+ResultSet rst2 = pstmt2.executeQuery();
+int custidd;
+if(rst2.next() == true)
+{
+	custidd = rst2.getInt("customerId");
+	// out.println("<h2>'"+custidd+"'</h2>");
+}
+custidd = rst2.getInt("customerId");
+
 
 String sql;
 if(name != null && catId !=null)
@@ -158,15 +220,16 @@ while(rst.next())
 	String prodname = rst.getString("productName");
 	double prodprice = rst.getDouble("productPrice");
 	int categoryId = rst.getInt("categoryId");
+	custidd = rst2.getInt("customerId");
 	String categoryName = rst.getString("categoryName");
 	out.print("<tr><td>"+"<a href=\"addcart.jsp?id=" + prodid + "&name=" + prodname + "&price=" + prodprice + "\"" + ">Add to cart</a>" + "</td>");
-	out.print("<td>"+" " + "<a href=\"product.jsp?id=" + prodid + "&name=" + prodname + "\"" + "> "+prodname+" </a>"+ "</td>");
+	out.print("<td>"+" " + "<a href=\"product.jsp?id=" + prodid + "&name=" + prodname + "&userid=" + custidd + "\"" + "> "+prodname+" </a>" + "</td>");
 	out.print("<td>" + categoryName + "</td>");
 	out.print("<td>"+" "+ currFormat.format(rst.getDouble("productPrice")) + "</td></tr>");
 }
 out.print("</table>");
 // Close connection
 con.close();
-%>
+%> -->
 </body>
 </html>

@@ -64,17 +64,28 @@
                         <a href="listorder.jsp">Past Orders</a>
                     </li>                                
                     <%
-                    String userName = (String) session.getAttribute("authenticatedUser");
-                    if(userName != null){
-                        out.println("<li><a href='listorder.jsp'>Past Orders</a></li>");
-                        out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
-                        out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
-                    } else {
-                        out.println("<li><a href='login.jsp'>Sign In</a></li>");
-                        out.println("<li><a href='register.jsp'>Register</a></li>");
-
-                    }
-                    %>
+                                String userName = (String) session.getAttribute("authenticatedUser");
+                                if(userName != null){
+                                        out.println("<li><a href='listorder.jsp'>Past Orders</a></li>");
+                                        %>
+                                        <div style="padding-left: 325px;">
+                                                <%
+                                        out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
+                                        out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
+                                        %>
+                                        </div>
+                                        <%
+                                } else {
+                                        %>
+                                        <div style="padding-left: 450px;">
+                                                <%
+                                        out.println("<li><a href='register.jsp'>Register</a></li>");
+                                        out.println("<li><a href='login.jsp'>Sign In</a></li>");
+                                        %>
+                                </div>
+                                <%
+                                }
+                                %>
                 </ul>
             </nav>
         </header>
@@ -134,51 +145,10 @@
             <input class="submit" type="submit" name="Submit2" value="Create Account">
         </form>
         <%
-        session = request.getSession(true);
-
-        String first = request.getParameter("firstName");
-        String last = request.getParameter("lastName");
-        String email = request.getParameter("email");
-        String phone = request.getParameter("phonenum");
-        String addy = request.getParameter("address");
-        String city = request.getParameter("city");
-        String state = request.getParameter("state");
-        String postal = request.getParameter("postalCode");
-        String country = request.getParameter("country");
-        String userid = request.getParameter("userid");
-        String password = request.getParameter("password");
-
-        try 
-        {
-            getConnection();
-            String SQL = "INSERT INTO customer(firstName, lastName, email, phonenum, address, city, state, postalCode, country, userid, password VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-            PreparedStatement pstmt = con.prepareStatement(SQL);
-            if(first != null && last != null && email != null && phone != null && addy != null && city != null && state != null && postal != null && country != null && userid != null && password != null){
-                pstmt.setString(1, first);
-                pstmt.setString(2, last);
-                pstmt.setString(3, email);
-                pstmt.setString(4, phone);
-                pstmt.setString(5, addy);
-                pstmt.setString(6, city);                        
-                pstmt.setString(7, state);
-                pstmt.setString(8, postal);
-                pstmt.setString(9, country);
-                pstmt.setString(10, userid);
-                pstmt.setString(11, password);
-                pstmt.executeUpdate();
-                response.sendRedirect("login.jsp");
-            }
-        } catch (SQLException ex){
-            out.println(ex);
-        }
-        finally {
-			try
-		    {
-		        closeConnection();
-	        } catch (SQLException e) {
-                out.println(e);
-		    }
-        }
+        // Print prior error register message if present
+        //out.println(session.getAttribute("test").toString());
+        if (session.getAttribute("registerMessage") != null)
+	    out.println("<p>"+session.getAttribute("registerMessage").toString()+"</p>");
         %>
     </body>
 </html>

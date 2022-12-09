@@ -8,8 +8,11 @@
         <title>nulllllll</title>
     </head>
     <body background="img/blue-abstract-gradient-wave-vector-background_53876-111548.jpg.webp">
-        <% 
+        <% // Get product name to search for
+
         String name = request.getParameter("q");
+                
+        //Note: Forces loading of SQL Server driver
         try
         {	
             // Load driver class
@@ -33,17 +36,39 @@
         String SQL = "SELECT categoryId, categoryName FROM category";
         PreparedStatement pstmtC = con.prepareStatement(SQL);
         ResultSet categories = pstmtC.executeQuery();
-        out.println("<br><label for=\"categories\">Choose a category:</label>");
-        out.println("<select name=\"categoriesDropDown\" id=\"category-spinner\">");
-        out.println("<option value=\"none\" selected disabled hidden>Select an Option</option>");
+        // out.println("<br><label for=\"categories\">Choose a category:</label>");
+        // out.println("<select name=\"categoriesDropDown\" id=\"category-spinner\">");
+        // out.println("<option value=\"none\" selected disabled hidden>Select an Option</option>");
 
-        while(categories.next())
+        // while(categories.next())
+        // {
+        // 	out.println("<option value=\"" + categories.getInt("categoryId") + "\">" + categories.getString("CategoryName") + "</option>");
+        // }
+        // out.println("</select>");
+        // out.println("</form>");
+        String catId = request.getParameter("categoriesDropUp");
+
+        // get userid for product page (review)
+        String userName = (String) session.getAttribute("authenticatedUser");
+        String sqll2;
+        if(userName != null)
         {
-            out.println("<option value=\"" + categories.getInt("categoryId") + "\">" + categories.getString("CategoryName") + "</option>");
+            sqll2 = "SELECT customerId FROM customer WHERE userid = '"+ userName + "'"; 
         }
-        out.println("</select>");
-        out.println("</form>");
-        String catId = request.getParameter("categoriesDropDown");
+        else 
+        {
+            sqll2 = "SELECT customerId FROM customer WHERE userid = 'arnold'";
+        }
+        PreparedStatement pstmt2 = con.prepareStatement(sqll2);
+        ResultSet rst2 = pstmt2.executeQuery();
+        int custidd;
+        if(rst2.next() == true)
+        {
+            custidd = rst2.getInt("customerId");
+            // out.println("<h2>'"+custidd+"'</h2>");
+        }
+        custidd = rst2.getInt("customerId");
+
 
         String sql;
         if(name != null && catId !=null)
@@ -68,7 +93,7 @@
         PreparedStatement pstmt = con.prepareStatement(sql);
         ResultSet rst = pstmt.executeQuery();
         // Print out the ResultSet
-        out.print("<table border='2px' border-style='ridge'>");
+        out.print("<table align='center'>");
         out.print("<tr><th></th><th>Product Name</th><th>Category</th><th>Price</th></tr>" + "<br>");
         while(rst.next())
         {
@@ -77,9 +102,10 @@
             String prodname = rst.getString("productName");
             double prodprice = rst.getDouble("productPrice");
             int categoryId = rst.getInt("categoryId");
+            custidd = rst2.getInt("customerId");
             String categoryName = rst.getString("categoryName");
             out.print("<tr><td>"+"<a href=\"addcart.jsp?id=" + prodid + "&name=" + prodname + "&price=" + prodprice + "\"" + ">Add to cart</a>" + "</td>");
-            out.print("<td>"+" " + "<a href=\"product.jsp?id=" + prodid + "&name=" + prodname + "\"" + "> "+prodname+" </a>"+ "</td>");
+            out.print("<td>"+" " + "<a href=\"product.jsp?id=" + prodid + "&name=" + prodname + "&userid=" + custidd + "\"" + "> "+prodname+" </a>" + "</td>");
             out.print("<td>" + categoryName + "</td>");
             out.print("<td>"+" "+ currFormat.format(rst.getDouble("productPrice")) + "</td></tr>");
         }
