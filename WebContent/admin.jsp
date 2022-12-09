@@ -90,6 +90,63 @@ try{
 
     }
 
+    //to update a product
+    out.println("<form method=\"get\" action=\"admin.jsp\">");
+    out.println("</table>");
+    out.println("<h3>Update product</h3>");
+    out.println("<label for=\"productName\">Product Name: </label> <input type=\"text\" name =\"productName\" size = \"10\">");
+    out.println("<label for=\"productPrice\">Price: </label> <input type=\"text\" name =\"productPrice\" size = \"10\">");
+    out.println("</form>");
+    try{
+        //get parameters to UPDATE to database
+        String productName = request.getParameter("productName");
+        double productPrice = Float.parseFloat(request.getParameter("productPrice"));
+
+        //validate data entered
+        //check if null or empty string (product name and price)
+        if(productName == null || productName == "")
+            throw new NumberFormatException();
+
+        String SQL4 = "INSERT INTO product(productName, productPrice) VALUES (?, ?)";
+        PreparedStatement insertProduct = con.prepareStatement(SQL4);
+        insertProduct.setString(1, productName);
+        insertProduct.setDouble(2, productPrice);
+        int insertedProduct = insertProduct.executeUpdate();
+        out.println("<h4>Your product has been updated successfully</h4>"); 
+        
+    }catch(NumberFormatException e){
+        out.println("<h4>Please enter the appropriate data types (Text for the product name and a number for the price)</h4>");
+    }
+
+    //to delete a product
+    out.println("<form method=\"get\" action=\"admin.jsp\">");
+    out.println("</table>");
+    out.println("<h3>Delete product</h3>");
+    out.println("<label for=\"productName\">Product Name: </label> <input type=\"text\" name =\"productName\" size = \"10\">");
+    out.println("</form>");
+    try{
+        //get parameters to DELETE to database
+        String productName = request.getParameter("productName");
+
+        //validate data entered
+        //check if null or empty string (product name and price)
+        if(productName == null || productName == "")
+            throw new NumberFormatException();
+
+        String SQL6 = "DELETE FROM Product WHERE productName = ?";
+        PreparedStatement statement1 = con.prepareStatement(SQL6);
+        statement1.setString(1, productName);
+        int rowsDeleted = statement1.executeUpdate();
+        if (rowsDeleted > 0)
+        {
+            out.println("<h4>Your product has been deleted successfully</h4>");
+        }
+       
+        
+    }catch(NumberFormatException e){
+        out.println("<h4>Please enter the appropriate data types (Text for the product name)</h4>");
+    }
+
 }
 catch (SQLException ex) { // Close connection with try catch
     out.println(ex); 
