@@ -104,6 +104,7 @@
 	</form>
 	<h2 align='center'>Search for the products you want to buy:</h2>
 
+
 	<form align='center' method="get" action="testdisplay.jsp">
 		<input type="text" name="q" size="50" onkeyup="searchdata(this.value)"/>
 		<input type="submit" value="Submit"><input type="reset" value="Reset">
@@ -123,6 +124,7 @@
 		<div id="res"></div>
 	</form>
 </body>
+<h3>Need some inspiration? Check out your recommended products <a href = "prodRecs.jsp">here</a></h3>
 
 <!-- 
 <% // Get product name to search for
