@@ -52,10 +52,12 @@
                                 <li>
                                         <a href="showcart.jsp">View Cart</a>
                                 </li>
+                                <li>
+                                        <a href="adminIndex.jsp">Admin Homepage</a>
+                                </li>
                                 <%
                                 String userName = (String) session.getAttribute("authenticatedUser");
                                 if(userName != null){
-                                        out.println("<li><a href='listorder.jsp'>Past Orders</a></li>");
                                         %>
                                         <div style="padding-left: 325px;">
                                                 <%
