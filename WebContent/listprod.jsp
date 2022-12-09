@@ -71,7 +71,7 @@
 									<a href="listprod.jsp">Products</a>
 							</li>
 							<li>
-									<a href="checkout.jsp">View Cart</a>
+									<a href="showcart.jsp">View Cart</a>
 							</li>
 							<%
                                 String userName = (String) session.getAttribute("authenticatedUser");
@@ -106,7 +106,7 @@
 
 
 	<form align='center' method="get" action="testdisplay.jsp">
-		<input type="text" name="q" size="50" onkeyup="searchdata(this.value)"/>
+		<input placeholder="type here for results to show up!" type="text" name="q" size="50" onkeyup="searchdata(this.value)"/>
 		<input type="submit" value="Submit"><input type="reset" value="Reset">
 	
 		<br>
