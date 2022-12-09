@@ -55,7 +55,7 @@
 							<%
                                 String userName = (String) session.getAttribute("authenticatedUser");
                                 if(userName != null){
-                                        out.println("<li><a href='listorder.jsp'>Past Orders</a></li>");
+                                        out.println("<li><a href='adminIndex.jsp'>Admin Homepage</a></li>");
                                         out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
                                         out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
                                 } else {

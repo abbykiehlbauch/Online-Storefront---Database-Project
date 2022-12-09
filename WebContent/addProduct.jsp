@@ -18,8 +18,6 @@ NumberFormat currFormat = NumberFormat.getCurrencyInstance(Locale.US);
 
 try{		
     getConnectionForOrders();
-
-
     //create form to add a product
     out.println("<form method=\"get\" action=\"admin.jsp\">");
     out.println("</table>");
