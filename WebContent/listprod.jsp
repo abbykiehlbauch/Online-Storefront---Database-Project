@@ -84,6 +84,7 @@
 <input type="text" name="productName" size="50">
 <input type="submit" value="Submit"><input type="reset" value="Reset"> (Leave blank for all products)
 
+<h3>Need some inspiration? Check out your recommended products <a href = "prodRecs.jsp">here</a></h3>
 
 <% // Get product name to search for
 
