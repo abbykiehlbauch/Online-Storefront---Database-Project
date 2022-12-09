@@ -52,15 +52,13 @@
                                 <li>
                                         <a href="showcart.jsp">View Cart</a>
                                 </li>
-                                <li>
-                                        <a href="adminIndex.jsp">Admin Homepage</a>
-                                </li>
                                 <%
                                 String userName = (String) session.getAttribute("authenticatedUser");
                                 if(userName != null){
                                         %>
                                         <div style="padding-left: 325px;">
                                                 <%
+                                        out.println("<li><a href='adminIndex.jsp'>Admin Homepage</a></li>");
                                         out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
                                         out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
                                         %>
