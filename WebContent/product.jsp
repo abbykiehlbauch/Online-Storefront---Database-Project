@@ -51,6 +51,10 @@
 	body h1 {
 		margin-top: -20px;
 	}
+    h2 {text-align: center;}
+    h3 {text-align: center;}
+    h4 {text-align: center;}
+    p {text-align: center;}
 </style>
 </head>
 <body background="img/blue-abstract-gradient-wave-vector-background_53876-111548.jpg.webp">
@@ -95,9 +99,9 @@
     </header>
 	<form align="center">
 		<img height=150px width=150px src="img/304logo-nobg.png" alt="logo">
-</form>
+    </form>
 	
-<%@ include file="header.jsp" %>
+    <%@ include file="header.jsp" %>
 
     <%
     // Get product name to search for
@@ -139,7 +143,7 @@
         // TODO: If there is a productImageURL, display using IMG tag
         imageUrl = rst.getString("productImageURL");
         if(imageUrl != null)
-            out.println("<img src=\"" + imageUrl + "\">");
+            out.println("<p><img height=250px src=\"" + imageUrl + "\"></p>");
     }
 
     // TODO: Retrieve any image stored directly in database. Note: Call displayImage.jsp with product id as parameter.
@@ -168,11 +172,11 @@
     <form align="center" name="NewReview" method=post>
         <table style="overflow:auto" align="center">
             <tr>
-                <td><div align="left"><font face="serif" size="3.5">Rate (1-5):</font></div></td>
+                <td><div align="center"><font face="serif" size="3.5">Rate (1-5):</font></div></td>
                 <td><input placeholder="(5 is Best)" type="text" name="rating"  size="7" maxlength="1"></td>
             </tr>
             <tr>
-                <td><div align="left"><font face="serif" size="3.5">Comment:</font></div></td>
+                <td><div align="center"><font face="serif" size="3.5">Comment:</font></div></td>
                 <td><input placeholder="Explain the Rating" type="text" name="comment" size="50" maxlength="1000"></td>
             </tr>
         </table>
@@ -181,6 +185,7 @@
     </form>
     <%
     // session = request.getSession(true);
+    out.println("<h3>Product Reviews:</h3>");
 
     String rate = request.getParameter("rating");
     String comment = request.getParameter("comment");

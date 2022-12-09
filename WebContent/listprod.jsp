@@ -119,14 +119,16 @@
 		<option value="4">Conscientiousness</option>
 		<option value="5">Neuroticism</option>
 		</select>
-	
-		<br>
+		
+		<h3>Need some inspiration? Check out your recommended products <a href = "prodRecs.jsp">here</a></h3>	
+
 		<div id="res"></div>
 	</form>
 </body>
-<h3>Need some inspiration? Check out your recommended products <a href = "prodRecs.jsp">here</a></h3>
 
 
+
+<!-- 
 <% // Get product name to search for
 
 String name = request.getParameter("productName");
@@ -230,6 +232,6 @@ while(rst.next())
 out.print("</table>");
 // Close connection
 con.close();
-%> 
+%>  -->
 </body>
 </html>
