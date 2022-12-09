@@ -50,7 +50,7 @@
 									<a href="listprod.jsp">Products</a>
 							</li>
 							<li>
-									<a href="checkout.jsp">View Cart</a>
+									<a href="showcart.jsp">View Cart</a>
 							</li>
 							<%
                                 String userName = (String) session.getAttribute("authenticatedUser");
