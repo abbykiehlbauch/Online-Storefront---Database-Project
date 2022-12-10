@@ -163,7 +163,9 @@
 
     // TODO: Add links to Add to Cart and Continue Shopping
 
-    out.println("<h3><a href=\"addcart.jsp?id=" + prodid + "&name=" + name + "&price=" + rst.getString("productPrice") + "\"" + ">Add to cart</a></h3>");
+    //out.println("<h3><a href=\"addcart.jsp?id=" + prodid + "&name=" + name + "&price=" + rst.getString("productPrice") + "\"" + ">Add to cart</a></h3>");
+    out.println("<h3><a href=\"addcart.jsp?id=" + prodid + "&name=" + name + "&price=" + rst.getString("productPrice") + "&newqty=1" + "\"" + ">Add to cart</a></h3>");
+
     out.println("<h3><a href='listprod.jsp'>Continue Shopping</a></h3>");
 
     %>
