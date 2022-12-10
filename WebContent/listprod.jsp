@@ -5,47 +5,53 @@
 <html>
 <head>
 	<title>Products</title>
-	<style type="text/css">
-		body 
-		{
-				height: 125vh;
-				margin-top: 25px;
-				padding: 20px;
-				background-size: cover;
-				font-family: serif;
-		}
-		header {
-				background-color:dodgerblue;
-				position: fixed;
-				left: 0;
-				right: 0;
-				top: 10px;
-				height: 40px;
-				display: flex;
-				align-items: center;
-				box-shadow: 0 0 25px 0 black;
-		}
-		header * {
-				display: inline;
-		}
-		header li {
-				margin: 29px;
-		}
-		header li a{
-				color: white;
-				text-decoration: none;
-		}
-		table {
-			border: 4px;
-			color: black;
-			border-style: inset;
-			border-radius: 20px;
-		}
-		body h2 {
-			margin-top: -20px;
-
-		}
-	</style>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        body 
+        {
+                height: 125vh;
+                margin-top: 25px;
+                padding: 20px;
+                background-size: cover;
+                font-family: serif;
+        }
+        header {
+                background-color:dodgerblue;
+                position: fixed;
+                left: 0;
+                right: 0;
+                top: 10px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                box-shadow: 0 0 25px 0 black;
+        }
+        header * {
+                display: inline;
+        }
+        header li {
+                margin: 29px;
+        }
+        header li a{
+                color: white;
+                text-decoration: none;
+        }
+        input {
+            padding:10px;
+            border:0;
+            box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+            border-radius: 10px;
+            align-items: center;
+            }
+        body h1 {
+            margin-top: -20px;
+        }
+        h2 {text-align: center;}
+        h3 {text-align: center;}
+        h4 {text-align: center;}
+        p {text-align: center;}
+    </style>
 	<script>
 		function searchdata(a)
 		{

@@ -158,7 +158,7 @@ INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Chee
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Leadership Skills',1,'For those people who are sick of the lack of coordination in your group projects.',25.00);
 
 -- category 2 : Agreeableness
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Trustworthiness',2,'Want improve your trustworthiness? Look no further, this is the solution to all your problems.',30.00);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Trustworthiness',2,'Want to improve your trustworthiness? Look no further, this is the solution to all your problems.',30.00);
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Altruism',2,'Try our altruism juice if your looking for that extra selflessness character.',40.00);
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Kindness',2,'Be the next Mother Teresa with our kindness pills.',97.00);
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Affection',2,'Feel like you are getting irritated by everyone around you? Use the affection boost to help you balance out your irritability.',31.00);
