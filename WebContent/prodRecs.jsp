@@ -154,8 +154,9 @@ if(catId != null)
 			double prodprice = rst.getDouble("productPrice");
 			int categoryId = rst.getInt("categoryId");
 			String categoryName = rst.getString("categoryName");
-			out.print("<tr><td>"+"<a href=\"addcart.jsp?id=" + prodid + "&name=" + prodname + "&price=" + prodprice + "\"" + ">Add to cart</a>" + "</td>");
-			out.print("<td>"+" " + "<a href=\"product.jsp?id=" + prodid + "&name=" + prodname + "\"" + "> "+prodname+" </a>"+ "</td>");
+			out.print("<tr><td>"+"<a href=\"addcart.jsp?id=" + prodid + "&name=" + prodname + "&price=" + rst.getString("productPrice") + "&newqty=1" + "\"" + ">Add to cart</a>" + "</td>");
+			
+				out.print("<td>"+" " + "<a href=\"product.jsp?id=" + prodid + "&name=" + prodname + "\"" + "> "+prodname+" </a>"+ "</td>");
 			out.print("<td>" + categoryName + "</td>");
 			out.print("<td>"+" "+ currFormat.format(rst.getDouble("productPrice")) + "</td></tr>");
 		}
@@ -189,7 +190,7 @@ if(catId != null)
 			double prodprice = rst.getDouble("productPrice");
 			int categoryId = rst.getInt("categoryId");
 			String categoryName = rst.getString("categoryName");
-			out.print("<tr><td>"+"<a href=\"addcart.jsp?id=" + prodid + "&name=" + prodname + "&price=" + prodprice + "\"" + ">Add to cart</a>" + "</td>");
+			out.print("<tr><td>"+"<a href=\"addcart.jsp?id=" + prodid + "&name=" + prodname + "&price=" + rst.getString("productPrice") + "&newqty=1" + "\"" + ">Add to cart</a>" + "</td>");
 			out.print("<td>"+" " + "<a href=\"product.jsp?id=" + prodid + "&name=" + prodname + "\"" + "> "+prodname+" </a>"+ "</td>");
 			out.print("<td>" + categoryName + "</td>");
 			out.print("<td>"+" "+ currFormat.format(rst.getDouble("productPrice")) + "</td></tr>");
