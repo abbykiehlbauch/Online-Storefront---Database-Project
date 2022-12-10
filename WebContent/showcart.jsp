@@ -156,7 +156,8 @@ else
 		out.print("<td align=\"right\">"+currFormat.format(pr*qty)+"</td>");
 		out.print("<td>"+"<a href=\"removecart.jsp?id=" + product.get(0)  + "\">Remove from cart</a>" + "</td>");
 		//out.print("<td><input id = \"newqtybtn\" type=\"button\" onclick= \"update(" + product.get(0)+ "," + product.get(1) + ")\" value=\"Update Quantity\"></tr></td>");
-		out.println("<td><a href = \"addcart.jsp?id=" +product.get(0)+ "&name=" + product.get(1)+"&price" + product.get(2) + "&newqty=" + request.getParameter("newqty") + "\">Increase Quantity</a></td>");
+		//out.println("<td><a href = \"addcart.jsp?id=" +product.get(0)+ "&name=" + product.get(1)+"&price" + product.get(2) + "&newqty=" + request.getParameter("newqty") + "\">Increase Quantity</a></td>");
+		out.println("<td><a href=\"addcart.jsp?id=" + product.get(0) + "&name=" + product.get(1) + "&price=" + product.get(2) + "&newqty=1" + "\"" + ">Increase Quantity</a></td>");
 		out.println("</tr>");
 		total = total +pr*qty;
 	}
