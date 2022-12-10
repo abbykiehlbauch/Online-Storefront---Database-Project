@@ -7,51 +7,51 @@
     <head>
         <title>nulllllll</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
-<style type="text/css">
-    body 
-    {
-            height: 125vh;
-            margin-top: 25px;
-            padding: 20px;
-            background-size: cover;
-            font-family: serif;
-    }
-    header {
-            background-color:dodgerblue;
-            position: fixed;
-            left: 0;
-            right: 0;
-            top: 10px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 0 25px 0 black;
-    }
-    header * {
-            display: inline;
-    }
-    header li {
-            margin: 29px;
-    }
-    header li a{
-            color: white;
-            text-decoration: none;
-    }
-    input {
-        padding:10px;
-        border:0;
-        box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
-        border-radius: 10px;
-        align-items: center;
+    <style type="text/css">
+        body 
+        {
+                height: 125vh;
+                margin-top: 25px;
+                padding: 20px;
+                background-size: cover;
+                font-family: serif;
         }
-	body h1 {
-		margin-top: -20px;
-	}
-    h2 {text-align: center;}
-    h3 {text-align: center;}
-    h4 {text-align: center;}
-    p {text-align: center;}
-</style>
+        header {
+                background-color:dodgerblue;
+                position: fixed;
+                left: 0;
+                right: 0;
+                top: 10px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                box-shadow: 0 0 25px 0 black;
+        }
+        header * {
+                display: inline;
+        }
+        header li {
+                margin: 29px;
+        }
+        header li a{
+                color: white;
+                text-decoration: none;
+        }
+        input {
+            padding:10px;
+            border:0;
+            box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+            border-radius: 10px;
+            align-items: center;
+            }
+        body h1 {
+            margin-top: -20px;
+        }
+        h2 {text-align: center;}
+        h3 {text-align: center;}
+        h4 {text-align: center;}
+        p {text-align: center;}
+    </style>
     </head>
     <body background="img/blue-abstract-gradient-wave-vector-background_53876-111548.jpg.webp">
         <header>
