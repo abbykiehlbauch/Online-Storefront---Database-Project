@@ -76,7 +76,6 @@
 							<%
                                 String userName = (String) session.getAttribute("authenticatedUser");
                                 if(userName != null){
-                                        out.println("<li><a href='listorder.jsp'>Order List</a></li>");
                                         %>
                                         <div style="padding-left: 325px;">
                                                 <%

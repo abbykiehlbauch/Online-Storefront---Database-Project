@@ -11,9 +11,9 @@
   integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 <title>Your Shopping Cart</title>
 <script>
-	function update(newid)
+	function update(newid, newname, newprice)
 	{
-		window.location="showcart.jsp?update="+newid+"&newqty="+document.getElementById("newqtytext").value;
+		window.location="addcart.jsp?id="+newid+"&name="+newname+"&price"+newprice+"&newqty="+document.getElementById("newqtytext").value;
 	}
 </script>
 <style type="text/css">
@@ -130,6 +130,7 @@ else
 		out.print("<td>"+product.get(1)+"</td>");
 		out.println("<form method=\"get\" action=\"showcart.jsp\">");
 		out.println("<td><input id = \"newqtytext\" type=\"text\" size = \"3\" value =\"" + product.get(3) + "\"></td>");
+	
 		Object price = product.get(2);
 		Object itemqty = product.get(3);
 		double pr = 0;
@@ -154,7 +155,8 @@ else
 		out.print("<td align=\"right\">"+currFormat.format(pr)+"</td>");
 		out.print("<td align=\"right\">"+currFormat.format(pr*qty)+"</td>");
 		out.print("<td>"+"<a href=\"removecart.jsp?id=" + product.get(0)  + "\">Remove from cart</a>" + "</td>");
-		out.print("<td><input id = \"newqtybtn\" type=\"button\" onclick= \"update(" + product.get(0)+")\" value=\"Update Quantity\"></tr></td>");
+		//out.print("<td><input id = \"newqtybtn\" type=\"button\" onclick= \"update(" + product.get(0)+ "," + product.get(1) + ")\" value=\"Update Quantity\"></tr></td>");
+		out.println("<td><a href = \"addcart.jsp?id=" +product.get(0)+ "&name=" + product.get(1)+"&price" + product.get(2) + "&newqty=" + request.getParameter("newqty") + "\">Add one</a></td>");
 		out.println("</tr>");
 		total = total +pr*qty;
 	}
