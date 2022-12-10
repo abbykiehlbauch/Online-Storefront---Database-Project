@@ -1,7 +1,6 @@
 <%@ page import="java.sql.*,java.net.URLEncoder" %>
 <%@ page import="java.text.NumberFormat" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF8"%>
-<%@ include file="auth.jsp"%>
 
 <!DOCTYPE html>
 <html>
@@ -105,9 +104,12 @@
 	<img height=150px width=150px src="img/304logo-nobg.png" alt="logo">
 </form>
 <h1 align='center'>Recommended and Previously Ordered Products</h1>
+<%@ include file="auth.jsp"%>
 
 <% // Get username
 String username = (String) session.getAttribute("authenticatedUser");
+if(username != null)
+{
 
 //Note: Forces loading of SQL Server driver
 try
@@ -223,10 +225,11 @@ if(catId != null)
 		}
 	}
 	out.print("</table>");
-
+	con.close();
+}
 }
 // Close connection
-con.close();
+
 %>
 </body>
 </html>
