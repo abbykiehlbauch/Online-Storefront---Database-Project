@@ -3,42 +3,60 @@
 <head>
 <title>Inventory</title>
 <style type="text/css">
-        body 
-        {
-                height: 125vh;
-                margin-top: 25px;
-                padding: 20px;
-                background-size: cover;
-                font-family: serif;
-        }
-        header {
-                background-color:dodgerblue;
-                position: fixed;
-                left: 0;
-                right: 0;
-                top: 10px;
-                height: 40px;
-                display: flex;
-                align-items: center;
-                box-shadow: 0 0 25px 0 black;
-        }
-        header * {
-                display: inline;
-        }
-        header li {
-                margin: 29px;
-        }
-        header li a{
-                color: white;
-                text-decoration: none;
-        }
-        body h1 {
-                margin-top: -20px;
-
-        }
-
+	body 
+	{
+			height: 125vh;
+			margin-top: 25px;
+			padding: 20px;
+			background-size: cover;
+			font-family: serif;
+	}
+	header {
+			background-color:dodgerblue;
+			position: fixed;
+			left: 0;
+			right: 0;
+			top: 10px;
+			height: 40px;
+			display: flex;
+			align-items: center;
+			box-shadow: 0 0 25px 0 black;
+	}
+	header * {
+			display: inline;
+	}
+	header li {
+			margin: 29px;
+	}
+	header li a{
+			color: white;
+			text-decoration: none;
+	}
+	body h2 {
+		margin-top: -20px;
+	}
+	.big{
+		align-items:center;
+		font-family: serif;
+		border-color: dodgerblue;
+		padding-top: 5px;
+		background-color: white;
+		border-radius: 5px;
+		width: 500px;
+		box-shadow: 0 0 10px 0 dodgerblue;
+	}
+	.small{
+		font-family: serif;
+		border-color: dodgerblue;
+		padding-bottom: 10px;
+		padding-top: 5px;
+		background-color: white;
+		border-radius: 5px;
+		width: 500px;
+		box-shadow: 0 0 5px 0 dodgerblue;
+	}
 </style>
-<h3>Inventory by warehouse</h3>
+<h3 align = 'center'>Inventory by warehouse</h3>
 </head>
 <body background="img/blue-abstract-gradient-wave-vector-background_53876-111548.jpg.webp">
         <header>
@@ -76,6 +94,10 @@
                         </ul>
                 </nav>
         </header>
+        <form align="center">
+		<img height=150px width=150px src="img/304logo-nobg.png" alt="logo">
+</form>
+
 <%@ include file="auth.jsp"%>
 <%@ include file="jdbc.jsp" %>
 <%@ page import="java.util.*,java.sql.*,java.io.*,java.nio.*"%>
@@ -106,7 +128,7 @@ try{
     PreparedStatement getInventory = con.prepareStatement(sql);
     getInventory.setString(1, request.getParameter("warehouse"));
     ResultSet inventory = getInventory.executeQuery();
-    out.print("<table align='center' border='2px' border-style='none'>");
+    out.print("<table class = 'small' align='center' border = '1px'>");
     out.print("<tr><th>Product Id</th><th>Quantity</th></tr>" + "<br>");
     while(inventory.next())
     {

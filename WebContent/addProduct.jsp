@@ -3,42 +3,46 @@
 <head>
 <title>Administrator Page</title>
 <style type="text/css">
-    body 
-    {
-            height: 125vh;
-            margin-top: 25px;
-            padding: 20px;
-            background-size: cover;
-            font-family: serif;
-    }
-    header {
-            background-color:dodgerblue;
-            position: fixed;
-            left: 0;
-            right: 0;
-            top: 10px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 0 25px 0 black;
-    }
-    header * {
-            display: inline;
-    }
-    header li {
-            margin: 29px;
-    }
-    header li a{
-            color: white;
-            text-decoration: none;
-    }
-    body h1 {
+        body 
+        {
+                height: 125vh;
+                margin-top: 25px;
+                padding: 20px;
+                background-size: cover;
+                font-family: serif;
+        }
+        header {
+                background-color:dodgerblue;
+                position: fixed;
+                left: 0;
+                right: 0;
+                top: 10px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                box-shadow: 0 0 25px 0 black;
+        }
+        header * {
+                display: inline;
+        }
+        header li {
+                margin: 29px;
+        }
+        header li a{
+                color: white;
+                text-decoration: none;
+        }
+        input {
+                        padding:10px;
+                        border:0;
+                        box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+                        border-radius: 10px;
+            }
+        body h1 {
             margin-top: -20px;
+        }
+    </style>
 
-    }
-
-</style>
-<h3>Add a product</h3>
 </head>
 <body background="img/blue-abstract-gradient-wave-vector-background_53876-111548.jpg.webp">
     <header>
@@ -76,6 +80,10 @@
                     </ul>
             </nav>
     </header>
+    <form align="center">
+        <img height=150px width=150px src="img/304logo-nobg.png" alt="logo">
+</form>
+<h3 align = 'center'>Add a product</h3>
 <%@ include file="auth.jsp"%>
 <%@ include file="jdbc.jsp" %>
 <%@ page import="java.util.*,java.sql.*,java.io.*,java.nio.*"%>
@@ -89,8 +97,7 @@ NumberFormat currFormat = NumberFormat.getCurrencyInstance(Locale.US);
 try{		
     getConnectionForOrders();
     //create form to add a product
-    out.println("<form method=\"get\" action=\"admin.jsp\">");
-    out.println("</table>");
+    out.println("<form align = 'center' method=\"get\" action=\"admin.jsp\">");
     out.println("<label for=\"productName\">Product Name: </label> <input type=\"text\" name =\"productName\" size = \"10\">");
     out.println("<label for=\"productPrice\">Price: </label> <input type=\"text\" name =\"productPrice\" size = \"10\">");
     String SQL = "SELECT categoryId, categoryName FROM category";
