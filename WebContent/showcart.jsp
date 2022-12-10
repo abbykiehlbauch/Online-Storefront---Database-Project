@@ -56,7 +56,7 @@
 		margin-top: 50px;
 	}
 	table {
-		width: 1000px;
+		width: 1200px;
 	}
 </style>
 </head>
@@ -152,19 +152,22 @@ else
 		{
 			out.println("Invalid quantity for product: "+product.get(0)+" quantity: "+qty);
 		}		
-		out.print("<td align=\"right\">"+currFormat.format(pr)+"</td>");
-		out.print("<td align=\"right\">"+currFormat.format(pr*qty)+"</td>");
+		out.print("<td >"+currFormat.format(pr)+"</td>");
+		out.print("<td style='padding-right: 20px' >"+currFormat.format(pr*qty)+"</td>");
 		out.print("<td>"+"<a href=\"removecart.jsp?id=" + product.get(0)  + "\">Remove from cart</a>" + "</td>");
 		//out.print("<td><input id = \"newqtybtn\" type=\"button\" onclick= \"update(" + product.get(0)+ "," + product.get(1) + ")\" value=\"Update Quantity\"></tr></td>");
 		//out.println("<td><a href = \"addcart.jsp?id=" +product.get(0)+ "&name=" + product.get(1)+"&price" + product.get(2) + "&newqty=" + request.getParameter("newqty") + "\">Increase Quantity</a></td>");
 		out.println("<td><a href=\"addcart.jsp?id=" + product.get(0) + "&name=" + product.get(1) + "&price=" + product.get(2) + "&newqty=1" + "\"" + ">Increase Quantity</a></td>");
+		out.println("<td><a href=\"addcart.jsp?id=" + product.get(0) + "&name=" + product.get(1) + "&price=" + product.get(2) + "&newqty=-1" + "\"" + ">Decrease Quantity</a></td>");
 		out.println("</tr>");
 		total = total +pr*qty;
 	}
-	out.println("<tr><td colspan=\"4\" align=\"right\"><b>Order Total</b></td>"
-			+"<td align=\"right\">"+currFormat.format(total)+"</td></tr>");
+	out.println("<tr><td></td><td></td><td></td><td><b>Order Total</b></td>"
+			+"<td>"+currFormat.format(total)+"</td></tr>");
 	out.println("</table>");
 	out.println("</form>");
+	out.println("<br>");
+	out.println("<br>");
 	out.println("<h2 align='center'><a href=\"checkout.jsp\">Check Out</a></h2><h2 align=\"center\"><a href=\"listprod.jsp\">Continue Shopping</a></h2>");
 }
 %>

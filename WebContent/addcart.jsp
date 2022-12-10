@@ -28,7 +28,9 @@ product.add(quantity);
 if (productList.containsKey(id))
 {	product = (ArrayList<Object>) productList.get(id);
 	int curAmount = ((Integer) product.get(3)).intValue();
-	product.set(3, new Integer(curAmount+1));
+	if ((curAmount+quantity) != 0) { 
+		product.set(3, new Integer(curAmount+quantity));
+	}
 	//product.set(3, quantity);
 }
 else
