@@ -59,44 +59,43 @@
 </head>
 <body background="img/blue-abstract-gradient-wave-vector-background_53876-111548.jpg.webp">
     <header>
-            <nav>
-                    <ul>
-                            <li>
-                                    <a href="index.jsp">Home</a>
-                            </li>
-                            <li>
-                                    <a href="showcart.jsp">Products</a>
-                            </li>
-                            <li>
-                                    <a href="checkout.jsp">View Cart</a>
-                            </li>
-                        
-                            <%
-                                String userName = (String) session.getAttribute("authenticatedUser");
-                                if(userName != null){
-                                        out.println("<li><a href='listorder.jsp'>Past Orders</a></li>");
-                                        %>
-                                        <div style="padding-left: 325px;">
-                                                <%
-                                        out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
-                                        out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
-                                        %>
-                                        </div>
+        <nav>
+                <ul>
+                        <li>
+                                <a href="index.jsp">Home</a>
+                        </li>
+                        <li>
+                                <a href="listprod.jsp">Products</a>
+                        </li>
+                        <li>
+                                <a href="showcart.jsp">View Cart</a>
+                        </li>
+                        <%
+                        String userName = (String) session.getAttribute("authenticatedUser");
+                        if(userName != null){
+                                %>
+                                <div style="padding-left: 325px;">
                                         <%
-                                } else {
-                                        %>
-                                        <div style="padding-left: 450px;">
-                                                <%
-                                        out.println("<li><a href='register.jsp'>Register</a></li>");
-                                        out.println("<li><a href='login.jsp'>Sign In</a></li>");
-                                        %>
+                                out.println("<li><a href='adminIndex.jsp'>Admin Homepage</a></li>");
+                                out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
+                                out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
+                                %>
                                 </div>
                                 <%
-                                }
+                        } else {
                                 %>
-                    </ul>
-            </nav>
-    </header>
+                                <div style="padding-left: 450px;">
+                                        <%
+                                out.println("<li><a href='register.jsp'>Register</a></li>");
+                                out.println("<li><a href='login.jsp'>Sign In</a></li>");
+                                %>
+                        </div>
+                        <%
+                        }
+                        %>
+                </ul>
+        </nav>
+</header>
 	<form align="center">
 		<img height=150px width=150px src="img/304logo-nobg.png" alt="logo">
     </form>
@@ -171,20 +170,6 @@
 
     %>
 
-    <form align="center" name="NewReview" method=post>
-        <table style="overflow:auto" align="center">
-            <tr>
-                <td><div align="center"><font face="serif" size="3.5">Rate (1-5):</font></div></td>
-                <td><input placeholder="(5 is Best)" type="text" name="rating"  size="7" maxlength="1"></td>
-            </tr>
-            <tr>
-                <td><div align="center"><font face="serif" size="3.5">Comment:</font></div></td>
-                <td><input placeholder="Explain the Rating" type="text" name="comment" size="50" maxlength="1000"></td>
-            </tr>
-        </table>
-        <br>
-        <input class="submit" type="submit" name="Submit2" value="Add Review">
-    </form>
     <%
     // session = request.getSession(true);
     out.println("<h3>Product Reviews:</h3>");
@@ -234,24 +219,40 @@
     PreparedStatement pstmt3 = con.prepareStatement(sql2);
     ResultSet rst2 = pstmt3.executeQuery();
     // Print out the ResultSet
-    out.print("<table align='center'>");
-    out.print("<tr><th> Date </th><th> Customer </th><th> Rating </th><th> Comment </th></tr>" + "<br>");
+    out.print("<table align='center' border='1px' border-style='ridge'>");
+    out.print("<tr><th style='padding-right: 10px'> Date </th><th style='padding-right: 10px'> Customer </th><th style='padding-right: 10px'> Rating </th><th style='padding-right: 10px'> Comment </th></tr>" + "<br>");
     while(rst2.next())
     {
         int outrating = rst2.getInt("reviewRating");
         String outreviewdate = rst2.getString("reviewDate");
         String outcustid = rst2.getString("firstName");
         String outcomment = rst2.getString("reviewComment");
-        out.print("<tr><td>" + outreviewdate + " |</td>");
-        out.print("<td>" + outcustid + " </td>");
-        out.print("<td>Rating: " + outrating + "/5 |</td>");
-        out.print("<td>" + outcomment + "</td></tr>");
+        out.print("<tr><td style='padding-right: 10px'>" + outreviewdate + "</td>");
+        out.print("<td style='padding-right: 10px'>" + outcustid + " </td>");
+        out.print("<td style='padding-right: 10px'>Rating: " + outrating + "/5</td>");
+        out.print("<td style='padding-right: 10px'>" + outcomment + "</td></tr>");
     }
     out.print("</table>");
     // Close connection
     con.close();
 
     %>
+    <h3>Add a Review:</h3>
+    <form align="center" name="NewReview" method=post>
+        <table style="overflow:auto" align="center">
+            <tr>
+                <td><div align="center"><font face="serif" size="3.5">Rate (1-5):</font></div></td>
+                <td><input placeholder="(5 is Best)" type="text" name="rating"  size="7" maxlength="1"></td>
+            </tr>
+            <tr>
+                <td><div align="center"><font face="serif" size="3.5">Comment:</font></div></td>
+                <td><input placeholder="Explain the Rating" type="text" name="comment" size="50" maxlength="1000"></td>
+            </tr>
+        </table>
+        <br>
+        <input class="submit" type="submit" name="Submit2" value="Add Review">
+    </form>
+
 </body>
 </html>
 

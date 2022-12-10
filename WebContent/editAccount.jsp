@@ -43,24 +43,24 @@
         </head>
         <body background="img/blue-abstract-gradient-wave-vector-background_53876-111548.jpg.webp">
             <header>
-                    <nav>
-                            <ul>
-                                    <li>
-                                            <a href="index.jsp">Home</a>
-                                    </li>
-                                    <li>
-                                            <a href="showcart.jsp">Products</a>
-                                    </li>
-                                    <li>
-                                            <a href="checkout.jsp">View Cart</a>
-                                    </li>
-                                    <%
+                <nav>
+                        <ul>
+                                <li>
+                                        <a href="index.jsp">Home</a>
+                                </li>
+                                <li>
+                                        <a href="listprod.jsp">Products</a>
+                                </li>
+                                <li>
+                                        <a href="showcart.jsp">View Cart</a>
+                                </li>
+                                <%
                                 String userName = (String) session.getAttribute("authenticatedUser");
                                 if(userName != null){
-                                        out.println("<li><a href='adminIndex.jsp'>Admin Homepage</a></li>");
                                         %>
                                         <div style="padding-left: 325px;">
                                                 <%
+                                        out.println("<li><a href='adminIndex.jsp'>Admin Homepage</a></li>");
                                         out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
                                         out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
                                         %>
@@ -77,9 +77,9 @@
                                 <%
                                 }
                                 %>
-                            </ul>
-                    </nav>
-            </header>
+                        </ul>
+                </nav>
+        </header>
             <form align="center">
                 <img height=150px width=150px src="img/304logo-nobg.png" alt="logo">
             </form>
@@ -88,47 +88,47 @@
             <form align="center" name="EditAccount" method=post action="edit.jsp">
                 <table style="overflow:auto" align="center">
                     <tr>
-                        <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="3.5">First Name:</font></div></td>
+                        <td><div align="left"><font face="serif" size="3.5">First Name:</font></div></td>
                         <td><input type="text" name="First Name"  size=10 maxlength=10></td>
                     </tr>
                     <tr>
-                        <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="3.5">Last Name:</font></div></td>
+                        <td><div align="left"><font face="serif" size="3.5">Last Name:</font></div></td>
                         <td><input type="text" name="Last Name" size=10 maxlength="10"></td>
                     </tr>
                     <tr>
-                        <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="3.5">Email:</font></div></td>
+                        <td><div align="left"><font face="serif" size="3.5">Email:</font></div></td>
                         <td><input type="email" name="Email" size=10 maxlength="100"></td>
                     </tr>
                     <tr>
-                        <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="3.5">Phone Number:</font></div></td>
+                        <td><div align="left"><font face="serif" size="3.5">Phone Number:</font></div></td>
                         <td><input type="text" name="Phone Number" size=10 maxlength="10"></td>
                     </tr>
                     <tr>
-                        <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="3.5">Address:</font></div></td>
+                        <td><div align="left"><font face="serif" size="3.5">Address:</font></div></td>
                         <td><input type="text" name="Address" size=10 maxlength="50"></td>
                     </tr>
                     <tr>
-                        <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="3.5">City:</font></div></td>
+                        <td><div align="left"><font face="serif" size="3.5">City:</font></div></td>
                         <td><input type="text" name="City" size=10 maxlength="20"></td>
                     </tr>
                     <tr>
-                        <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="3.5">State:</font></div></td>
+                        <td><div align="left"><font face="serif" size="3.5">State:</font></div></td>
                         <td><input type="text" name="State" size=10 maxlength="20"></td>
                     </tr>
                     <tr>
-                        <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="3.5">Postal Code:</font></div></td>
+                        <td><div align="left"><font face="serif" size="3.5">Postal Code:</font></div></td>
                         <td><input type="text" name="Postal Code" size=10 maxlength="7"></td>
                     </tr>
                     <tr>
-                        <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="3.5">Country:</font></div></td>
+                        <td><div align="left"><font face="serif" size="3.5">Country:</font></div></td>
                         <td><input type="text" name="Country" size=10 maxlength="20"></td>
                     </tr>
                     <tr>
-                        <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="3.5">User Id:</font></div></td>
+                        <td><div align="left"><font face="serif" size="3.5">User Id:</font></div></td>
                         <td><input type="text" name="User Id" size=10 maxlength="10"></td>
                     </tr>
                     <tr>
-                        <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="3.5">Password:</font></div></td>
+                        <td><div align="left"><font face="serif" size="3.5">Password:</font></div></td>
                         <td><input type="password" name="password" size=10 maxlength="10"></td>
                     </tr>
                 </table>

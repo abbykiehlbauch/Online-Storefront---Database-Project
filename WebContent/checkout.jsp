@@ -59,28 +59,28 @@
                                                 <a href="showcart.jsp">View Cart</a>
                                         </li>
                                         <%
-                                String userName = (String) session.getAttribute("authenticatedUser");
-                                if(userName != null){
-                                        out.println("<li><a href='adminIndex.jsp'>Admin Homepage</a></li>");
-                                        %>
-                                        <div style="padding-left: 325px;">
+                                        String userName = (String) session.getAttribute("authenticatedUser");
+                                        if(userName != null){
+                                                %>
+                                                <div style="padding-left: 325px;">
+                                                        <%
+                                                out.println("<li><a href='adminIndex.jsp'>Admin Homepage</a></li>");
+                                                out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
+                                                out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
+                                                %>
+                                                </div>
                                                 <%
-                                        out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
-                                        out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
-                                        %>
+                                        } else {
+                                                %>
+                                                <div style="padding-left: 450px;">
+                                                        <%
+                                                out.println("<li><a href='register.jsp'>Register</a></li>");
+                                                out.println("<li><a href='login.jsp'>Sign In</a></li>");
+                                                %>
                                         </div>
                                         <%
-                                } else {
+                                        }
                                         %>
-                                        <div style="padding-left: 450px;">
-                                                <%
-                                        out.println("<li><a href='register.jsp'>Register</a></li>");
-                                        out.println("<li><a href='login.jsp'>Sign In</a></li>");
-                                        %>
-                                </div>
-                                <%
-                                }
-                                %>
                                 </ul>
                         </nav>
                 </header>
