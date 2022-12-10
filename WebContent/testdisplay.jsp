@@ -87,7 +87,7 @@
         String catId = request.getParameter("categoriesDropUp");
 
         // get userid for product page (review)
-        String userName = (String) session.getAttribute("authenticatedUser");
+        userName = (String) session.getAttribute("authenticatedUser");
         String sqll2;
         if(userName != null)
         {
@@ -111,21 +111,21 @@
         String sql;
         if(name != null && catId !=null)
         {
-            sql = "SELECT productId, productName, productPrice, product.categoryId, categoryName FROM product JOIN category ON product.categoryId = category.categoryId WHERE productName LIKE '%" + name + "%'" + "AND product.categoryId ="+ catId;
+            sql = "SELECT productId, productName, productPrice, productImageURL, product.categoryId, categoryName FROM product JOIN category ON product.categoryId = category.categoryId WHERE productName LIKE '%" + name + "%'" + "AND product.categoryId ="+ catId;
             out.println("<h2>Products containing '" + name + "'</h2>");
         }
 
         else if(catId == null)
         {
             if(name == null)
-                sql = "SELECT productId, productName, productPrice, product.categoryId, categoryName FROM product JOIN category ON product.categoryId = category.categoryId";
+                sql = "SELECT productId, productName, productPrice, productImageURL, product.categoryId, categoryName FROM product JOIN category ON product.categoryId = category.categoryId";
             else
-                sql = "SELECT productId, productName, productPrice, product.categoryId, categoryName FROM product JOIN category ON product.categoryId = category.categoryId WHERE productName LIKE '%" + name + "%'";
+                sql = "SELECT productId, productName, productPrice, productImageURL, product.categoryId, categoryName FROM product JOIN category ON product.categoryId = category.categoryId WHERE productName LIKE '%" + name + "%'";
         }
 
         else
         {
-            sql = "SELECT productId, productName, productPrice, product.categoryId, categoryName FROM product JOIN category ON product.categoryId = category.categoryId";
+            sql = "SELECT productId, productName, productPrice, productImageURL, product.categoryId, categoryName FROM product JOIN category ON product.categoryId = category.categoryId";
             out.println("<h2>All products</h2>");
         }
         PreparedStatement pstmt = con.prepareStatement(sql);
