@@ -43,22 +43,19 @@
         <header>
                 <nav>
                         <ul>
-                                <li>
-                                        <a href="index.jsp">Home</a>
-                                </li>
-                                <li>
-                                        <a href="listprod.jsp">Products</a>
-                                </li>
-                                <li>
-                                        <a href="showcart.jsp">View Cart</a>
-                                </li>
                                 <%
                                 String userName = (String) session.getAttribute("authenticatedUser");
                                 if(userName != null){
                                         %>
+                                        <li><a href='index.jsp'>Home</a></li>
+                                        <li><a href='addProduct.jsp'>Add a product</a></li>
+                                        <li><a href='admin.jsp'>Sales report</a></li>
+                                        <li><a href='listorder.jsp'>Orders</a></li>
+                                        <li><a href='inventory.jsp'>Inventory</a></li>
+
                                         <div style="padding-left: 325px;">
                                                 <%
-                                        out.println("<li><a href='adminIndex.jsp'>Admin Homepage</a></li>");
+                                        //out.println("<li><a href='adminIndex.jsp'>Admin Homepage</a></li>");
                                         out.println("<li><a href='customer.jsp'>" + userName + "</a></li>");
                                         out.println("<li><a href='logout.jsp'>Sign Out</a></li>");
                                         %>
