@@ -6,6 +6,52 @@
 <html>
     <head>
         <title>nulllllll</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+<style type="text/css">
+    body 
+    {
+            height: 125vh;
+            margin-top: 25px;
+            padding: 20px;
+            background-size: cover;
+            font-family: serif;
+    }
+    header {
+            background-color:dodgerblue;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 10px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 0 25px 0 black;
+    }
+    header * {
+            display: inline;
+    }
+    header li {
+            margin: 29px;
+    }
+    header li a{
+            color: white;
+            text-decoration: none;
+    }
+    input {
+        padding:10px;
+        border:0;
+        box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+        border-radius: 10px;
+        align-items: center;
+        }
+	body h1 {
+		margin-top: -20px;
+	}
+    h2 {text-align: center;}
+    h3 {text-align: center;}
+    h4 {text-align: center;}
+    p {text-align: center;}
+</style>
     </head>
     <body background="img/blue-abstract-gradient-wave-vector-background_53876-111548.jpg.webp">
         <header>
@@ -112,9 +158,12 @@
         if(name != null && catId !=null)
         {
             sql = "SELECT productId, productName, productPrice, productImageURL, product.categoryId, categoryName FROM product JOIN category ON product.categoryId = category.categoryId WHERE productName LIKE '%" + name + "%'" + "AND product.categoryId ="+ catId;
-            out.println("<h2>Products containing '" + name + "'</h2>");
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            ResultSet rst = pstmt.executeQuery();
+            if(rst.next()){
+                out.println("<h2>Products containing '" + name + "' in '" + rst.getString("categoryName") + "':</h2>");
+            }
         }
-
         else if(catId == null)
         {
             if(name == null)
@@ -122,7 +171,6 @@
             else
                 sql = "SELECT productId, productName, productPrice, productImageURL, product.categoryId, categoryName FROM product JOIN category ON product.categoryId = category.categoryId WHERE productName LIKE '%" + name + "%'";
         }
-
         else
         {
             sql = "SELECT productId, productName, productPrice, productImageURL, product.categoryId, categoryName FROM product JOIN category ON product.categoryId = category.categoryId";
@@ -131,8 +179,9 @@
         PreparedStatement pstmt = con.prepareStatement(sql);
         ResultSet rst = pstmt.executeQuery();
         // Print out the ResultSet
+        out.print("<form align='center'>");
         out.print("<table align='center'>");
-        out.print("<tr><th></th><th>Product Name</th><th>Category</th><th>Price</th></tr>" + "<br>");
+        out.print("<tr><th></th><th style='padding-left: 20px'>Product Name</th><th style='padding-left: 20px'>Category</th><th>Price</th><th></th></tr>" + "<br>");
         while(rst.next())
         {
             NumberFormat currFormat = NumberFormat.getCurrencyInstance();
@@ -143,13 +192,14 @@
             int categoryId = rst.getInt("categoryId");
             custidd = rst2.getInt("customerId");
             String categoryName = rst.getString("categoryName");
-            out.print("<tr><td><img height=100px src=\"" + imageUrl + "\"></td>");
+            out.print("<tr><td style='padding-right: 20px'><img height=100px src=\"" + imageUrl + "\"></td>");
             out.print("<td style='padding-right: 20px'>"+" " + "<a href=\"product.jsp?id=" + prodid + "&name=" + prodname + "&userid=" + custidd + "\"" + "> "+prodname+" </a>" + "</td>");
             out.print("<td style='padding-right: 20px'>" + categoryName + "</td>");
             out.print("<td style='padding-right: 20px' >"+" "+ currFormat.format(rst.getDouble("productPrice")) + "</td>");
             out.print("<td style='padding-right: 20px'>"+"<a href=\"addcart.jsp?id=" + prodid + "&name=" + prodname + "&price=" + prodprice  + "&newqty=1\">Add to cart</a>" + "</td></tr>");
         }
         out.print("</table>");
+        out.print("</form>");
         // Close connection
         con.close();
         %>
