@@ -11,7 +11,7 @@
 	body 
 	{
 			height: 125vh;
-			margin-top: 80px;
+			margin-top: 25px;
 			padding: 20px;
 			background-size: cover;
 			font-family: serif;
@@ -21,8 +21,8 @@
 			position: fixed;
 			left: 0;
 			right: 0;
-			top: 5px;
-			height: 30px;
+			top: 10px;
+			height: 40px;
 			display: flex;
 			align-items: center;
 			box-shadow: 0 0 25px 0 black;
@@ -37,9 +37,32 @@
 			color: white;
 			text-decoration: none;
 	}
+	body h2 {
+		margin-top: -20px;
+	}
+	.big{
+		align-items:center;
+		font-family: serif;
+		border-color: dodgerblue;
+		padding-top: 5px;
+		background-color: white;
+		border-radius: 5px;
+		width: 500px;
+		box-shadow: 0 0 10px 0 dodgerblue;
+	}
+	.small{
+		font-family: serif;
+		border-color: dodgerblue;
+		padding-bottom: 10px;
+		padding-top: 5px;
+		background-color: white;
+		border-radius: 5px;
+		width: 500px;
+		box-shadow: 0 0 5px 0 dodgerblue;
+	}
 </style>
 </head>
-<body>
+<body background="img/blue-abstract-gradient-wave-vector-background_53876-111548.jpg.webp">
 	<header>
 		<nav>
 				<ul>
@@ -78,7 +101,9 @@
 				</ul>
 		</nav>
 </header>
-<body>
+<form align="center">
+	<img height=150px width=150px src="img/304logo-nobg.png" alt="logo">
+</form>
 <h1 align='center'>Recommended and Previously Ordered Products</h1>
 
 <% // Get username
@@ -144,7 +169,7 @@ if(catId != null)
 		ResultSet rst = pstmt1.executeQuery();
 
 		// Print out the ResultSet
-		out.print("<table align='center' border='2px' border-style='none'>");
+		out.print("<table class = 'small' align='center'>");
 		out.print("<tr><th></th><th>Product Name</th><th>Category</th><th>Price</th></tr>" + "<br>");
 		while(rst.next())
 		{
@@ -180,7 +205,7 @@ if(catId != null)
 		PreparedStatement pstmt1 = con.prepareStatement(sql);
 		ResultSet rst = pstmt1.executeQuery();
 		// Print out the ResultSet
-		out.print("<table align='center' border='2px' border-style='none'>");
+		out.print("<table class = 'small' align='center'>");
 		out.print("<tr><th></th><th>Product Name</th><th>Category</th><th>Price</th></tr>" + "<br>");
 		while(rst.next())
 		{
