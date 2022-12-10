@@ -139,13 +139,15 @@
             String prodid = rst.getString("productId");
             String prodname = rst.getString("productName");
             double prodprice = rst.getDouble("productPrice");
+            String imageUrl = rst.getString("productImageURL");
             int categoryId = rst.getInt("categoryId");
             custidd = rst2.getInt("customerId");
             String categoryName = rst.getString("categoryName");
-            out.print("<tr><td>"+"<a href=\"addcart.jsp?id=" + prodid + "&name=" + prodname + "&price=" + prodprice  + "&newqty=1\">Add to cart</a>" + "</td>");
-            out.print("<td>"+" " + "<a href=\"product.jsp?id=" + prodid + "&name=" + prodname + "&userid=" + custidd + "\"" + "> "+prodname+" </a>" + "</td>");
-            out.print("<td>" + categoryName + "</td>");
-            out.print("<td>"+" "+ currFormat.format(rst.getDouble("productPrice")) + "</td></tr>");
+            out.print("<tr><td><img height=100px src=\"" + imageUrl + "\"></td>");
+            out.print("<td style='padding-right: 20px'>"+" " + "<a href=\"product.jsp?id=" + prodid + "&name=" + prodname + "&userid=" + custidd + "\"" + "> "+prodname+" </a>" + "</td>");
+            out.print("<td style='padding-right: 20px'>" + categoryName + "</td>");
+            out.print("<td style='padding-right: 20px' >"+" "+ currFormat.format(rst.getDouble("productPrice")) + "</td>");
+            out.print("<td style='padding-right: 20px'>"+"<a href=\"addcart.jsp?id=" + prodid + "&name=" + prodname + "&price=" + prodprice  + "&newqty=1\">Add to cart</a>" + "</td></tr>");
         }
         out.print("</table>");
         // Close connection
