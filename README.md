@@ -36,53 +36,7 @@ When you are finishing shopping and you have confirmed your order by viewing you
 
 Once you receive your personality traits, you have the ability to leave a review on each specific trait. While shopping for your traits, these reviews may help you make a decision as to if you should or shouldn’t buy it for yourself. 
 
-<span style="text-decoration:underline;">URL, userId, password</span>
-
-URL: localhost/shop
-
-
-<table>
-  <tr>
-   <td>Username
-   </td>
-   <td>Password
-   </td>
-  </tr>
-  <tr>
-   <td>arnold
-   </td>
-   <td>test
-   </td>
-  </tr>
-  <tr>
-   <td>bobby
-   </td>
-   <td>bobby
-   </td>
-  </tr>
-  <tr>
-   <td>candace
-   </td>
-   <td>password
-   </td>
-  </tr>
-  <tr>
-   <td>darren
-   </td>
-   <td>pw
-   </td>
-  </tr>
-  <tr>
-   <td>beth
-   </td>
-   <td>test
-   </td>
-  </tr>
-</table>
-
-
 # System Features
-
 
 <table>
   <tr>
@@ -159,8 +113,6 @@ URL: localhost/shop
    </td>
   </tr>
 </table>
-
-
 
 <table>
   <tr>
@@ -277,8 +229,6 @@ URL: localhost/shop
   </tr>
 </table>
 
-
-
 <table>
   <tr>
    <td colspan="5" ><strong>Shopping Cart (up to 8 total points)</strong>
@@ -357,8 +307,6 @@ URL: localhost/shop
    </td>
   </tr>
 </table>
-
-
 
 <table>
   <tr>
@@ -543,8 +491,6 @@ URL: localhost/shop
   </tr>
 </table>
 
-
-
 <table>
   <tr>
    <td colspan="5" ><strong>Product Reviews (up to 5 total points)</strong>
@@ -588,8 +534,6 @@ URL: localhost/shop
   </tr>
 </table>
 
-
-
 <table>
   <tr>
    <td colspan="5" ><strong>Warehouses/Inventory (up to 5 total points)</strong>
@@ -620,8 +564,6 @@ URL: localhost/shop
    </td>
   </tr>
 </table>
-
-
 
 <table>
   <tr>
@@ -762,8 +704,6 @@ URL: localhost/shop
   </tr>
 </table>
 
-
-
 <table>
   <tr>
    <td colspan="5" ><strong>Database System/General</strong>
@@ -819,7 +759,6 @@ URL: localhost/shop
   </tr>
 </table>
 
-
 Total (Out of 50 with max 10 bonus marks):53 /50
 
 # Walkthrough
@@ -841,43 +780,36 @@ They can then login with their username and password
 Their name will show up in the header once they are logged in
 
 ## Account
-<img src="images/image5.png" width="" alt="alt_text" title="image_tooltip">
+<img src="https://github.com/user-attachments/assets/91504202-d657-4fb0-81e9-ef277eb8dba3" width="1000px">
 Users can view all of their account information
 
 ## Product List
-
-<img src="images/image6.png" width="" alt="alt_text" title="image_tooltip">
+<img src="https://github.com/user-attachments/assets/3d44eed0-4460-4dec-b669-9cc10b02f2e5" width="1000px">
 All the products offered by our store.
 
 ## Product Search
-
-<img src="images/image7.png" width="" alt="alt_text" title="image_tooltip">
+<img src="https://github.com/user-attachments/assets/117ec287-f1bd-4661-b1f7-c11bafa5f573" width="1000px">
 Live search results with each letter you type, implemented using AJAX.
 
 ## Product Sort
-
-<img src="images/image8.png" width="" alt="alt_text" title="image_tooltip">
+<img src="https://github.com/user-attachments/assets/337d917a-731e-4619-bbb9-90260c8b0e00" width="1000px">
 Get search results sorted by a category. 
 
 ## Product Page
-
-<img src="images/image9.png" width="" alt="alt_text" title="image_tooltip">
+<img src="https://github.com/user-attachments/assets/aaeed597-5b1c-499d-9e5c-80627703260c" width="1000px">
 Product page with option to view and add reviews.
 
 ## Product Recommendations
-<img src="images/image10.png" width="" alt="alt_text" title="image_tooltip">
-
-<img src="images/image11.png" width="" alt="alt_text" title="image_tooltip">
+<img src="https://github.com/user-attachments/assets/27e97986-b187-47cb-b705-13bcea27092e" width="1000px">
+<img src="https://github.com/user-attachments/assets/86eb4037-1b3c-4cfb-84b3-9bfcbed03392" width="1000px">
 Users can get inspired by our recommended products page where they can see all products they’ve ordered in the past, as well as products similar to those they have ordered (from the same categories)
 
 ## Cart(Empty)
-
-<img src="images/image12.png" width="" alt="alt_text" title="image_tooltip">
+<img src="https://github.com/user-attachments/assets/ca82c4aa-66f5-4483-955a-f4dd1697b5c9" width="1000px">
 Empty view of cart. 
 
 ## Cart
-
-<img src="images/image13.png" width="" alt="alt_text" title="image_tooltip">
+<img src="https://github.com/user-attachments/assets/1c47daab-a3ef-4246-9a55-28c7045bc91b" width="1000px">
 Users are able to view their cart, remove items, and increase the quantity of items they are ordering
 
 ## Admin
